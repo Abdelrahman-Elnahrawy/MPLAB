@@ -1,0 +1,154 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12F675 ]
+[d frameptr 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"15 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"104 C:\Users\Family\MPLABXProjects\Dispenser_101_PressnHold.X\main.c
+[v _main main `(v  1 e 1 0 ]
+"121
+[v _InitAll InitAll `(v  1 e 1 0 ]
+"208
+[v _DioPinWrite DioPinWrite `(v  1 e 1 0 ]
+"217
+[v _ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
+"226
+[v _AdcReadResult AdcReadResult `(us  1 e 2 0 ]
+"232
+[v _ISR ISR `II(v  1 e 1 0 ]
+"247
+[v _Timer1_interrupt Timer1_interrupt `(v  1 e 1 0 ]
+"274
+[v _ADC_interrupt ADC_interrupt `(v  1 e 1 0 ]
+"289
+[v _NegativeEdge NegativeEdge `(v  1 e 1 0 ]
+"218 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h
+[v _GPIO GPIO `VEuc  1 e 1 @5 ]
+"326
+[v _INTCON INTCON `VEuc  1 e 1 @11 ]
+"404
+[v _PIR1 PIR1 `VEuc  1 e 1 @12 ]
+"452
+[v _TMR1 TMR1 `VEus  1 e 2 @14 ]
+"499
+[v _T1CON T1CON `VEuc  1 e 1 @16 ]
+"623
+[v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
+"643
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
+"727
+[v _OPTION_REG OPTION_REG `VEuc  1 e 1 @129 ]
+"797
+[v _TRISIO TRISIO `VEuc  1 e 1 @133 ]
+"847
+[v _PIE1 PIE1 `VEuc  1 e 1 @140 ]
+"989
+[v _WPU WPU `VEuc  1 e 1 @149 ]
+"1384
+[v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
+"1404
+[v _ANSEL ANSEL `VEuc  1 e 1 @159 ]
+"29 C:\Users\Family\MPLABXProjects\Dispenser_101_PressnHold.X\main.c
+[v _DioState DioState `uc  1 e 1 0 ]
+"30
+[v _ADCStatus ADCStatus `uc  1 e 1 0 ]
+"31
+[v _DispenserOn DispenserOn `uc  1 e 1 0 ]
+"39
+[v _SensorInValue SensorInValue `us  1 e 2 0 ]
+"40
+[v _LastSensorInValue LastSensorInValue `us  1 e 2 0 ]
+"41
+[v _PotInValue PotInValue `us  1 e 2 0 ]
+"42
+[v _DebounceCounter DebounceCounter `uc  1 e 1 0 ]
+"97
+[v _flag flag `uc  1 e 1 0 ]
+"104
+[v _main main `(v  1 e 1 0 ]
+{
+"109
+[v main@Counter Counter `ul  1 a 4 46 ]
+"118
+} 0
+"15 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+{
+"17
+[v ___lmul@product product `ul  1 a 4 20 ]
+"15
+[v ___lmul@multiplier multiplier `ul  1 p 4 11 ]
+[v ___lmul@multiplicand multiplicand `ul  1 p 4 15 ]
+"129
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"10
+[v ___lldiv@quotient quotient `ul  1 a 4 33 ]
+"11
+[v ___lldiv@counter counter `uc  1 a 1 37 ]
+"5
+[v ___lldiv@divisor divisor `ul  1 p 4 24 ]
+[v ___lldiv@dividend dividend `ul  1 p 4 28 ]
+"30
+} 0
+"121 C:\Users\Family\MPLABXProjects\Dispenser_101_PressnHold.X\main.c
+[v _InitAll InitAll `(v  1 e 1 0 ]
+{
+"206
+} 0
+"208
+[v _DioPinWrite DioPinWrite `(v  1 e 1 0 ]
+{
+[v DioPinWrite@pinNumber pinNumber `uc  1 p 1 wreg ]
+[v DioPinWrite@pinNumber pinNumber `uc  1 p 1 wreg ]
+[v DioPinWrite@state state `uc  1 p 1 11 ]
+[v DioPinWrite@pinNumber pinNumber `uc  1 p 1 13 ]
+"215
+} 0
+"232
+[v _ISR ISR `II(v  1 e 1 0 ]
+{
+"245
+} 0
+"247
+[v _Timer1_interrupt Timer1_interrupt `(v  1 e 1 0 ]
+{
+"271
+} 0
+"289
+[v _NegativeEdge NegativeEdge `(v  1 e 1 0 ]
+{
+"295
+} 0
+"217
+[v _ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
+{
+[v ADC_StartConversion@channel channel `uc  1 p 1 wreg ]
+[v ADC_StartConversion@channel channel `uc  1 p 1 wreg ]
+"219
+[v ADC_StartConversion@channel channel `uc  1 p 1 1 ]
+"224
+} 0
+"274
+[v _ADC_interrupt ADC_interrupt `(v  1 e 1 0 ]
+{
+"286
+} 0
+"226
+[v _AdcReadResult AdcReadResult `(us  1 e 2 0 ]
+{
+"228
+} 0
