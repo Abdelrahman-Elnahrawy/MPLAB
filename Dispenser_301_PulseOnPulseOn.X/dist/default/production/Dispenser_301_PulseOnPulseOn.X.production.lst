@@ -1,0 +1,977 @@
+
+
+Microchip MPLAB XC8 Assembler V2.50 build 20240725155939 
+                                                                                               Tue Oct 22 03:49:38 2024
+
+Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1 
+     1                           	processor	12F675
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	idataBANK0,global,class=CODE,space=0,delta=2,noexec
+     5                           	psect	cinit,global,class=CODE,space=0,merge=1,delta=2
+     6                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1,noexec
+     7                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1,noexec
+     8                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     9                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+    10                           	psect	maintext,global,class=CODE,space=0,split=1,delta=2
+    11                           	psect	text1,local,class=CODE,space=0,merge=1,delta=2
+    12                           	psect	text2,local,class=CODE,space=0,merge=1,delta=2
+    13                           	psect	text3,local,class=CODE,space=0,merge=1,delta=2
+    14                           	psect	intentry,global,class=CODE,space=0,delta=2
+    15                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    16                           	dabs	1,0x5E,2
+    17     0000                     
+    18                           ; Generated 17/08/2023 GMT
+    19                           ; 
+    20                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    21                           ; All rights reserved.
+    22                           ; 
+    23                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    24                           ; 
+    25                           ; Redistribution and use in source and binary forms, with or without modification, are
+    26                           ; permitted provided that the following conditions are met:
+    27                           ; 
+    28                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    29                           ;        conditions and the following disclaimer.
+    30                           ; 
+    31                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    32                           ;        of conditions and the following disclaimer in the documentation and/or other
+    33                           ;        materials provided with the distribution. Publication is not required when
+    34                           ;        this file is used in an embedded application.
+    35                           ; 
+    36                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    37                           ;        software without specific prior written permission.
+    38                           ; 
+    39                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    40                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    41                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    42                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    43                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    44                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    45                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    46                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    47                           ; 
+    48                           ; 
+    49                           ; Code-generator required, PIC12F675 Definitions
+    50                           ; 
+    51                           ; SFR Addresses
+    52     0004                     fsr             equ	4
+    53     0004                     fsr0            equ	4
+    54     0000                     indf            equ	0
+    55     0000                     indf0           equ	0
+    56     0002                     pc              equ	2
+    57     0002                     pcl             equ	2
+    58     000A                     pclath          equ	10
+    59     0003                     status          equ	3
+    60     0000                     INDF            equ	0	;# 
+    61     0001                     TMR0            equ	1	;# 
+    62     0002                     PCL             equ	2	;# 
+    63     0003                     STATUS          equ	3	;# 
+    64     0004                     FSR             equ	4	;# 
+    65     0005                     GPIO            equ	5	;# 
+    66     000A                     PCLATH          equ	10	;# 
+    67     000B                     INTCON          equ	11	;# 
+    68     000C                     PIR1            equ	12	;# 
+    69     000E                     TMR1            equ	14	;# 
+    70     000E                     TMR1L           equ	14	;# 
+    71     000F                     TMR1H           equ	15	;# 
+    72     0010                     T1CON           equ	16	;# 
+    73     0019                     CMCON           equ	25	;# 
+    74     001E                     ADRESH          equ	30	;# 
+    75     001F                     ADCON0          equ	31	;# 
+    76     0081                     OPTION_REG      equ	129	;# 
+    77     0085                     TRISIO          equ	133	;# 
+    78     008C                     PIE1            equ	140	;# 
+    79     008E                     PCON            equ	142	;# 
+    80     0090                     OSCCAL          equ	144	;# 
+    81     0095                     WPU             equ	149	;# 
+    82     0096                     IOC             equ	150	;# 
+    83     0096                     IOCB            equ	150	;# 
+    84     0099                     VRCON           equ	153	;# 
+    85     009A                     EEDATA          equ	154	;# 
+    86     009A                     EEDAT           equ	154	;# 
+    87     009B                     EEADR           equ	155	;# 
+    88     009C                     EECON1          equ	156	;# 
+    89     009D                     EECON2          equ	157	;# 
+    90     009E                     ADRESL          equ	158	;# 
+    91     009F                     ANSEL           equ	159	;# 
+    92     0000                     INDF            equ	0	;# 
+    93     0001                     TMR0            equ	1	;# 
+    94     0002                     PCL             equ	2	;# 
+    95     0003                     STATUS          equ	3	;# 
+    96     0004                     FSR             equ	4	;# 
+    97     0005                     GPIO            equ	5	;# 
+    98     000A                     PCLATH          equ	10	;# 
+    99     000B                     INTCON          equ	11	;# 
+   100     000C                     PIR1            equ	12	;# 
+   101     000E                     TMR1            equ	14	;# 
+   102     000E                     TMR1L           equ	14	;# 
+   103     000F                     TMR1H           equ	15	;# 
+   104     0010                     T1CON           equ	16	;# 
+   105     0019                     CMCON           equ	25	;# 
+   106     001E                     ADRESH          equ	30	;# 
+   107     001F                     ADCON0          equ	31	;# 
+   108     0081                     OPTION_REG      equ	129	;# 
+   109     0085                     TRISIO          equ	133	;# 
+   110     008C                     PIE1            equ	140	;# 
+   111     008E                     PCON            equ	142	;# 
+   112     0090                     OSCCAL          equ	144	;# 
+   113     0095                     WPU             equ	149	;# 
+   114     0096                     IOC             equ	150	;# 
+   115     0096                     IOCB            equ	150	;# 
+   116     0099                     VRCON           equ	153	;# 
+   117     009A                     EEDATA          equ	154	;# 
+   118     009A                     EEDAT           equ	154	;# 
+   119     009B                     EEADR           equ	155	;# 
+   120     009C                     EECON1          equ	156	;# 
+   121     009D                     EECON2          equ	157	;# 
+   122     009E                     ADRESL          equ	158	;# 
+   123     009F                     ANSEL           equ	159	;# 
+   124                           
+   125                           	psect	idataBANK0
+   126     0101                     __pidataBANK0:
+   127                           
+   128                           ;initializer for _RepeatCounter
+   129     0101  3401               	retlw	1
+   130     0005                     _GPIO           set	5
+   131     000B                     _INTCON         set	11
+   132     0096                     _IOC            set	150
+   133     0095                     _WPU            set	149
+   134     0085                     _TRISIO         set	133
+   135                           
+   136                           	psect	cinit
+   137     000C                     start_initialization:	
+   138                           ; #config settings
+   139                           
+   140     000C                     __initialization:
+   141                           
+   142                           ; Initialize objects allocated to BANK0
+   143     000C  2101               	fcall	__pidataBANK0	;fetch initializer
+   144     000D  00B4               	movwf	__pdataBANK0& (0+127)
+   145                           
+   146                           ; Clear objects allocated to BANK0
+   147     000E  01AF               	clrf	__pbssBANK0& (0+127)
+   148     000F  01B0               	clrf	(__pbssBANK0+1)& (0+127)
+   149     0010  01B1               	clrf	(__pbssBANK0+2)& (0+127)
+   150     0011  01B2               	clrf	(__pbssBANK0+3)& (0+127)
+   151     0012  01B3               	clrf	(__pbssBANK0+4)& (0+127)
+   152     0013                     end_of_initialization:	
+   153                           ;End of C runtime variable initialization code
+   154                           
+   155     0013                     __end_of__initialization:
+   156     0013  0183               	clrf	3
+   157     0014  2815               	ljmp	_main	;jump to C main() function
+   158                           
+   159                           	psect	bssBANK0
+   160     002F                     __pbssBANK0:
+   161     002F                     _flag:
+   162     002F                     	ds	1
+   163     0030                     _RepeatFlag:
+   164     0030                     	ds	1
+   165     0031                     _RepeatFlagEnable:
+   166     0031                     	ds	1
+   167     0032                     _DioState:
+   168     0032                     	ds	1
+   169     0033                     _DispenserOn:
+   170     0033                     	ds	1
+   171                           
+   172                           	psect	dataBANK0
+   173     0034                     __pdataBANK0:
+   174     0034                     _RepeatCounter:
+   175     0034                     	ds	1
+   176                           
+   177                           	psect	cstackCOMMON
+   178     0000                     __pcstackCOMMON:
+   179     0000                     ??_InitAll:
+   180                           
+   181                           	psect	cstackBANK0
+   182     0020                     __pcstackBANK0:	
+   183                           ; 1 bytes @ 0x0
+   184                           
+   185     0020                     ?_InitAll:
+   186     0020                     ?_main:	
+   187                           ; 1 bytes @ 0x0
+   188                           
+   189     0020                     ?_ISR:	
+   190                           ; 1 bytes @ 0x0
+   191                           
+   192     0020                     ??_ISR:	
+   193                           ; 1 bytes @ 0x0
+   194                           
+   195                           
+   196                           ; 1 bytes @ 0x0
+   197     0020                     	ds	3
+   198     0023                     ISR@DebounceCounter:
+   199                           
+   200                           ; 1 bytes @ 0x3
+   201     0023                     	ds	1
+   202     0024                     ?_DioPinWrite:
+   203     0024                     DioPinWrite@state:	
+   204                           ; 1 bytes @ 0x4
+   205                           
+   206                           
+   207                           ; 1 bytes @ 0x4
+   208     0024                     	ds	1
+   209     0025                     ??_DioPinWrite:
+   210                           
+   211                           ; 1 bytes @ 0x5
+   212     0025                     	ds	1
+   213     0026                     DioPinWrite@pinNumber:
+   214                           
+   215                           ; 1 bytes @ 0x6
+   216     0026                     	ds	1
+   217     0027                     ??_main:
+   218                           
+   219                           ; 1 bytes @ 0x7
+   220     0027                     	ds	4
+   221     002B                     main@counter:
+   222                           
+   223                           ; 4 bytes @ 0xB
+   224     002B                     	ds	4
+   225                           
+   226                           	psect	maintext
+   227     0015                     __pmaintext:	
+   228 ;;
+   229 ;;Main: autosize = 0, tempsize = 4, incstack = 0, save=0
+   230 ;;
+   231 ;; *************** function _main *****************
+   232 ;; Defined at:
+   233 ;;		line 54 in file "newmain.c"
+   234 ;; Parameters:    Size  Location     Type
+   235 ;;		None
+   236 ;; Auto vars:     Size  Location     Type
+   237 ;;  counter         4   11[BANK0 ] unsigned long 
+   238 ;; Return value:  Size  Location     Type
+   239 ;;                  1    wreg      void 
+   240 ;; Registers used:
+   241 ;;		wreg, status,2, status,0, pclath, cstack
+   242 ;; Tracked objects:
+   243 ;;		On entry : B00/0
+   244 ;;		On exit  : 0/0
+   245 ;;		Unchanged: 0/0
+   246 ;; Data sizes:     COMMON   BANK0
+   247 ;;      Params:         0       0
+   248 ;;      Locals:         0       4
+   249 ;;      Temps:          0       4
+   250 ;;      Totals:         0       8
+   251 ;;Total ram usage:        8 bytes
+   252 ;; Hardware stack levels required when called: 2
+   253 ;; This function calls:
+   254 ;;		_DioPinWrite
+   255 ;;		_InitAll
+   256 ;; This function is called by:
+   257 ;;		Startup code after reset
+   258 ;; This function uses a non-reentrant model
+   259 ;;
+   260                           
+   261     0015                     _main:	
+   262                           ;psect for function _main
+   263                           
+   264     0015                     l722:	
+   265                           ;incstack = 0
+   266                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   267                           
+   268                           
+   269                           ;newmain.c: 55:     InitAll();
+   270     0015  20F6               	fcall	_InitAll
+   271     0016                     l724:
+   272                           
+   273                           ;newmain.c: 56:     _delay((unsigned long)((10)*(4000000/4000.0)));
+   274     0016  300D               	movlw	13
+   275     0017  1283               	bcf	3,5	;RP0=0, select bank0
+   276     0018  00A8               	movwf	??_main+1
+   277     0019  30FB               	movlw	251
+   278     001A  00A7               	movwf	??_main
+   279     001B                     u317:
+   280     001B  0BA7               	decfsz	??_main,f
+   281     001C  281B               	goto	u317
+   282     001D  0BA8               	decfsz	??_main+1,f
+   283     001E  281B               	goto	u317
+   284     001F  2820               	nop2
+   285     0020                     l726:
+   286                           
+   287                           ;newmain.c: 57:     DispenserOn=0;
+   288     0020  1283               	bcf	3,5	;RP0=0, select bank0
+   289     0021  01B3               	clrf	_DispenserOn
+   290     0022  289F               	goto	l776
+   291     0023                     l728:
+   292                           
+   293                           ;newmain.c: 60:             uint32_t counter = 200*3;
+   294     0023  3000               	movlw	0
+   295     0024  00AE               	movwf	main@counter+3
+   296     0025  3000               	movlw	0
+   297     0026  00AD               	movwf	main@counter+2
+   298     0027  3002               	movlw	2
+   299     0028  00AC               	movwf	main@counter+1
+   300     0029  3058               	movlw	88
+   301     002A  00AB               	movwf	main@counter
+   302     002B                     l730:
+   303                           
+   304                           ;newmain.c: 61:             DioPinWrite(1, 1);
+   305     002B  01A4               	clrf	DioPinWrite@state
+   306     002C  0AA4               	incf	DioPinWrite@state,f
+   307     002D  3001               	movlw	1
+   308     002E  20D4               	fcall	_DioPinWrite
+   309     002F                     l736:
+   310                           
+   311                           ;newmain.c: 63:                 _delay((unsigned long)((5)*(4000000/4000.0)));
+   312     002F  3007               	movlw	7
+   313     0030  1283               	bcf	3,5	;RP0=0, select bank0
+   314     0031  00A8               	movwf	??_main+1
+   315     0032  307D               	movlw	125
+   316     0033  00A7               	movwf	??_main
+   317     0034                     u327:
+   318     0034  0BA7               	decfsz	??_main,f
+   319     0035  2834               	goto	u327
+   320     0036  0BA8               	decfsz	??_main+1,f
+   321     0037  2834               	goto	u327
+   322     0038                     l738:
+   323                           
+   324                           ;newmain.c: 64:                 if(counter == (150*3)){
+   325     0038  30C2               	movlw	194
+   326     0039  1283               	bcf	3,5	;RP0=0, select bank0
+   327     003A  062B               	xorwf	main@counter,w
+   328     003B  1D03               	skipz
+   329     003C  2843               	goto	u191
+   330     003D  032C               	decf	main@counter+1,w
+   331     003E  042D               	iorwf	main@counter+2,w
+   332     003F  042E               	iorwf	main@counter+3,w
+   333     0040  1D03               	btfss	3,2
+   334     0041  2843               	goto	u191
+   335     0042  2844               	goto	u190
+   336     0043                     u191:
+   337     0043  2847               	goto	l742
+   338     0044                     u190:
+   339     0044                     l740:
+   340                           
+   341                           ;newmain.c: 65:                 RepeatFlagEnable = 1;
+   342     0044  3001               	movlw	1
+   343     0045  1283               	bcf	3,5	;RP0=0, select bank0
+   344     0046  00B1               	movwf	_RepeatFlagEnable
+   345     0047                     l742:
+   346                           
+   347                           ;newmain.c: 67:                 if(RepeatFlag){
+   348     0047  1283               	bcf	3,5	;RP0=0, select bank0
+   349     0048  0830               	movf	_RepeatFlag,w
+   350     0049  1903               	btfsc	3,2
+   351     004A  284C               	goto	u201
+   352     004B  284D               	goto	u200
+   353     004C                     u201:
+   354     004C  2852               	goto	l746
+   355     004D                     u200:
+   356     004D                     l744:
+   357                           
+   358                           ;newmain.c: 68:                     DioPinWrite(4, 1);
+   359     004D  01A4               	clrf	DioPinWrite@state
+   360     004E  0AA4               	incf	DioPinWrite@state,f
+   361     004F  3004               	movlw	4
+   362     0050  20D4               	fcall	_DioPinWrite
+   363                           
+   364                           ;newmain.c: 69:                 }else{
+   365     0051  2855               	goto	l748
+   366     0052                     l746:
+   367                           
+   368                           ;newmain.c: 70:                     DioPinWrite(4, 0);
+   369     0052  01A4               	clrf	DioPinWrite@state
+   370     0053  3004               	movlw	4
+   371     0054  20D4               	fcall	_DioPinWrite
+   372     0055                     l748:
+   373                           
+   374                           ;newmain.c: 72:             }
+   375     0055  3001               	movlw	1
+   376     0056  1283               	bcf	3,5	;RP0=0, select bank0
+   377     0057  00A7               	movwf	??_main
+   378     0058  3000               	movlw	0
+   379     0059  00A8               	movwf	??_main+1
+   380     005A  3000               	movlw	0
+   381     005B  00A9               	movwf	??_main+2
+   382     005C  3000               	movlw	0
+   383     005D  00AA               	movwf	??_main+3
+   384     005E  0827               	movf	??_main,w
+   385     005F  02AB               	subwf	main@counter,f
+   386     0060  0828               	movf	??_main+1,w
+   387     0061  1C03               	skipc
+   388     0062  0F28               	incfsz	??_main+1,w
+   389     0063  2865               	goto	u215
+   390     0064  2866               	goto	u216
+   391     0065                     u215:
+   392     0065  02AC               	subwf	main@counter+1,f
+   393     0066                     u216:
+   394     0066  0829               	movf	??_main+2,w
+   395     0067  1C03               	skipc
+   396     0068  0F29               	incfsz	??_main+2,w
+   397     0069  286B               	goto	u217
+   398     006A  286C               	goto	u218
+   399     006B                     u217:
+   400     006B  02AD               	subwf	main@counter+2,f
+   401     006C                     u218:
+   402     006C  082A               	movf	??_main+3,w
+   403     006D  1C03               	skipc
+   404     006E  0F2A               	incfsz	??_main+3,w
+   405     006F  2871               	goto	u219
+   406     0070  2872               	goto	u210
+   407     0071                     u219:
+   408     0071  02AE               	subwf	main@counter+3,f
+   409     0072                     u210:
+   410     0072                     l750:
+   411     0072  082E               	movf	main@counter+3,w
+   412     0073  042D               	iorwf	main@counter+2,w
+   413     0074  042C               	iorwf	main@counter+1,w
+   414     0075  042B               	iorwf	main@counter,w
+   415     0076  1D03               	skipz
+   416     0077  2879               	goto	u221
+   417     0078  287A               	goto	u220
+   418     0079                     u221:
+   419     0079  282F               	goto	l736
+   420     007A                     u220:
+   421     007A                     l752:
+   422                           
+   423                           ;newmain.c: 73:             RepeatFlagEnable = 0;
+   424     007A  01B1               	clrf	_RepeatFlagEnable
+   425     007B                     l754:
+   426                           
+   427                           ;newmain.c: 74:             if(RepeatFlag == 0 || RepeatCounter > 5){
+   428     007B  0830               	movf	_RepeatFlag,w
+   429     007C  1903               	btfsc	3,2
+   430     007D  287F               	goto	u231
+   431     007E  2880               	goto	u230
+   432     007F                     u231:
+   433     007F  2886               	goto	l758
+   434     0080                     u230:
+   435     0080                     l756:
+   436     0080  3006               	movlw	6
+   437     0081  0234               	subwf	_RepeatCounter,w
+   438     0082  1C03               	skipc
+   439     0083  2885               	goto	u241
+   440     0084  2886               	goto	u240
+   441     0085                     u241:
+   442     0085  288F               	goto	l766
+   443     0086                     u240:
+   444     0086                     l758:
+   445                           
+   446                           ;newmain.c: 75:                 DispenserOn = 0;
+   447     0086  01B3               	clrf	_DispenserOn
+   448     0087                     l760:
+   449                           
+   450                           ;newmain.c: 76:                 DioPinWrite(1, 0);
+   451     0087  01A4               	clrf	DioPinWrite@state
+   452     0088  3001               	movlw	1
+   453     0089  20D4               	fcall	_DioPinWrite
+   454     008A                     l762:
+   455                           
+   456                           ;newmain.c: 77:                 RepeatCounter = 1;
+   457     008A  3001               	movlw	1
+   458     008B  1283               	bcf	3,5	;RP0=0, select bank0
+   459     008C  00B4               	movwf	_RepeatCounter
+   460     008D                     l764:
+   461                           
+   462                           ;newmain.c: 78:                 RepeatFlag = 0;
+   463     008D  01B0               	clrf	_RepeatFlag
+   464                           
+   465                           ;newmain.c: 79:             } else {
+   466     008E  2892               	goto	l770
+   467     008F                     l766:
+   468                           
+   469                           ;newmain.c: 80:                 RepeatFlag = 0;
+   470     008F  01B0               	clrf	_RepeatFlag
+   471     0090                     l768:
+   472                           
+   473                           ;newmain.c: 81:                 RepeatCounter++;
+   474     0090  3001               	movlw	1
+   475     0091  07B4               	addwf	_RepeatCounter,f
+   476     0092                     l770:
+   477                           
+   478                           ;newmain.c: 83:             if(RepeatFlag){
+   479     0092  0830               	movf	_RepeatFlag,w
+   480     0093  1903               	btfsc	3,2
+   481     0094  2896               	goto	u251
+   482     0095  2897               	goto	u250
+   483     0096                     u251:
+   484     0096  289C               	goto	l774
+   485     0097                     u250:
+   486     0097                     l772:
+   487                           
+   488                           ;newmain.c: 84:                 DioPinWrite(4, 1);
+   489     0097  01A4               	clrf	DioPinWrite@state
+   490     0098  0AA4               	incf	DioPinWrite@state,f
+   491     0099  3004               	movlw	4
+   492     009A  20D4               	fcall	_DioPinWrite
+   493                           
+   494                           ;newmain.c: 85:             }else{
+   495     009B  289F               	goto	l776
+   496     009C                     l774:
+   497                           
+   498                           ;newmain.c: 86:                 DioPinWrite(4, 0);
+   499     009C  01A4               	clrf	DioPinWrite@state
+   500     009D  3004               	movlw	4
+   501     009E  20D4               	fcall	_DioPinWrite
+   502     009F                     l776:
+   503                           
+   504                           ;newmain.c: 59:         while (DispenserOn) {
+   505     009F  1283               	bcf	3,5	;RP0=0, select bank0
+   506     00A0  0833               	movf	_DispenserOn,w
+   507     00A1  1D03               	btfss	3,2
+   508     00A2  28A4               	goto	u261
+   509     00A3  28A5               	goto	u260
+   510     00A4                     u261:
+   511     00A4  2823               	goto	l728
+   512     00A5                     u260:
+   513     00A5  289F               	goto	l776
+   514     00A6  280B               	ljmp	start
+   515     00A7                     __end_of_main:
+   516                           
+   517                           	psect	text1
+   518     00F6                     __ptext1:	
+   519 ;; *************** function _InitAll *****************
+   520 ;; Defined at:
+   521 ;;		line 94 in file "newmain.c"
+   522 ;; Parameters:    Size  Location     Type
+   523 ;;		None
+   524 ;; Auto vars:     Size  Location     Type
+   525 ;;		None
+   526 ;; Return value:  Size  Location     Type
+   527 ;;                  1    wreg      void 
+   528 ;; Registers used:
+   529 ;;		wreg, status,2, status,0
+   530 ;; Tracked objects:
+   531 ;;		On entry : 0/0
+   532 ;;		On exit  : 0/0
+   533 ;;		Unchanged: 0/0
+   534 ;; Data sizes:     COMMON   BANK0
+   535 ;;      Params:         0       0
+   536 ;;      Locals:         0       0
+   537 ;;      Temps:          0       0
+   538 ;;      Totals:         0       0
+   539 ;;Total ram usage:        0 bytes
+   540 ;; Hardware stack levels used: 1
+   541 ;; Hardware stack levels required when called: 1
+   542 ;; This function calls:
+   543 ;;		Nothing
+   544 ;; This function is called by:
+   545 ;;		_main
+   546 ;; This function uses a non-reentrant model
+   547 ;;
+   548                           
+   549     00F6                     _InitAll:	
+   550                           ;psect for function _InitAll
+   551                           
+   552     00F6                     l704:	
+   553                           ;incstack = 0
+   554                           ; Regs used in _InitAll: [wreg+status,2+status,0]
+   555                           
+   556                           
+   557                           ;newmain.c: 96:     TRISIO = 0b00000000;
+   558     00F6  1683               	bsf	3,5	;RP0=1, select bank1
+   559     00F7  0185               	clrf	5	;volatile
+   560     00F8                     l706:
+   561                           
+   562                           ;newmain.c: 97:     TRISIO |=(1<< 0 ) | (1<< 5 ) ;
+   563     00F8  3021               	movlw	33
+   564     00F9  0485               	iorwf	5,f	;volatile
+   565     00FA                     l708:
+   566                           
+   567                           ;newmain.c: 99:     WPU = 0b00100001;
+   568     00FA  3021               	movlw	33
+   569     00FB  0095               	movwf	21	;volatile
+   570     00FC                     l710:
+   571                           
+   572                           ;newmain.c: 101:     INTCON = 0b11001000;
+   573     00FC  30C8               	movlw	200
+   574     00FD  008B               	movwf	11	;volatile
+   575     00FE                     l712:
+   576                           
+   577                           ;newmain.c: 104:     IOC = 0b00100000;
+   578     00FE  3020               	movlw	32
+   579     00FF  0096               	movwf	22	;volatile
+   580     0100                     l53:
+   581     0100  0008               	return
+   582     0101                     __end_of_InitAll:
+   583                           
+   584                           	psect	text2
+   585     00D4                     __ptext2:	
+   586 ;; *************** function _DioPinWrite *****************
+   587 ;; Defined at:
+   588 ;;		line 110 in file "newmain.c"
+   589 ;; Parameters:    Size  Location     Type
+   590 ;;  pinNumber       1    wreg     unsigned char 
+   591 ;;  state           1    4[BANK0 ] unsigned char 
+   592 ;; Auto vars:     Size  Location     Type
+   593 ;;  pinNumber       1    6[BANK0 ] unsigned char 
+   594 ;; Return value:  Size  Location     Type
+   595 ;;                  1    wreg      void 
+   596 ;; Registers used:
+   597 ;;		wreg, status,2, status,0
+   598 ;; Tracked objects:
+   599 ;;		On entry : 0/0
+   600 ;;		On exit  : 0/0
+   601 ;;		Unchanged: 0/0
+   602 ;; Data sizes:     COMMON   BANK0
+   603 ;;      Params:         0       1
+   604 ;;      Locals:         0       1
+   605 ;;      Temps:          0       1
+   606 ;;      Totals:         0       3
+   607 ;;Total ram usage:        3 bytes
+   608 ;; Hardware stack levels used: 1
+   609 ;; Hardware stack levels required when called: 1
+   610 ;; This function calls:
+   611 ;;		Nothing
+   612 ;; This function is called by:
+   613 ;;		_main
+   614 ;; This function uses a non-reentrant model
+   615 ;;
+   616                           
+   617     00D4                     _DioPinWrite:	
+   618                           ;psect for function _DioPinWrite
+   619                           
+   620                           
+   621                           ;incstack = 0
+   622                           ; Regs used in _DioPinWrite: [wreg+status,2+status,0]
+   623                           ;DioPinWrite@pinNumber stored from wreg
+   624     00D4  1283               	bcf	3,5	;RP0=0, select bank0
+   625     00D5  00A6               	movwf	DioPinWrite@pinNumber
+   626     00D6                     l714:
+   627                           
+   628                           ;newmain.c: 111:     if (state == 1) {
+   629     00D6  0324               	decf	DioPinWrite@state,w
+   630     00D7  1D03               	btfss	3,2
+   631     00D8  28DA               	goto	u161
+   632     00D9  28DB               	goto	u160
+   633     00DA                     u161:
+   634     00DA  28E7               	goto	l718
+   635     00DB                     u160:
+   636     00DB                     l716:
+   637                           
+   638                           ;newmain.c: 112:         DioState |= (1 << pinNumber);
+   639     00DB  3001               	movlw	1
+   640     00DC  00A5               	movwf	??_DioPinWrite
+   641     00DD  0A26               	incf	DioPinWrite@pinNumber,w
+   642     00DE  28E1               	goto	u174
+   643     00DF                     u175:
+   644     00DF  1003               	clrc
+   645     00E0  0DA5               	rlf	??_DioPinWrite,f
+   646     00E1                     u174:
+   647     00E1  3EFF               	addlw	-1
+   648     00E2  1D03               	skipz
+   649     00E3  28DF               	goto	u175
+   650     00E4  0825               	movf	??_DioPinWrite,w
+   651     00E5  04B2               	iorwf	_DioState,f
+   652                           
+   653                           ;newmain.c: 113:     } else {
+   654     00E6  28F3               	goto	l720
+   655     00E7                     l718:
+   656                           
+   657                           ;newmain.c: 114:         DioState &= ~(1 << pinNumber);
+   658     00E7  3001               	movlw	1
+   659     00E8  00A5               	movwf	??_DioPinWrite
+   660     00E9  0A26               	incf	DioPinWrite@pinNumber,w
+   661     00EA  28ED               	goto	u184
+   662     00EB                     u185:
+   663     00EB  1003               	clrc
+   664     00EC  0DA5               	rlf	??_DioPinWrite,f
+   665     00ED                     u184:
+   666     00ED  3EFF               	addlw	-1
+   667     00EE  1D03               	skipz
+   668     00EF  28EB               	goto	u185
+   669     00F0  0825               	movf	??_DioPinWrite,w
+   670     00F1  3AFF               	xorlw	255
+   671     00F2  05B2               	andwf	_DioState,f
+   672     00F3                     l720:
+   673                           
+   674                           ;newmain.c: 116:     GPIO = DioState;
+   675     00F3  0832               	movf	_DioState,w
+   676     00F4  0085               	movwf	5	;volatile
+   677     00F5                     l58:
+   678     00F5  0008               	return
+   679     00F6                     __end_of_DioPinWrite:
+   680                           
+   681                           	psect	text3
+   682     00A7                     __ptext3:	
+   683 ;; *************** function _ISR *****************
+   684 ;; Defined at:
+   685 ;;		line 119 in file "newmain.c"
+   686 ;; Parameters:    Size  Location     Type
+   687 ;;		None
+   688 ;; Auto vars:     Size  Location     Type
+   689 ;;  DebounceCoun    1    3[BANK0 ] unsigned char 
+   690 ;; Return value:  Size  Location     Type
+   691 ;;                  1    wreg      void 
+   692 ;; Registers used:
+   693 ;;		wreg, status,2, status,0
+   694 ;; Tracked objects:
+   695 ;;		On entry : 0/0
+   696 ;;		On exit  : 0/0
+   697 ;;		Unchanged: 0/0
+   698 ;; Data sizes:     COMMON   BANK0
+   699 ;;      Params:         0       0
+   700 ;;      Locals:         0       1
+   701 ;;      Temps:          0       3
+   702 ;;      Totals:         0       4
+   703 ;;Total ram usage:        4 bytes
+   704 ;; Hardware stack levels used: 1
+   705 ;; This function calls:
+   706 ;;		Nothing
+   707 ;; This function is called by:
+   708 ;;		Interrupt level 1
+   709 ;; This function uses a non-reentrant model
+   710 ;;
+   711                           
+   712     00A7                     _ISR:	
+   713                           ;psect for function _ISR
+   714                           
+   715     00A7                     i1l778:
+   716                           
+   717                           ;newmain.c: 122:     for(uint8_t DebounceCounter = 0; (!(GPIO & (1 << 5))); DebounceCoun
+      +                          ter++) {
+   718     00A7  01A3               	clrf	ISR@DebounceCounter
+   719     00A8  28BC               	goto	i1l786
+   720     00A9                     i1l780:
+   721                           
+   722                           ;newmain.c: 123:         _delay((unsigned long)((1)*(4000000/4000.0)));
+   723     00A9  30C7               	movlw	199
+   724     00AA  00A0               	movwf	??_ISR
+   725     00AB                     u33_27:
+   726     00AB  28AC               	nop2
+   727     00AC  0BA0               	decfsz	??_ISR,f
+   728     00AD  28AB               	goto	u33_27
+   729     00AE  28AF               	nop2
+   730     00AF  28B0               	nop2
+   731                           
+   732                           ;newmain.c: 124:         if (DebounceCounter >= 95) {
+   733     00B0  305F               	movlw	95
+   734     00B1  1283               	bcf	3,5	;RP0=0, select bank0
+   735     00B2  0223               	subwf	ISR@DebounceCounter,w
+   736     00B3  1C03               	skipc
+   737     00B4  28B6               	goto	u27_21
+   738     00B5  28B7               	goto	u27_20
+   739     00B6                     u27_21:
+   740     00B6  28BA               	goto	i1l784
+   741     00B7                     u27_20:
+   742     00B7                     i1l782:
+   743                           
+   744                           ;newmain.c: 125:             DispenserOn = 1;
+   745     00B7  3001               	movlw	1
+   746     00B8  00B3               	movwf	_DispenserOn
+   747                           
+   748                           ;newmain.c: 126:             break;
+   749     00B9  28C0               	goto	i1l788
+   750     00BA                     i1l784:
+   751                           
+   752                           ;newmain.c: 128:     }
+   753     00BA  3001               	movlw	1
+   754     00BB  07A3               	addwf	ISR@DebounceCounter,f
+   755     00BC                     i1l786:
+   756     00BC  1E85               	btfss	5,5	;volatile
+   757     00BD  28BF               	goto	u28_21
+   758     00BE  28C0               	goto	u28_20
+   759     00BF                     u28_21:
+   760     00BF  28A9               	goto	i1l780
+   761     00C0                     u28_20:
+   762     00C0                     i1l788:
+   763                           
+   764                           ;newmain.c: 129:         if(RepeatFlagEnable && (!(GPIO & (1 << 5))) ){
+   765     00C0  0831               	movf	_RepeatFlagEnable,w
+   766     00C1  1903               	btfsc	3,2
+   767     00C2  28C4               	goto	u29_21
+   768     00C3  28C5               	goto	u29_20
+   769     00C4                     u29_21:
+   770     00C4  28CB               	goto	i1l794
+   771     00C5                     u29_20:
+   772     00C5                     i1l790:
+   773     00C5  1A85               	btfsc	5,5	;volatile
+   774     00C6  28C8               	goto	u30_21
+   775     00C7  28C9               	goto	u30_20
+   776     00C8                     u30_21:
+   777     00C8  28CB               	goto	i1l794
+   778     00C9                     u30_20:
+   779     00C9                     i1l792:
+   780                           
+   781                           ;newmain.c: 130:             RepeatFlag = 1;
+   782     00C9  3001               	movlw	1
+   783     00CA  00B0               	movwf	_RepeatFlag
+   784     00CB                     i1l794:
+   785                           
+   786                           ;newmain.c: 134:         INTCON &= ~(1 << 0);
+   787     00CB  30FE               	movlw	254
+   788     00CC  058B               	andwf	11,f	;volatile
+   789     00CD                     i1l68:
+   790     00CD  0822               	movf	??_ISR+2,w
+   791     00CE  008A               	movwf	10
+   792     00CF  0E21               	swapf	??_ISR+1,w
+   793     00D0  0083               	movwf	3
+   794     00D1  0EDE               	swapf	btemp,f
+   795     00D2  0E5E               	swapf	btemp,w
+   796     00D3  0009               	retfie
+   797     00D4                     __end_of_ISR:
+   798     0000                     ___latbits      equ	0
+   799     005E                     btemp           set	94	;btemp
+   800     005E                     wtemp0          set	94
+   801                           
+   802                           	psect	intentry
+   803     0004                     __pintentry:	
+   804                           ;incstack = 0
+   805                           ; Regs used in _ISR: [wreg+status,2+status,0]
+   806                           
+   807     0004                     interrupt_function:
+   808     005E                     saved_w         set	btemp
+   809     0004  00DE               	movwf	btemp
+   810     0005  0E03               	swapf	3,w
+   811     0006  1283               	bcf	3,5	;RP0=0, select bank0
+   812     0007  00A1               	movwf	??_ISR+1
+   813     0008  080A               	movf	10,w
+   814     0009  00A2               	movwf	??_ISR+2
+   815     000A  28A7               	ljmp	_ISR
+   816                           
+   817                           	psect	config
+   818                           
+   819                           ;Config register CONFIG @ 0x2007
+   820                           ;	Oscillator Selection bits
+   821                           ;	FOSC = INTRCIO, INTOSC oscillator: I/O function on GP4/OSC2/CLKOUT pin, I/O function o
+      +                          n GP5/OSC1/CLKIN
+   822                           ;	Watchdog Timer Enable bit
+   823                           ;	WDTE = OFF, WDT disabled
+   824                           ;	Power-Up Timer Enable bit
+   825                           ;	PWRTE = OFF, PWRT disabled
+   826                           ;	GP3/MCLR pin function select
+   827                           ;	MCLRE = OFF, GP3/MCLR pin function is digital I/O, MCLR internally tied to VDD
+   828                           ;	Brown-out Detect Enable bit
+   829                           ;	BOREN = OFF, BOD disabled
+   830                           ;	Code Protection bit
+   831                           ;	CP = OFF, Program Memory code protection is disabled
+   832                           ;	Data Code Protection bit
+   833                           ;	CPD = OFF, Data memory code protection is disabled
+   834     2007                     	org	8199
+   835     2007  3194               	dw	12692
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        1
+    BSS         5
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON            0      0       0
+    BANK0            62     15      21
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _ISR in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    _main->_DioPinWrite
+
+Critical Paths under _ISR in BANK0
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 8     8      0     154
+                                              7 BANK0      8     8      0
+                        _DioPinWrite
+                            _InitAll
+ ---------------------------------------------------------------------------------
+ (1) _InitAll                                              0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _DioPinWrite                                          3     2      1      86
+                                              4 BANK0      3     2      1
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (2) _ISR                                                  4     4      0      24
+                                              0 BANK0      4     4      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _DioPinWrite
+   _InitAll
+
+ _ISR (ROOT)
+
+Address spaces:
+Name               Size   Autos  Total    Usage
+BANK0               62     15      21     33.9%
+BITBANK0            62      0       0      0.0%
+COMMON               0      0       0      0.0%
+BITCOMMON            0      0       0      0.0%
+DATA                 0      0      21      0.0%
+STACK                0      0       0      0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.50 build 20240725155939 
+Symbol Table                                                                                   Tue Oct 22 03:49:38 2024
+
+                     l53 0100                       l58 00F5                      l710 00FC  
+                    l720 00F3                      l712 00FE                      l704 00F6  
+                    l714 00D6                      l706 00F8                      l730 002B  
+                    l722 0015                      l716 00DB                      l708 00FA  
+                    l740 0044                      l724 0016                      l718 00E7  
+                    l750 0072                      l742 0047                      l726 0020  
+                    l760 0087                      l752 007A                      l744 004D  
+                    l736 002F                      l728 0023                      l770 0092  
+                    l762 008A                      l754 007B                      l746 0052  
+                    l738 0038                      l772 0097                      l764 008D  
+                    l756 0080                      l748 0055                      l774 009C  
+                    l766 008F                      l758 0086                      l768 0090  
+                    l776 009F                      _IOC 0096                      u200 004D  
+                    u201 004C                      u210 0072                      u220 007A  
+                    u221 0079                      u230 0080                      u231 007F  
+                    u215 0065                      u160 00DB                      u240 0086  
+                    u216 0066                      u161 00DA                      u241 0085  
+                    u217 006B                      u250 0097                      u218 006C  
+                    u251 0096                      u219 0071                      u260 00A5  
+                    u261 00A4                      u317 001B                      u174 00E1  
+                    u190 0044                      u175 00DF                      u191 0043  
+                    u327 0034                      u184 00ED                      u185 00EB  
+                    _ISR 00A7                      _WPU 0095                     ?_ISR 0020  
+                   _GPIO 0005              main@counter 002B                     i1l68 00CD  
+                   _flag 002F                     _main 0015                     btemp 005E  
+                   start 000B          __end_of_InitAll 0101                    ??_ISR 0020  
+                  ?_main 0020                    i1l780 00A9                    i1l790 00C5  
+                  i1l782 00B7                    i1l792 00C9                    i1l784 00BA  
+                  i1l794 00CB                    i1l786 00BC                    i1l778 00A7  
+                  i1l788 00C0                    u30_20 00C9                    u30_21 00C8  
+                  u33_27 00AB                    u27_20 00B7                    u27_21 00B6  
+                  u28_20 00C0                    u28_21 00BF                    u29_20 00C5  
+                  u29_21 00C4                    pclath 000A              _DioPinWrite 00D4  
+                  status 0003                    wtemp0 005E          __initialization 000C  
+           __end_of_main 00A7                   ??_main 0027               _RepeatFlag 0030  
+                 _INTCON 000B                   _TRISIO 0085                ??_InitAll 0000  
+            _DispenserOn 0033                   saved_w 005E  __end_of__initialization 0013  
+         __pcstackCOMMON 0000             __pidataBANK0 0101               __pbssBANK0 002F  
+             __pmaintext 0015               __pintentry 0004             ?_DioPinWrite 0024  
+                _InitAll 00F6         _RepeatFlagEnable 0031                  __ptext1 00F6  
+                __ptext2 00D4                  __ptext3 00A7            _RepeatCounter 0034  
+   end_of_initialization 0013      start_initialization 000C              __end_of_ISR 00D4  
+       DioPinWrite@state 0024              __pdataBANK0 0034     DioPinWrite@pinNumber 0026  
+              ___latbits 0000            __pcstackBANK0 0020                 ?_InitAll 0020  
+      interrupt_function 0004                 _DioState 0032       ISR@DebounceCounter 0023  
+               intlevel1 0000            ??_DioPinWrite 0025      __end_of_DioPinWrite 00F6  

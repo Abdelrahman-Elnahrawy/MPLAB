@@ -1,0 +1,61 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12F675 ]
+[d frameptr 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"54 C:\Users\Family\MPLABXProjects\Dispenser_301_PulseOnPulseOn.X\newmain.c
+[v _main main `(v  1 e 1 0 ]
+"84
+[v _InitAll InitAll `(v  1 e 1 0 ]
+"99
+[v _DioPinWrite DioPinWrite `(v  1 e 1 0 ]
+"151
+[v _ISR ISR `II(v  1 e 1 0 ]
+"218 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h
+[v _GPIO GPIO `VEuc  1 e 1 @5 ]
+"326
+[v _INTCON INTCON `VEuc  1 e 1 @11 ]
+"797
+[v _TRISIO TRISIO `VEuc  1 e 1 @133 ]
+"989
+[v _WPU WPU `VEuc  1 e 1 @149 ]
+"1034
+[v _IOC IOC `VEuc  1 e 1 @150 ]
+"16 C:\Users\Family\MPLABXProjects\Dispenser_301_PulseOnPulseOn.X\newmain.c
+[v _DispenserOn DispenserOn `uc  1 e 1 0 ]
+"17
+[v _DioState DioState `uc  1 s 1 DioState ]
+"21
+[v _Flag Flag `uc  1 e 1 0 ]
+"54
+[v _main main `(v  1 e 1 0 ]
+{
+"82
+} 0
+"84
+[v _InitAll InitAll `(v  1 e 1 0 ]
+{
+"96
+} 0
+"151
+[v _ISR ISR `II(v  1 e 1 0 ]
+{
+"167
+} 0
+"99
+[v _DioPinWrite DioPinWrite `(v  1 e 1 0 ]
+{
+[v DioPinWrite@pinNumber pinNumber `uc  1 p 1 wreg ]
+[v DioPinWrite@pinNumber pinNumber `uc  1 p 1 wreg ]
+[v DioPinWrite@state state `uc  1 p 1 0 ]
+[v DioPinWrite@pinNumber pinNumber `uc  1 p 1 2 ]
+"106
+} 0
