@@ -1,0 +1,1169 @@
+
+
+Microchip MPLAB XC8 Assembler V2.50 build 20240725155939 
+                                                                                               Sun Oct 20 06:35:52 2024
+
+Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1 
+     1                           	processor	12F675
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	cinit,global,class=CODE,space=0,merge=1,delta=2
+     5                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1,noexec
+     6                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     7                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+     8                           	psect	maintext,global,class=CODE,space=0,split=1,delta=2
+     9                           	psect	text1,local,class=CODE,space=0,merge=1,delta=2
+    10                           	psect	text2,local,class=CODE,space=0,merge=1,delta=2
+    11                           	psect	text3,local,class=CODE,space=0,merge=1,delta=2
+    12                           	psect	text4,local,class=CODE,space=0,merge=1,delta=2
+    13                           	psect	intentry,global,class=CODE,space=0,delta=2
+    14                           	psect	text5,local,class=CODE,space=0,merge=1,delta=2
+    15                           	psect	text6,local,class=CODE,space=0,merge=1,delta=2
+    16                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    17                           	dabs	1,0x5E,2
+    18     0000                     
+    19                           ; Generated 17/08/2023 GMT
+    20                           ; 
+    21                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    22                           ; All rights reserved.
+    23                           ; 
+    24                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    25                           ; 
+    26                           ; Redistribution and use in source and binary forms, with or without modification, are
+    27                           ; permitted provided that the following conditions are met:
+    28                           ; 
+    29                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    30                           ;        conditions and the following disclaimer.
+    31                           ; 
+    32                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    33                           ;        of conditions and the following disclaimer in the documentation and/or other
+    34                           ;        materials provided with the distribution. Publication is not required when
+    35                           ;        this file is used in an embedded application.
+    36                           ; 
+    37                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    38                           ;        software without specific prior written permission.
+    39                           ; 
+    40                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    41                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    42                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    43                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    44                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    45                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    46                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    47                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    48                           ; 
+    49                           ; 
+    50                           ; Code-generator required, PIC12F675 Definitions
+    51                           ; 
+    52                           ; SFR Addresses
+    53     0004                     fsr             equ	4
+    54     0004                     fsr0            equ	4
+    55     0000                     indf            equ	0
+    56     0000                     indf0           equ	0
+    57     0002                     pc              equ	2
+    58     0002                     pcl             equ	2
+    59     000A                     pclath          equ	10
+    60     0003                     status          equ	3
+    61     0000                     INDF            equ	0	;# 
+    62     0001                     TMR0            equ	1	;# 
+    63     0002                     PCL             equ	2	;# 
+    64     0003                     STATUS          equ	3	;# 
+    65     0004                     FSR             equ	4	;# 
+    66     0005                     GPIO            equ	5	;# 
+    67     000A                     PCLATH          equ	10	;# 
+    68     000B                     INTCON          equ	11	;# 
+    69     000C                     PIR1            equ	12	;# 
+    70     000E                     TMR1            equ	14	;# 
+    71     000E                     TMR1L           equ	14	;# 
+    72     000F                     TMR1H           equ	15	;# 
+    73     0010                     T1CON           equ	16	;# 
+    74     0019                     CMCON           equ	25	;# 
+    75     001E                     ADRESH          equ	30	;# 
+    76     001F                     ADCON0          equ	31	;# 
+    77     0081                     OPTION_REG      equ	129	;# 
+    78     0085                     TRISIO          equ	133	;# 
+    79     008C                     PIE1            equ	140	;# 
+    80     008E                     PCON            equ	142	;# 
+    81     0090                     OSCCAL          equ	144	;# 
+    82     0095                     WPU             equ	149	;# 
+    83     0096                     IOC             equ	150	;# 
+    84     0096                     IOCB            equ	150	;# 
+    85     0099                     VRCON           equ	153	;# 
+    86     009A                     EEDATA          equ	154	;# 
+    87     009A                     EEDAT           equ	154	;# 
+    88     009B                     EEADR           equ	155	;# 
+    89     009C                     EECON1          equ	156	;# 
+    90     009D                     EECON2          equ	157	;# 
+    91     009E                     ADRESL          equ	158	;# 
+    92     009F                     ANSEL           equ	159	;# 
+    93     0000                     INDF            equ	0	;# 
+    94     0001                     TMR0            equ	1	;# 
+    95     0002                     PCL             equ	2	;# 
+    96     0003                     STATUS          equ	3	;# 
+    97     0004                     FSR             equ	4	;# 
+    98     0005                     GPIO            equ	5	;# 
+    99     000A                     PCLATH          equ	10	;# 
+   100     000B                     INTCON          equ	11	;# 
+   101     000C                     PIR1            equ	12	;# 
+   102     000E                     TMR1            equ	14	;# 
+   103     000E                     TMR1L           equ	14	;# 
+   104     000F                     TMR1H           equ	15	;# 
+   105     0010                     T1CON           equ	16	;# 
+   106     0019                     CMCON           equ	25	;# 
+   107     001E                     ADRESH          equ	30	;# 
+   108     001F                     ADCON0          equ	31	;# 
+   109     0081                     OPTION_REG      equ	129	;# 
+   110     0085                     TRISIO          equ	133	;# 
+   111     008C                     PIE1            equ	140	;# 
+   112     008E                     PCON            equ	142	;# 
+   113     0090                     OSCCAL          equ	144	;# 
+   114     0095                     WPU             equ	149	;# 
+   115     0096                     IOC             equ	150	;# 
+   116     0096                     IOCB            equ	150	;# 
+   117     0099                     VRCON           equ	153	;# 
+   118     009A                     EEDATA          equ	154	;# 
+   119     009A                     EEDAT           equ	154	;# 
+   120     009B                     EEADR           equ	155	;# 
+   121     009C                     EECON1          equ	156	;# 
+   122     009D                     EECON2          equ	157	;# 
+   123     009E                     ADRESL          equ	158	;# 
+   124     009F                     ANSEL           equ	159	;# 
+   125     000E                     _TMR1           set	14
+   126     000C                     _PIR1           set	12
+   127     001E                     _ADRESH         set	30
+   128     0005                     _GPIO           set	5
+   129     0010                     _T1CON          set	16
+   130     001F                     _ADCON0         set	31
+   131     000B                     _INTCON         set	11
+   132     0066                     _ADIF           set	102
+   133     0060                     _TMR1IF         set	96
+   134     009E                     _ADRESL         set	158
+   135     008C                     _PIE1           set	140
+   136     0081                     _OPTION_REG     set	129
+   137     009F                     _ANSEL          set	159
+   138     0095                     _WPU            set	149
+   139     0085                     _TRISIO         set	133
+   140                           
+   141                           	psect	cinit
+   142     000C                     start_initialization:	
+   143                           ; #config settings
+   144                           
+   145     000C                     __initialization:
+   146                           
+   147                           ; Clear objects allocated to BANK0
+   148     000C  1283               	bcf	3,5	;RP0=0, select bank0
+   149     000D  01B1               	clrf	__pbssBANK0& (0+127)
+   150     000E  01B2               	clrf	(__pbssBANK0+1)& (0+127)
+   151     000F  01B3               	clrf	(__pbssBANK0+2)& (0+127)
+   152     0010  01B4               	clrf	(__pbssBANK0+3)& (0+127)
+   153     0011  01B5               	clrf	(__pbssBANK0+4)& (0+127)
+   154     0012  01B6               	clrf	(__pbssBANK0+5)& (0+127)
+   155     0013  01B7               	clrf	(__pbssBANK0+6)& (0+127)
+   156     0014                     end_of_initialization:	
+   157                           ;End of C runtime variable initialization code
+   158                           
+   159     0014                     __end_of__initialization:
+   160     0014  0183               	clrf	3
+   161     0015  286F               	ljmp	_main	;jump to C main() function
+   162                           
+   163                           	psect	bssBANK0
+   164     0031                     __pbssBANK0:
+   165     0031                     _PotInValue:
+   166     0031                     	ds	2
+   167     0033                     _SensorInValue:
+   168     0033                     	ds	2
+   169     0035                     _flag:
+   170     0035                     	ds	1
+   171     0036                     _ADCStatus:
+   172     0036                     	ds	1
+   173     0037                     _DioState:
+   174     0037                     	ds	1
+   175                           
+   176                           	psect	cstackCOMMON
+   177     0000                     __pcstackCOMMON:
+   178     0000                     ??_InitAll:
+   179                           
+   180                           	psect	cstackBANK0
+   181     0020                     __pcstackBANK0:	
+   182                           ; 1 bytes @ 0x0
+   183                           
+   184     0020                     ?_InitAll:
+   185     0020                     ?_ADC_StartConversion:	
+   186                           ; 1 bytes @ 0x0
+   187                           
+   188     0020                     ?_main:	
+   189                           ; 1 bytes @ 0x0
+   190                           
+   191     0020                     ?_ISR:	
+   192                           ; 1 bytes @ 0x0
+   193                           
+   194     0020                     ?i1_ADC_StartConversion:	
+   195                           ; 1 bytes @ 0x0
+   196                           
+   197     0020                     ?_AdcReadResult:	
+   198                           ; 1 bytes @ 0x0
+   199                           
+   200     0020                     ??i1_ADC_StartConversion:	
+   201                           ; 2 bytes @ 0x0
+   202                           
+   203                           
+   204                           ; 1 bytes @ 0x0
+   205     0020                     	ds	1
+   206     0021                     i1ADC_StartConversion@channel:
+   207                           
+   208                           ; 1 bytes @ 0x1
+   209     0021                     	ds	1
+   210     0022                     ??_AdcReadResult:
+   211                           
+   212                           ; 1 bytes @ 0x2
+   213     0022                     	ds	7
+   214     0029                     ??_ISR:
+   215                           
+   216                           ; 1 bytes @ 0x9
+   217     0029                     	ds	3
+   218     002C                     ?_DioPinWrite:
+   219     002C                     DioPinWrite@state:	
+   220                           ; 1 bytes @ 0xC
+   221                           
+   222     002C                     ??_ADC_StartConversion:	
+   223                           ; 1 bytes @ 0xC
+   224                           
+   225                           
+   226                           ; 1 bytes @ 0xC
+   227     002C                     	ds	1
+   228     002D                     ADC_StartConversion@channel:
+   229     002D                     ??_DioPinWrite:	
+   230                           ; 1 bytes @ 0xD
+   231                           
+   232                           
+   233                           ; 1 bytes @ 0xD
+   234     002D                     	ds	1
+   235     002E                     DioPinWrite@pinNumber:
+   236                           
+   237                           ; 1 bytes @ 0xE
+   238     002E                     	ds	1
+   239     002F                     ??_main:
+   240                           
+   241                           ; 1 bytes @ 0xF
+   242     002F                     	ds	2
+   243                           
+   244                           	psect	maintext
+   245     006F                     __pmaintext:	
+   246 ;;
+   247 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
+   248 ;;
+   249 ;; *************** function _main *****************
+   250 ;; Defined at:
+   251 ;;		line 101 in file "main.c"
+   252 ;; Parameters:    Size  Location     Type
+   253 ;;		None
+   254 ;; Auto vars:     Size  Location     Type
+   255 ;;		None
+   256 ;; Return value:  Size  Location     Type
+   257 ;;                  1    wreg      void 
+   258 ;; Registers used:
+   259 ;;		wreg, status,2, status,0, pclath, cstack
+   260 ;; Tracked objects:
+   261 ;;		On entry : B00/0
+   262 ;;		On exit  : 0/0
+   263 ;;		Unchanged: 0/0
+   264 ;; Data sizes:     COMMON   BANK0
+   265 ;;      Params:         0       0
+   266 ;;      Locals:         0       0
+   267 ;;      Temps:          0       2
+   268 ;;      Totals:         0       2
+   269 ;;Total ram usage:        2 bytes
+   270 ;; Hardware stack levels required when called: 3
+   271 ;; This function calls:
+   272 ;;		_ADC_StartConversion
+   273 ;;		_DioPinWrite
+   274 ;;		_InitAll
+   275 ;; This function is called by:
+   276 ;;		Startup code after reset
+   277 ;; This function uses a non-reentrant model
+   278 ;;
+   279                           
+   280     006F                     _main:	
+   281                           ;psect for function _main
+   282                           
+   283     006F                     l762:	
+   284                           ;incstack = 0
+   285                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   286                           
+   287                           
+   288                           ;main.c: 102:     InitAll();
+   289     006F  20E1               	fcall	_InitAll
+   290     0070                     l764:
+   291                           
+   292                           ;main.c: 105:             _delay((unsigned long)((100)*(4000000/4000.0)));
+   293     0070  3082               	movlw	130
+   294     0071  1283               	bcf	3,5	;RP0=0, select bank0
+   295     0072  00B0               	movwf	??_main+1
+   296     0073  30DD               	movlw	221
+   297     0074  00AF               	movwf	??_main
+   298     0075                     u337:
+   299     0075  0BAF               	decfsz	??_main,f
+   300     0076  2875               	goto	u337
+   301     0077  0BB0               	decfsz	??_main+1,f
+   302     0078  2875               	goto	u337
+   303     0079  287A               	nop2
+   304     007A                     l766:
+   305                           
+   306                           ;main.c: 106:             if(ADCStatus == 0x00){
+   307     007A  1283               	bcf	3,5	;RP0=0, select bank0
+   308     007B  0836               	movf	_ADCStatus,w
+   309     007C  1D03               	btfss	3,2
+   310     007D  287F               	goto	u241
+   311     007E  2880               	goto	u240
+   312     007F                     u241:
+   313     007F  2884               	goto	l772
+   314     0080                     u240:
+   315     0080                     l768:
+   316                           
+   317                           ;main.c: 107:                 ADCStatus = 0x01;
+   318     0080  3001               	movlw	1
+   319     0081  00B6               	movwf	_ADCStatus
+   320     0082                     l770:
+   321                           
+   322                           ;main.c: 108:                 ADC_StartConversion(0);
+   323     0082  3000               	movlw	0
+   324     0083  20FC               	fcall	_ADC_StartConversion
+   325     0084                     l772:
+   326                           
+   327                           ;main.c: 110:             if(SensorInValue > PotInValue ){
+   328     0084  1283               	bcf	3,5	;RP0=0, select bank0
+   329     0085  0834               	movf	_SensorInValue+1,w
+   330     0086  0232               	subwf	_PotInValue+1,w
+   331     0087  1D03               	skipz
+   332     0088  288B               	goto	u255
+   333     0089  0833               	movf	_SensorInValue,w
+   334     008A  0231               	subwf	_PotInValue,w
+   335     008B                     u255:
+   336     008B  1803               	skipnc
+   337     008C  288E               	goto	u251
+   338     008D  288F               	goto	u250
+   339     008E                     u251:
+   340     008E  2894               	goto	l776
+   341     008F                     u250:
+   342     008F                     l774:
+   343                           
+   344                           ;main.c: 111:                 DioPinWrite(1, 1);
+   345     008F  01AC               	clrf	DioPinWrite@state
+   346     0090  0AAC               	incf	DioPinWrite@state,f
+   347     0091  3001               	movlw	1
+   348     0092  20BF               	fcall	_DioPinWrite
+   349                           
+   350                           ;main.c: 112:             }
+   351     0093  2870               	goto	l764
+   352     0094                     l776:
+   353                           
+   354                           ;main.c: 114:                 DioPinWrite(1, 0);
+   355     0094  01AC               	clrf	DioPinWrite@state
+   356     0095  3001               	movlw	1
+   357     0096  20BF               	fcall	_DioPinWrite
+   358     0097  2870               	goto	l764
+   359     0098  280B               	ljmp	start
+   360     0099                     __end_of_main:
+   361                           
+   362                           	psect	text1
+   363     00E1                     __ptext1:	
+   364 ;; *************** function _InitAll *****************
+   365 ;; Defined at:
+   366 ;;		line 144 in file "main.c"
+   367 ;; Parameters:    Size  Location     Type
+   368 ;;		None
+   369 ;; Auto vars:     Size  Location     Type
+   370 ;;		None
+   371 ;; Return value:  Size  Location     Type
+   372 ;;                  1    wreg      void 
+   373 ;; Registers used:
+   374 ;;		wreg, status,2, status,0
+   375 ;; Tracked objects:
+   376 ;;		On entry : 0/0
+   377 ;;		On exit  : 0/0
+   378 ;;		Unchanged: 0/0
+   379 ;; Data sizes:     COMMON   BANK0
+   380 ;;      Params:         0       0
+   381 ;;      Locals:         0       0
+   382 ;;      Temps:          0       0
+   383 ;;      Totals:         0       0
+   384 ;;Total ram usage:        0 bytes
+   385 ;; Hardware stack levels used: 1
+   386 ;; Hardware stack levels required when called: 2
+   387 ;; This function calls:
+   388 ;;		Nothing
+   389 ;; This function is called by:
+   390 ;;		_main
+   391 ;; This function uses a non-reentrant model
+   392 ;;
+   393                           
+   394     00E1                     _InitAll:	
+   395                           ;psect for function _InitAll
+   396                           
+   397     00E1                     l720:	
+   398                           ;incstack = 0
+   399                           ; Regs used in _InitAll: [wreg+status,2+status,0]
+   400                           
+   401                           
+   402                           ;main.c: 153: TRISIO = 0b00011001;
+   403     00E1  3019               	movlw	25
+   404     00E2  1683               	bsf	3,5	;RP0=1, select bank1
+   405     00E3  0085               	movwf	5	;volatile
+   406     00E4                     l722:
+   407                           
+   408                           ;main.c: 163: WPU = 0b00000000;
+   409     00E4  0195               	clrf	21	;volatile
+   410     00E5                     l724:
+   411                           
+   412                           ;main.c: 175: INTCON = 0b11000000;
+   413     00E5  30C0               	movlw	192
+   414     00E6  008B               	movwf	11	;volatile
+   415     00E7                     l726:
+   416                           
+   417                           ;main.c: 185: ADCON0 = 0b00000001;
+   418     00E7  3001               	movlw	1
+   419     00E8  1283               	bcf	3,5	;RP0=0, select bank0
+   420     00E9  009F               	movwf	31	;volatile
+   421     00EA                     l728:
+   422                           
+   423                           ;main.c: 195: ANSEL = 0b00011001;
+   424     00EA  3019               	movlw	25
+   425     00EB  1683               	bsf	3,5	;RP0=1, select bank1
+   426     00EC  009F               	movwf	31	;volatile
+   427                           
+   428                           ;main.c: 205: OPTION_REG = 0b00000000;
+   429     00ED  0181               	clrf	1	;volatile
+   430     00EE                     l730:
+   431                           
+   432                           ;main.c: 215: T1CON = 0b00110101;
+   433     00EE  3035               	movlw	53
+   434     00EF  1283               	bcf	3,5	;RP0=0, select bank0
+   435     00F0  0090               	movwf	16	;volatile
+   436     00F1                     l732:
+   437                           
+   438                           ;main.c: 217: T1CON &= ~0b00000001 ; TMR1 = (65535 - 1250); T1CON |= 0b00000001 ;;
+   439     00F1  30FE               	movlw	254
+   440     00F2  0590               	andwf	16,f	;volatile
+   441     00F3                     l734:
+   442     00F3  30FB               	movlw	251
+   443     00F4  008F               	movwf	15	;volatile
+   444     00F5  301D               	movlw	29
+   445     00F6  008E               	movwf	14	;volatile
+   446     00F7                     l736:
+   447     00F7  1410               	bsf	16,0	;volatile
+   448     00F8                     l738:
+   449                           
+   450                           ;main.c: 228: PIE1 = 0b01000001;
+   451     00F8  3041               	movlw	65
+   452     00F9  1683               	bsf	3,5	;RP0=1, select bank1
+   453     00FA  008C               	movwf	12	;volatile
+   454     00FB                     l62:
+   455     00FB  0008               	return
+   456     00FC                     __end_of_InitAll:
+   457                           
+   458                           	psect	text2
+   459     00BF                     __ptext2:	
+   460 ;; *************** function _DioPinWrite *****************
+   461 ;; Defined at:
+   462 ;;		line 233 in file "main.c"
+   463 ;; Parameters:    Size  Location     Type
+   464 ;;  pinNumber       1    wreg     unsigned char 
+   465 ;;  state           1   12[BANK0 ] unsigned char 
+   466 ;; Auto vars:     Size  Location     Type
+   467 ;;  pinNumber       1   14[BANK0 ] unsigned char 
+   468 ;; Return value:  Size  Location     Type
+   469 ;;                  1    wreg      void 
+   470 ;; Registers used:
+   471 ;;		wreg, status,2, status,0
+   472 ;; Tracked objects:
+   473 ;;		On entry : 0/0
+   474 ;;		On exit  : 0/0
+   475 ;;		Unchanged: 0/0
+   476 ;; Data sizes:     COMMON   BANK0
+   477 ;;      Params:         0       1
+   478 ;;      Locals:         0       1
+   479 ;;      Temps:          0       1
+   480 ;;      Totals:         0       3
+   481 ;;Total ram usage:        3 bytes
+   482 ;; Hardware stack levels used: 1
+   483 ;; Hardware stack levels required when called: 2
+   484 ;; This function calls:
+   485 ;;		Nothing
+   486 ;; This function is called by:
+   487 ;;		_main
+   488 ;; This function uses a non-reentrant model
+   489 ;;
+   490                           
+   491     00BF                     _DioPinWrite:	
+   492                           ;psect for function _DioPinWrite
+   493                           
+   494                           
+   495                           ;incstack = 0
+   496                           ; Regs used in _DioPinWrite: [wreg+status,2+status,0]
+   497                           ;DioPinWrite@pinNumber stored from wreg
+   498     00BF  1283               	bcf	3,5	;RP0=0, select bank0
+   499     00C0  00AE               	movwf	DioPinWrite@pinNumber
+   500     00C1                     l744:
+   501                           
+   502                           ;main.c: 234:     if (state == 1) {
+   503     00C1  032C               	decf	DioPinWrite@state,w
+   504     00C2  1D03               	btfss	3,2
+   505     00C3  28C5               	goto	u181
+   506     00C4  28C6               	goto	u180
+   507     00C5                     u181:
+   508     00C5  28D2               	goto	l748
+   509     00C6                     u180:
+   510     00C6                     l746:
+   511                           
+   512                           ;main.c: 235:         DioState |= (1 << pinNumber);
+   513     00C6  3001               	movlw	1
+   514     00C7  00AD               	movwf	??_DioPinWrite
+   515     00C8  0A2E               	incf	DioPinWrite@pinNumber,w
+   516     00C9  28CC               	goto	u194
+   517     00CA                     u195:
+   518     00CA  1003               	clrc
+   519     00CB  0DAD               	rlf	??_DioPinWrite,f
+   520     00CC                     u194:
+   521     00CC  3EFF               	addlw	-1
+   522     00CD  1D03               	skipz
+   523     00CE  28CA               	goto	u195
+   524     00CF  082D               	movf	??_DioPinWrite,w
+   525     00D0  04B7               	iorwf	_DioState,f
+   526                           
+   527                           ;main.c: 236:     } else {
+   528     00D1  28DE               	goto	l750
+   529     00D2                     l748:
+   530                           
+   531                           ;main.c: 237:         DioState &= ~(1 << pinNumber);
+   532     00D2  3001               	movlw	1
+   533     00D3  00AD               	movwf	??_DioPinWrite
+   534     00D4  0A2E               	incf	DioPinWrite@pinNumber,w
+   535     00D5  28D8               	goto	u204
+   536     00D6                     u205:
+   537     00D6  1003               	clrc
+   538     00D7  0DAD               	rlf	??_DioPinWrite,f
+   539     00D8                     u204:
+   540     00D8  3EFF               	addlw	-1
+   541     00D9  1D03               	skipz
+   542     00DA  28D6               	goto	u205
+   543     00DB  082D               	movf	??_DioPinWrite,w
+   544     00DC  3AFF               	xorlw	255
+   545     00DD  05B7               	andwf	_DioState,f
+   546     00DE                     l750:
+   547                           
+   548                           ;main.c: 239:     GPIO = DioState;
+   549     00DE  0837               	movf	_DioState,w
+   550     00DF  0085               	movwf	5	;volatile
+   551     00E0                     l67:
+   552     00E0  0008               	return
+   553     00E1                     __end_of_DioPinWrite:
+   554                           
+   555                           	psect	text3
+   556     00FC                     __ptext3:	
+   557 ;; *************** function _ADC_StartConversion *****************
+   558 ;; Defined at:
+   559 ;;		line 242 in file "main.c"
+   560 ;; Parameters:    Size  Location     Type
+   561 ;;  channel         1    wreg     unsigned char 
+   562 ;; Auto vars:     Size  Location     Type
+   563 ;;  channel         1   13[BANK0 ] unsigned char 
+   564 ;; Return value:  Size  Location     Type
+   565 ;;                  1    wreg      void 
+   566 ;; Registers used:
+   567 ;;		wreg, status,2, status,0
+   568 ;; Tracked objects:
+   569 ;;		On entry : 0/0
+   570 ;;		On exit  : 0/0
+   571 ;;		Unchanged: 0/0
+   572 ;; Data sizes:     COMMON   BANK0
+   573 ;;      Params:         0       0
+   574 ;;      Locals:         0       1
+   575 ;;      Temps:          0       1
+   576 ;;      Totals:         0       2
+   577 ;;Total ram usage:        2 bytes
+   578 ;; Hardware stack levels used: 1
+   579 ;; Hardware stack levels required when called: 2
+   580 ;; This function calls:
+   581 ;;		Nothing
+   582 ;; This function is called by:
+   583 ;;		_main
+   584 ;; This function uses a non-reentrant model
+   585 ;;
+   586                           
+   587     00FC                     _ADC_StartConversion:	
+   588                           ;psect for function _ADC_StartConversion
+   589                           
+   590                           
+   591                           ;incstack = 0
+   592                           ; Regs used in _ADC_StartConversion: [wreg+status,2+status,0]
+   593                           ;ADC_StartConversion@channel stored from wreg
+   594     00FC  1283               	bcf	3,5	;RP0=0, select bank0
+   595     00FD  00AD               	movwf	ADC_StartConversion@channel
+   596     00FE                     l740:
+   597                           
+   598                           ;main.c: 244:     ADCON0 &= 0b11110011;
+   599     00FE  30F3               	movlw	243
+   600     00FF  059F               	andwf	31,f	;volatile
+   601                           
+   602                           ;main.c: 247:     ADCON0 |= (channel << 2);
+   603     0100  082D               	movf	ADC_StartConversion@channel,w	;volatile
+   604     0101  00AC               	movwf	??_ADC_StartConversion
+   605     0102  3001               	movlw	1
+   606     0103                     u175:
+   607     0103  1003               	clrc
+   608     0104  0DAC               	rlf	??_ADC_StartConversion,f
+   609     0105  3EFF               	addlw	-1
+   610     0106  1D03               	skipz
+   611     0107  2903               	goto	u175
+   612     0108  1003               	clrc
+   613     0109  0D2C               	rlf	??_ADC_StartConversion,w
+   614     010A  049F               	iorwf	31,f	;volatile
+   615     010B                     l742:
+   616                           
+   617                           ;main.c: 250:     ADCON0 |= (1 << 1);
+   618     010B  149F               	bsf	31,1	;volatile
+   619     010C                     l70:
+   620     010C  0008               	return
+   621     010D                     __end_of_ADC_StartConversion:
+   622                           
+   623                           	psect	text4
+   624     0016                     __ptext4:	
+   625 ;; *************** function _ISR *****************
+   626 ;; Defined at:
+   627 ;;		line 260 in file "main.c"
+   628 ;; Parameters:    Size  Location     Type
+   629 ;;		None
+   630 ;; Auto vars:     Size  Location     Type
+   631 ;;		None
+   632 ;; Return value:  Size  Location     Type
+   633 ;;                  1    wreg      void 
+   634 ;; Registers used:
+   635 ;;		wreg, status,2, status,0, pclath, cstack
+   636 ;; Tracked objects:
+   637 ;;		On entry : 0/0
+   638 ;;		On exit  : 0/0
+   639 ;;		Unchanged: 0/0
+   640 ;; Data sizes:     COMMON   BANK0
+   641 ;;      Params:         0       0
+   642 ;;      Locals:         0       0
+   643 ;;      Temps:          0       3
+   644 ;;      Totals:         0       3
+   645 ;;Total ram usage:        3 bytes
+   646 ;; Hardware stack levels used: 1
+   647 ;; Hardware stack levels required when called: 1
+   648 ;; This function calls:
+   649 ;;		_AdcReadResult
+   650 ;;		i1_ADC_StartConversion
+   651 ;; This function is called by:
+   652 ;;		Interrupt level 1
+   653 ;; This function uses a non-reentrant model
+   654 ;;
+   655                           
+   656     0016                     _ISR:	
+   657                           ;psect for function _ISR
+   658                           
+   659     0016                     i1l778:
+   660                           
+   661                           ;main.c: 261:     if (PIR1 & 0b00000001) {
+   662     0016  1C0C               	btfss	12,0	;volatile
+   663     0017  2819               	goto	u26_21
+   664     0018  281A               	goto	u26_20
+   665     0019                     u26_21:
+   666     0019  283A               	goto	i1l81
+   667     001A                     u26_20:
+   668     001A                     i1l780:
+   669                           
+   670                           ;main.c: 263:         T1CON &= ~0b00000001 ; TMR1 = (65535 - 1250); T1CON |= 0b00000001 
+      +                          ;;
+   671     001A  30FE               	movlw	254
+   672     001B  0590               	andwf	16,f	;volatile
+   673     001C                     i1l782:
+   674     001C  30FB               	movlw	251
+   675     001D  008F               	movwf	15	;volatile
+   676     001E  301D               	movlw	29
+   677     001F  008E               	movwf	14	;volatile
+   678     0020                     i1l784:
+   679     0020  1410               	bsf	16,0	;volatile
+   680                           
+   681                           ;main.c: 265:         if(ADCStatus == 0x00){
+   682     0021  0836               	movf	_ADCStatus,w
+   683     0022  1D03               	btfss	3,2
+   684     0023  2825               	goto	u27_21
+   685     0024  2826               	goto	u27_20
+   686     0025                     u27_21:
+   687     0025  282A               	goto	i1l790
+   688     0026                     u27_20:
+   689     0026                     i1l786:
+   690                           
+   691                           ;main.c: 266:             ADCStatus = 0x02;
+   692     0026  3002               	movlw	2
+   693     0027  00B6               	movwf	_ADCStatus
+   694     0028                     i1l788:
+   695                           
+   696                           ;main.c: 267:             ADC_StartConversion(3);
+   697     0028  3003               	movlw	3
+   698     0029  210D               	fcall	i1_ADC_StartConversion
+   699     002A                     i1l790:
+   700                           
+   701                           ;main.c: 270:         PIR1 &= (1 << TMR1IF);
+   702     002A  3001               	movlw	1
+   703     002B  1283               	bcf	3,5	;RP0=0, select bank0
+   704     002C  00A9               	movwf	??_ISR
+   705     002D  3000               	movlw	0
+   706     002E  180C               	btfsc	12,0	;volatile
+   707     002F  3001               	movlw	1
+   708     0030  3E01               	addlw	1
+   709     0031  2834               	goto	u28_24
+   710     0032                     u28_25:
+   711     0032  1003               	clrc
+   712     0033  0DA9               	rlf	??_ISR,f
+   713     0034                     u28_24:
+   714     0034  3EFF               	addlw	-1
+   715     0035  1D03               	skipz
+   716     0036  2832               	goto	u28_25
+   717     0037  0829               	movf	??_ISR,w
+   718     0038  058C               	andwf	12,f	;volatile
+   719                           
+   720                           ;main.c: 271:     }
+   721     0039  2868               	goto	i1l90
+   722     003A                     i1l81:	
+   723                           ;main.c: 273:     else if (PIR1 & 0b01000000) {
+   724                           
+   725     003A  1F0C               	btfss	12,6	;volatile
+   726     003B  283D               	goto	u29_21
+   727     003C  283E               	goto	u29_20
+   728     003D                     u29_21:
+   729     003D  2868               	goto	i1l90
+   730     003E                     u29_20:
+   731     003E                     i1l792:
+   732                           
+   733                           ;main.c: 274:         if(ADCStatus == 0x02){
+   734     003E  3002               	movlw	2
+   735     003F  0636               	xorwf	_ADCStatus,w
+   736     0040  1D03               	btfss	3,2
+   737     0041  2843               	goto	u30_21
+   738     0042  2844               	goto	u30_20
+   739     0043                     u30_21:
+   740     0043  284B               	goto	i1l796
+   741     0044                     u30_20:
+   742     0044                     i1l794:
+   743                           
+   744                           ;main.c: 275:             SensorInValue = AdcReadResult();
+   745     0044  2099               	fcall	_AdcReadResult
+   746     0045  1283               	bcf	3,5	;RP0=0, select bank0
+   747     0046  0821               	movf	?_AdcReadResult+1,w
+   748     0047  00B4               	movwf	_SensorInValue+1
+   749     0048  0820               	movf	?_AdcReadResult,w
+   750     0049  00B3               	movwf	_SensorInValue
+   751                           
+   752                           ;main.c: 276:         }
+   753     004A  2858               	goto	i1l802
+   754     004B                     i1l796:
+   755     004B  0336               	decf	_ADCStatus,w
+   756     004C  1D03               	btfss	3,2
+   757     004D  284F               	goto	u31_21
+   758     004E  2850               	goto	u31_20
+   759     004F                     u31_21:
+   760     004F  2857               	goto	i1l800
+   761     0050                     u31_20:
+   762     0050                     i1l798:
+   763                           
+   764                           ;main.c: 278:             PotInValue = AdcReadResult();
+   765     0050  2099               	fcall	_AdcReadResult
+   766     0051  1283               	bcf	3,5	;RP0=0, select bank0
+   767     0052  0821               	movf	?_AdcReadResult+1,w
+   768     0053  00B2               	movwf	_PotInValue+1
+   769     0054  0820               	movf	?_AdcReadResult,w
+   770     0055  00B1               	movwf	_PotInValue
+   771                           
+   772                           ;main.c: 279:         }
+   773     0056  2858               	goto	i1l802
+   774     0057                     i1l800:
+   775                           
+   776                           ;main.c: 281:             AdcReadResult();
+   777     0057  2099               	fcall	_AdcReadResult
+   778     0058                     i1l802:
+   779                           
+   780                           ;main.c: 283:         PIR1 &= (1 << ADIF);
+   781     0058  3001               	movlw	1
+   782     0059  1283               	bcf	3,5	;RP0=0, select bank0
+   783     005A  00A9               	movwf	??_ISR
+   784     005B  3000               	movlw	0
+   785     005C  1B0C               	btfsc	12,6	;volatile
+   786     005D  3001               	movlw	1
+   787     005E  3E01               	addlw	1
+   788     005F  2862               	goto	u32_24
+   789     0060                     u32_25:
+   790     0060  1003               	clrc
+   791     0061  0DA9               	rlf	??_ISR,f
+   792     0062                     u32_24:
+   793     0062  3EFF               	addlw	-1
+   794     0063  1D03               	skipz
+   795     0064  2860               	goto	u32_25
+   796     0065  0829               	movf	??_ISR,w
+   797     0066  058C               	andwf	12,f	;volatile
+   798     0067                     i1l804:
+   799                           
+   800                           ;main.c: 284:         ADCStatus = 0x00;
+   801     0067  01B6               	clrf	_ADCStatus
+   802     0068                     i1l90:	
+   803                           ;main.c: 285:         }
+   804                           
+   805     0068  082B               	movf	??_ISR+2,w
+   806     0069  008A               	movwf	10
+   807     006A  0E2A               	swapf	??_ISR+1,w
+   808     006B  0083               	movwf	3
+   809     006C  0EDE               	swapf	btemp,f
+   810     006D  0E5E               	swapf	btemp,w
+   811     006E  0009               	retfie
+   812     006F                     __end_of_ISR:
+   813                           
+   814                           	psect	intentry
+   815     0004                     __pintentry:	
+   816                           ;incstack = 0
+   817                           ; Regs used in _ISR: [wreg+status,2+status,0+pclath+cstack]
+   818                           
+   819     0004                     interrupt_function:
+   820     005E                     saved_w         set	btemp
+   821     0004  00DE               	movwf	btemp
+   822     0005  0E03               	swapf	3,w
+   823     0006  1283               	bcf	3,5	;RP0=0, select bank0
+   824     0007  00AA               	movwf	??_ISR+1
+   825     0008  080A               	movf	10,w
+   826     0009  00AB               	movwf	??_ISR+2
+   827     000A  2816               	ljmp	_ISR
+   828                           
+   829                           	psect	text5
+   830     010D                     __ptext5:	
+   831 ;; *************** function i1_ADC_StartConversion *****************
+   832 ;; Defined at:
+   833 ;;		line 242 in file "main.c"
+   834 ;; Parameters:    Size  Location     Type
+   835 ;;  channel         1    wreg     unsigned char 
+   836 ;; Auto vars:     Size  Location     Type
+   837 ;;  channel         1    1[BANK0 ] unsigned char 
+   838 ;; Return value:  Size  Location     Type
+   839 ;;                  1    wreg      void 
+   840 ;; Registers used:
+   841 ;;		wreg, status,2, status,0
+   842 ;; Tracked objects:
+   843 ;;		On entry : 0/0
+   844 ;;		On exit  : 0/0
+   845 ;;		Unchanged: 0/0
+   846 ;; Data sizes:     COMMON   BANK0
+   847 ;;      Params:         0       0
+   848 ;;      Locals:         0       1
+   849 ;;      Temps:          0       1
+   850 ;;      Totals:         0       2
+   851 ;;Total ram usage:        2 bytes
+   852 ;; Hardware stack levels used: 1
+   853 ;; This function calls:
+   854 ;;		Nothing
+   855 ;; This function is called by:
+   856 ;;		_ISR
+   857 ;; This function uses a non-reentrant model
+   858 ;;
+   859                           
+   860     010D                     i1_ADC_StartConversion:	
+   861                           ;psect for function i1_ADC_StartConversion
+   862                           
+   863                           
+   864                           ;incstack = 0
+   865                           ; Regs used in i1_ADC_StartConversion: [wreg+status,2+status,0]
+   866                           ;i1ADC_StartConversion@channel stored from wreg
+   867     010D  1283               	bcf	3,5	;RP0=0, select bank0
+   868     010E  00A1               	movwf	i1ADC_StartConversion@channel
+   869     010F                     i1l758:
+   870                           
+   871                           ;main.c: 244:     ADCON0 &= 0b11110011;
+   872     010F  30F3               	movlw	243
+   873     0110  059F               	andwf	31,f	;volatile
+   874                           
+   875                           ;main.c: 247:     ADCON0 |= (channel << 2);
+   876     0111  0821               	movf	i1ADC_StartConversion@channel,w	;volatile
+   877     0112  00A0               	movwf	??i1_ADC_StartConversion
+   878     0113  3001               	movlw	1
+   879     0114                     u23_25:
+   880     0114  1003               	clrc
+   881     0115  0DA0               	rlf	??i1_ADC_StartConversion,f
+   882     0116  3EFF               	addlw	-1
+   883     0117  1D03               	skipz
+   884     0118  2914               	goto	u23_25
+   885     0119  1003               	clrc
+   886     011A  0D20               	rlf	??i1_ADC_StartConversion,w
+   887     011B  049F               	iorwf	31,f	;volatile
+   888     011C                     i1l760:
+   889                           
+   890                           ;main.c: 250:     ADCON0 |= (1 << 1);
+   891     011C  149F               	bsf	31,1	;volatile
+   892     011D                     i1l70:
+   893     011D  0008               	return
+   894     011E                     __end_ofi1_ADC_StartConversion:
+   895                           
+   896                           	psect	text6
+   897     0099                     __ptext6:	
+   898 ;; *************** function _AdcReadResult *****************
+   899 ;; Defined at:
+   900 ;;		line 253 in file "main.c"
+   901 ;; Parameters:    Size  Location     Type
+   902 ;;		None
+   903 ;; Auto vars:     Size  Location     Type
+   904 ;;		None
+   905 ;; Return value:  Size  Location     Type
+   906 ;;                  2    0[BANK0 ] unsigned short 
+   907 ;; Registers used:
+   908 ;;		wreg, status,2, status,0
+   909 ;; Tracked objects:
+   910 ;;		On entry : 0/0
+   911 ;;		On exit  : 0/0
+   912 ;;		Unchanged: 0/0
+   913 ;; Data sizes:     COMMON   BANK0
+   914 ;;      Params:         0       2
+   915 ;;      Locals:         0       0
+   916 ;;      Temps:          0       7
+   917 ;;      Totals:         0       9
+   918 ;;Total ram usage:        9 bytes
+   919 ;; Hardware stack levels used: 1
+   920 ;; This function calls:
+   921 ;;		Nothing
+   922 ;; This function is called by:
+   923 ;;		_ISR
+   924 ;; This function uses a non-reentrant model
+   925 ;;
+   926                           
+   927     0099                     _AdcReadResult:	
+   928                           ;psect for function _AdcReadResult
+   929                           
+   930     0099                     i1l752:	
+   931                           ;incstack = 0
+   932                           ; Regs used in _AdcReadResult: [wreg+status,2+status,0]
+   933                           
+   934     0099                     i1l73:	
+   935                           ;main.c: 254:     while (ADCON0 & (1 << 1)) {}
+   936                           
+   937     0099  1283               	bcf	3,5	;RP0=0, select bank0
+   938     009A  189F               	btfsc	31,1	;volatile
+   939     009B  289D               	goto	u21_21
+   940     009C  289E               	goto	u21_20
+   941     009D                     u21_21:
+   942     009D  2899               	goto	i1l73
+   943     009E                     u21_20:
+   944     009E                     i1l754:
+   945                           
+   946                           ;main.c: 255:     return (uint16_t)((ADRESH << 2) | (ADRESL >> 6));
+   947     009E  1683               	bsf	3,5	;RP0=1, select bank1
+   948     009F  081E               	movf	30,w	;volatile
+   949     00A0  1283               	bcf	3,5	;RP0=0, select bank0
+   950     00A1  00A2               	movwf	??_AdcReadResult
+   951     00A2  3006               	movlw	6
+   952     00A3                     u22_25:
+   953     00A3  1003               	clrc
+   954     00A4  0CA2               	rrf	??_AdcReadResult,f
+   955     00A5  3EFF               	addlw	-1
+   956     00A6  1D03               	skipz
+   957     00A7  28A3               	goto	u22_25
+   958     00A8  0822               	movf	??_AdcReadResult,w
+   959     00A9  00A3               	movwf	??_AdcReadResult+1
+   960     00AA  01A4               	clrf	??_AdcReadResult+2
+   961     00AB  081E               	movf	30,w	;volatile
+   962     00AC  00A5               	movwf	??_AdcReadResult+3
+   963     00AD  01A6               	clrf	??_AdcReadResult+4
+   964     00AE  1003               	clrc
+   965     00AF  0DA5               	rlf	??_AdcReadResult+3,f
+   966     00B0  0DA6               	rlf	??_AdcReadResult+4,f
+   967     00B1  1003               	clrc
+   968     00B2  0DA5               	rlf	??_AdcReadResult+3,f
+   969     00B3  0DA6               	rlf	??_AdcReadResult+4,f
+   970     00B4  0823               	movf	??_AdcReadResult+1,w
+   971     00B5  0425               	iorwf	??_AdcReadResult+3,w
+   972     00B6  00A7               	movwf	??_AdcReadResult+5
+   973     00B7  0824               	movf	??_AdcReadResult+2,w
+   974     00B8  0426               	iorwf	??_AdcReadResult+4,w
+   975     00B9  00A8               	movwf	??_AdcReadResult+6
+   976     00BA  0827               	movf	??_AdcReadResult+5,w
+   977     00BB  00A0               	movwf	?_AdcReadResult
+   978     00BC  0828               	movf	??_AdcReadResult+6,w
+   979     00BD  00A1               	movwf	?_AdcReadResult+1
+   980     00BE                     i1l76:
+   981     00BE  0008               	return
+   982     00BF                     __end_of_AdcReadResult:
+   983     0000                     ___latbits      equ	0
+   984     005E                     btemp           set	94	;btemp
+   985     005E                     wtemp0          set	94
+   986                           
+   987                           	psect	config
+   988                           
+   989                           ;Config register CONFIG @ 0x2007
+   990                           ;	Oscillator Selection bits
+   991                           ;	FOSC = INTRCIO, INTOSC oscillator: I/O function on GP4/OSC2/CLKOUT pin, I/O function o
+      +                          n GP5/OSC1/CLKIN
+   992                           ;	Watchdog Timer Enable bit
+   993                           ;	WDTE = OFF, WDT disabled
+   994                           ;	Power-Up Timer Enable bit
+   995                           ;	PWRTE = OFF, PWRT disabled
+   996                           ;	GP3/MCLR pin function select
+   997                           ;	MCLRE = OFF, GP3/MCLR pin function is digital I/O, MCLR internally tied to VDD
+   998                           ;	Brown-out Detect Enable bit
+   999                           ;	BOREN = OFF, BOD disabled
+  1000                           ;	Code Protection bit
+  1001                           ;	CP = OFF, Program Memory code protection is disabled
+  1002                           ;	Data Code Protection bit
+  1003                           ;	CPD = OFF, Data memory code protection is disabled
+  1004     2007                     	org	8199
+  1005     2007  3194               	dw	12692
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         7
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON            0      0       0
+    BANK0            62     17      24
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _ISR in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    _main->_DioPinWrite
+
+Critical Paths under _ISR in BANK0
+
+    _ISR->_AdcReadResult
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0     111
+                                             15 BANK0      2     2      0
+                _ADC_StartConversion
+                        _DioPinWrite
+                            _InitAll
+ ---------------------------------------------------------------------------------
+ (1) _InitAll                                              0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _DioPinWrite                                          3     2      1      82
+                                             12 BANK0      3     2      1
+ ---------------------------------------------------------------------------------
+ (1) _ADC_StartConversion                                  2     2      0      29
+                                             12 BANK0      2     2      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (2) _ISR                                                  3     3      0      29
+                                              9 BANK0      3     3      0
+                      _AdcReadResult
+              i1_ADC_StartConversion
+ ---------------------------------------------------------------------------------
+ (3) i1_ADC_StartConversion                                2     2      0      29
+                                              0 BANK0      2     2      0
+ ---------------------------------------------------------------------------------
+ (3) _AdcReadResult                                        9     7      2       0
+                                              0 BANK0      9     7      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _ADC_StartConversion
+   _DioPinWrite
+   _InitAll
+
+ _ISR (ROOT)
+   _AdcReadResult
+   i1_ADC_StartConversion
+
+Address spaces:
+Name               Size   Autos  Total    Usage
+BITCOMMON            0      0       0      0.0%
+BITBANK0            62      0       0      0.0%
+COMMON               0      0       0      0.0%
+BANK0               62     17      24     38.7%
+STACK                0      0       0      0.0%
+DATA                 0      0      24      0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.50 build 20240725155939 
+Symbol Table                                                                                   Sun Oct 20 06:35:52 2024
+
+                           l70 010C                             l62 00FB                             l67 00E0  
+                          l720 00E1                            l730 00EE                            l722 00E4  
+                          l740 00FE                            l732 00F1                            l724 00E5  
+                          l742 010B                            l750 00DE                            l734 00F3  
+                          l726 00E7                            l744 00C1                            l736 00F7  
+                          l728 00EA                            l746 00C6                            l738 00F8  
+                          l770 0082                            l762 006F                            l748 00D2  
+                          l772 0084                            l764 0070                            l774 008F  
+                          l766 007A                            l776 0094                            l768 0080  
+                          u204 00D8                            u205 00D6                            u240 0080  
+                          u241 007F                            u250 008F                            u251 008E  
+                          u180 00C6                            u181 00C5                            u175 0103  
+                          u255 008B                            u337 0075                            u194 00CC  
+                          u195 00CA                            _ISR 0016                            _WPU 0095  
+                         ?_ISR 0020                           _ADIF 0066                           _GPIO 0005  
+                         _PIE1 008C                           i1l70 011D                           i1l73 0099  
+                         i1l81 003A                           _PIR1 000C                           i1l90 0068  
+                         i1l76 00BE                           _TMR1 000E                ??_AdcReadResult 0022  
+                         _flag 0035                           _main 006F                           btemp 005E  
+                         start 000B                __end_of_InitAll 00FC                          ??_ISR 0029  
+                        ?_main 0020                          _ANSEL 009F                          _T1CON 0010  
+                        i1l800 0057                          i1l802 0058                          i1l804 0067  
+                        i1l752 0099                          i1l760 011C                          i1l754 009E  
+                        i1l780 001A                          i1l758 010F                          i1l790 002A  
+                        i1l782 001C                          i1l792 003E                          i1l784 0020  
+                        i1l794 0044                          i1l786 0026                          i1l778 0016  
+                        i1l796 004B                          i1l788 0028                          i1l798 0050  
+                        u21_20 009E                          u21_21 009D                          u30_20 0044  
+                        u30_21 0043                          u22_25 00A3                          u31_20 0050  
+                        u31_21 004F                          u23_25 0114                          u32_24 0062  
+                        u32_25 0060                          u26_20 001A                          u26_21 0019  
+                        u27_20 0026                          u27_21 0025                          u28_24 0034  
+                        u28_25 0032                          u29_20 003E                          u29_21 003D  
+       ?i1_ADC_StartConversion 0020                          pclath 000A                    _DioPinWrite 00BF  
+                        status 0003                          wtemp0 005E                __initialization 000C  
+                 __end_of_main 0099                         ??_main 002F     ADC_StartConversion@channel 002D  
+                       _ADCON0 001F                         _ADRESH 001E                         _ADRESL 009E  
+                       _INTCON 000B                         _TMR1IF 0060                     _PotInValue 0031  
+                       _TRISIO 0085                      ??_InitAll 0000                         saved_w 005E  
+      __end_of__initialization 0014                 __pcstackCOMMON 0000                     __pbssBANK0 0031  
+                   __pmaintext 006F                     __pintentry 0004        ??i1_ADC_StartConversion 0020  
+ i1ADC_StartConversion@channel 0021                   ?_DioPinWrite 002C          __end_of_AdcReadResult 00BF  
+                      _InitAll 00E1                      _ADCStatus 0036                        __ptext1 00E1  
+                      __ptext2 00BF                        __ptext3 00FC                        __ptext4 0016  
+                      __ptext5 010D                        __ptext6 0099           end_of_initialization 0014  
+          _ADC_StartConversion 00FC           ?_ADC_StartConversion 0020            start_initialization 000C  
+                  __end_of_ISR 006F          ??_ADC_StartConversion 002C               DioPinWrite@state 002C  
+         DioPinWrite@pinNumber 002E  __end_ofi1_ADC_StartConversion 011E                      ___latbits 0000  
+                __pcstackBANK0 0020                  _SensorInValue 0033                       ?_InitAll 0020  
+            interrupt_function 0004                       _DioState 0037                  _AdcReadResult 0099  
+                     intlevel1 0000                  ??_DioPinWrite 002D    __end_of_ADC_StartConversion 010D  
+               ?_AdcReadResult 0020                     _OPTION_REG 0081          i1_ADC_StartConversion 010D  
+          __end_of_DioPinWrite 00E1  

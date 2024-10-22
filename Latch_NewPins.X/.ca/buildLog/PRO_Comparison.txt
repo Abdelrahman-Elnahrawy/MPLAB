@@ -1,0 +1,28 @@
+make -f nbproject/Makefile-PRO_Comparison.mk SUBPROJECTS= .clean-conf
+make[1]: Entering directory 'C:/Users/Family/MPLABXProjects/Latch_NewPins.X'
+rm -f  -r .ca/build/PRO_Comparison/production
+rm -f  -r .ca/dist/PRO_Comparison/production
+make[1]: Leaving directory 'C:/Users/Family/MPLABXProjects/Latch_NewPins.X'
+[32mCLEAN SUCCESSFUL (total time: 250ms)[0m
+make -f nbproject/Makefile-PRO_Comparison.mk SUBPROJECTS= .build-conf
+make  -f nbproject/Makefile-PRO_Comparison.mk .ca/dist/PRO_Comparison/production/Latch_NewPins.X.production.hex
+make[2]: Entering directory 'C:/Users/Family/MPLABXProjects/Latch_NewPins.X'
+"C:\Program Files\Microchip\xc8\v2.50\bin\xc8-cc.exe"  -mcpu=12F675 -c   -mdfp="C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_PRO_Comparison=PRO_Comparison  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mno-default-config-bits   -std=c99 -gdwarf-3 -mstack=compiled:auto:auto -mafrlcsj     -o .ca/build/PRO_Comparison/production/main.p1 main.c 
+::: advisory: (2100) using the C99 standard library with the selected device may result in larger code and data usage
+make[2]: Leaving directory 'C:/Users/Family/MPLABXProjects/Latch_NewPins.X'
+make[2]: Entering directory 'C:/Users/Family/MPLABXProjects/Latch_NewPins.X'
+[31mmake[2]: *** [nbproject/Makefile-PRO_Comparison.mk:134: .ca/dist/PRO_Comparison/production/Latch_NewPins.X.production.hex] Error 1
+"C:\Program Files\Microchip\xc8\v2.50\bin\xc8-cc.exe"  -mcpu=12F675 -Wl,-Map=.ca/dist/PRO_Comparison/production/Latch_NewPins.X.production.map  -DXPRJ_PRO_Comparison=PRO_Comparison  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mno-default-config-bits -mafrlcsj -std=c99 -gdwarf-3 -mstack=compiled:auto:auto      -Wl,--memorysummary,.ca/dist/PRO_Comparison/production/memoryfile.xml -o .ca/dist/PRO_Comparison/production/Latch_NewPins.X.production.elf  .ca/build/PRO_Comparison/production/main.p1     
+[0m
+(908) exit status = 1
+::: advisory: (2100) using the C99 standard library with the selected device may result in larger code and data usage
+main.c:105:: warning: (1518) direct function call made with an incomplete prototype (InitAll)
+main.c:249:: warning: (1518) direct function call made with an incomplete prototype (Timer1_interrupt)
+main.c:256:: warning: (1518) direct function call made with an incomplete prototype (ADC_interrupt)
+main.c:274:: warning: (1518) direct function call made with an incomplete prototype (NegativeEdge)
+main.c:243:: error: (1360) no space for auto/param main@DebounceCounter
+(908) exit status = 1
+make[2]: Leaving directory 'C:/Users/Family/MPLABXProjects/Latch_NewPins.X'
+[31mmake[1]: *** [nbproject/Makefile-PRO_Comparison.mk:85: .build-conf] Error 2
+make: *** [nbproject/Makefile-impl.mk:39: .build-impl] Error 2[0m
+[31mBUILD FAILED (exit value 2, total time: 3s)[0m

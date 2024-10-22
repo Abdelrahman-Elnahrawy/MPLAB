@@ -1,0 +1,111 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12F675 ]
+[d frameptr 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"101 C:\Users\Family\MPLABXProjects\Latch_NewPins.X\main.c
+[v _main main `(v  1 e 1 0 ]
+"144
+[v _InitAll InitAll `(v  1 e 1 0 ]
+"233
+[v _DioPinWrite DioPinWrite `(v  1 e 1 0 ]
+"242
+[v _ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
+[v i1_ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
+"253
+[v _AdcReadResult AdcReadResult `(us  1 e 2 0 ]
+"260
+[v _ISR ISR `II(v  1 e 1 0 ]
+"218 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h
+[v _GPIO GPIO `VEuc  1 e 1 @5 ]
+"326
+[v _INTCON INTCON `VEuc  1 e 1 @11 ]
+"404
+[v _PIR1 PIR1 `VEuc  1 e 1 @12 ]
+"452
+[v _TMR1 TMR1 `VEus  1 e 2 @14 ]
+"499
+[v _T1CON T1CON `VEuc  1 e 1 @16 ]
+"623
+[v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
+"643
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
+"727
+[v _OPTION_REG OPTION_REG `VEuc  1 e 1 @129 ]
+"797
+[v _TRISIO TRISIO `VEuc  1 e 1 @133 ]
+"847
+[v _PIE1 PIE1 `VEuc  1 e 1 @140 ]
+"989
+[v _WPU WPU `VEuc  1 e 1 @149 ]
+"1384
+[v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
+"1404
+[v _ANSEL ANSEL `VEuc  1 e 1 @159 ]
+"1499
+[v _ADIF ADIF `VEb  1 e 0 @102 ]
+"1745
+[v _TMR1IF TMR1IF `VEb  1 e 0 @96 ]
+"26 C:\Users\Family\MPLABXProjects\Latch_NewPins.X\main.c
+[v _DioState DioState `uc  1 e 1 0 ]
+"28
+[v _ADCStatus ADCStatus `uc  1 e 1 0 ]
+"36
+[v _SensorInValue SensorInValue `us  1 e 2 0 ]
+"37
+[v _PotInValue PotInValue `us  1 e 2 0 ]
+"101
+[v _main main `(v  1 e 1 0 ]
+{
+"141
+} 0
+"144
+[v _InitAll InitAll `(v  1 e 1 0 ]
+{
+"231
+} 0
+"233
+[v _DioPinWrite DioPinWrite `(v  1 e 1 0 ]
+{
+[v DioPinWrite@pinNumber pinNumber `uc  1 p 1 wreg ]
+[v DioPinWrite@pinNumber pinNumber `uc  1 p 1 wreg ]
+[v DioPinWrite@state state `uc  1 p 1 12 ]
+[v DioPinWrite@pinNumber pinNumber `uc  1 p 1 14 ]
+"240
+} 0
+"242
+[v _ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
+{
+[v ADC_StartConversion@channel channel `uc  1 p 1 wreg ]
+[v ADC_StartConversion@channel channel `uc  1 p 1 wreg ]
+"244
+[v ADC_StartConversion@channel channel `uc  1 p 1 13 ]
+"251
+} 0
+"260
+[v _ISR ISR `II(v  1 e 1 0 ]
+{
+"287
+} 0
+"242
+[v i1_ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
+{
+[v i1ADC_StartConversion@channel channel `uc  1 p 1 wreg ]
+[v i1ADC_StartConversion@channel channel `uc  1 p 1 wreg ]
+"244
+[v i1ADC_StartConversion@channel channel `uc  1 p 1 1 ]
+"251
+} 0
+"253
+[v _AdcReadResult AdcReadResult `(us  1 e 2 0 ]
+{
+"256
+} 0
