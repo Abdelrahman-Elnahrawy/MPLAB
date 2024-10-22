@@ -1,0 +1,717 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"24 src/gpio.c
+[; ;src/gpio.c: 24: uint8 Gpio_Init(const Gpio_ConfigType* ConfigPtr) {
+[c E726 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 .. ]
+[n E726 . GPIO_PIN0_GPIO GPIO_PIN0_AN0 GPIO_PIN0_CIN_PLUS GPIO_PIN0_ICSPDAT GPIO_PIN1_GPIO GPIO_PIN1_AN1 GPIO_PIN1_CIN_MINUS GPIO_PIN1_VREF GPIO_PIN1_ICSPCLK GPIO_PIN2_GPIO GPIO_PIN2_AN2 GPIO_PIN2_T0CKI GPIO_PIN2_INT GPIO_PIN2_COUT GPIO_PIN3_GPIO GPIO_PIN3_MCLR GPIO_PIN4_GPIO GPIO_PIN4_AN3 GPIO_PIN4_T1G GPIO_PIN4_OSC2 GPIO_PIN5_GPIO GPIO_PIN5_T1CKI GPIO_PIN5_OSC1  ]
+"26 src/../config/Gpio_Cfg.h
+[; ;src/../config/Gpio_Cfg.h: 26: typedef struct {
+[s S85 `E726 1 `uc 1 ]
+[n S85 . pinFunction pinNumber ]
+"1404 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1404: extern volatile unsigned char ANSEL __attribute__((address(0x09F)));
+[v _ANSEL `Vuc ~T0 @X0 0 e@159 ]
+"797
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 797: extern volatile unsigned char TRISIO __attribute__((address(0x085)));
+[v _TRISIO `Vuc ~T0 @X0 0 e@133 ]
+"564
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 564: extern volatile unsigned char CMCON __attribute__((address(0x019)));
+[v _CMCON `Vuc ~T0 @X0 0 e@25 ]
+"1208
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1208: extern volatile unsigned char VRCON __attribute__((address(0x099)));
+[v _VRCON `Vuc ~T0 @X0 0 e@153 ]
+"727
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 727: extern volatile unsigned char OPTION_REG __attribute__((address(0x081)));
+[v _OPTION_REG `Vuc ~T0 @X0 0 e@129 ]
+"499
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 499: extern volatile unsigned char T1CON __attribute__((address(0x010)));
+[v _T1CON `Vuc ~T0 @X0 0 e@16 ]
+"157 src/gpio.c
+[; ;src/gpio.c: 157: uint8 Gpio_Pin_Dio(Gpio_PinNumber pinNumber,
+[c E718 0 1 2 3 4 5 .. ]
+[n E718 . GPIO_PIN_0 GPIO_PIN_1 GPIO_PIN_2 GPIO_PIN_3 GPIO_PIN_4 GPIO_PIN_5  ]
+[c E714 0 1 .. ]
+[n E714 . GPIO_DIR_INPUT GPIO_DIR_OUTPUT  ]
+[c E710 0 1 .. ]
+[n E710 . GPIO_PIN_LOW GPIO_PIN_HIGH  ]
+"989 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 989: extern volatile unsigned char WPU __attribute__((address(0x095)));
+[v _WPU `Vuc ~T0 @X0 0 e@149 ]
+"218
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 218: extern volatile unsigned char GPIO __attribute__((address(0x005)));
+[v _GPIO `Vuc ~T0 @X0 0 e@5 ]
+"54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 54: __asm("INDF equ 00h");
+[; <" INDF equ 00h ;# ">
+"74
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 74: __asm("TMR0 equ 01h");
+[; <" TMR0 equ 01h ;# ">
+"94
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 94: __asm("PCL equ 02h");
+[; <" PCL equ 02h ;# ">
+"114
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 114: __asm("STATUS equ 03h");
+[; <" STATUS equ 03h ;# ">
+"200
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 200: __asm("FSR equ 04h");
+[; <" FSR equ 04h ;# ">
+"220
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 220: __asm("GPIO equ 05h");
+[; <" GPIO equ 05h ;# ">
+"308
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 308: __asm("PCLATH equ 0Ah");
+[; <" PCLATH equ 0Ah ;# ">
+"328
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 328: __asm("INTCON equ 0Bh");
+[; <" INTCON equ 0Bh ;# ">
+"406
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 406: __asm("PIR1 equ 0Ch");
+[; <" PIR1 equ 0Ch ;# ">
+"454
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 454: __asm("TMR1 equ 0Eh");
+[; <" TMR1 equ 0Eh ;# ">
+"461
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 461: __asm("TMR1L equ 0Eh");
+[; <" TMR1L equ 0Eh ;# ">
+"481
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 481: __asm("TMR1H equ 0Fh");
+[; <" TMR1H equ 0Fh ;# ">
+"501
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 501: __asm("T1CON equ 010h");
+[; <" T1CON equ 010h ;# ">
+"566
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 566: __asm("CMCON equ 019h");
+[; <" CMCON equ 019h ;# ">
+"625
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 625: __asm("ADRESH equ 01Eh");
+[; <" ADRESH equ 01Eh ;# ">
+"645
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 645: __asm("ADCON0 equ 01Fh");
+[; <" ADCON0 equ 01Fh ;# ">
+"729
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 729: __asm("OPTION_REG equ 081h");
+[; <" OPTION_REG equ 081h ;# ">
+"799
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 799: __asm("TRISIO equ 085h");
+[; <" TRISIO equ 085h ;# ">
+"849
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 849: __asm("PIE1 equ 08Ch");
+[; <" PIE1 equ 08Ch ;# ">
+"897
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 897: __asm("PCON equ 08Eh");
+[; <" PCON equ 08Eh ;# ">
+"931
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 931: __asm("OSCCAL equ 090h");
+[; <" OSCCAL equ 090h ;# ">
+"991
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 991: __asm("WPU equ 095h");
+[; <" WPU equ 095h ;# ">
+"1036
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1036: __asm("IOC equ 096h");
+[; <" IOC equ 096h ;# ">
+"1041
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1041: __asm("IOCB equ 096h");
+[; <" IOCB equ 096h ;# ">
+"1210
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1210: __asm("VRCON equ 099h");
+[; <" VRCON equ 099h ;# ">
+"1270
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1270: __asm("EEDATA equ 09Ah");
+[; <" EEDATA equ 09Ah ;# ">
+"1275
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1275: __asm("EEDAT equ 09Ah");
+[; <" EEDAT equ 09Ah ;# ">
+"1308
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1308: __asm("EEADR equ 09Bh");
+[; <" EEADR equ 09Bh ;# ">
+"1328
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1328: __asm("EECON1 equ 09Ch");
+[; <" EECON1 equ 09Ch ;# ">
+"1366
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1366: __asm("EECON2 equ 09Dh");
+[; <" EECON2 equ 09Dh ;# ">
+"1386
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1386: __asm("ADRESL equ 09Eh");
+[; <" ADRESL equ 09Eh ;# ">
+"1406
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1406: __asm("ANSEL equ 09Fh");
+[; <" ANSEL equ 09Fh ;# ">
+"20 src/gpio.c
+[; ;src/gpio.c: 20: static uint8 Gpio_State ;
+[v _Gpio_State `uc ~T0 @X0 1 s ]
+"24
+[; ;src/gpio.c: 24: uint8 Gpio_Init(const Gpio_ConfigType* ConfigPtr) {
+[v _Gpio_Init `(uc ~T0 @X0 1 ef1`*CS85 ]
+{
+[e :U _Gpio_Init ]
+[v _ConfigPtr `*CS85 ~T0 @X0 1 r1 ]
+[f ]
+"25
+[; ;src/gpio.c: 25:     if (ConfigPtr == ((void*)0)) {
+[e $ ! == _ConfigPtr -> -> -> 0 `i `*v `*CS85 87  ]
+{
+"26
+[; ;src/gpio.c: 26:         return (Std_ReturnType)1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+"27
+[; ;src/gpio.c: 27:     }
+}
+[e :U 87 ]
+"30
+[; ;src/gpio.c: 30:     for (uint8 i = 0; i < 6; i++) {
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 6 `i 88  ]
+[e $U 89  ]
+[e :U 88 ]
+{
+"31
+[; ;src/gpio.c: 31:         Gpio_PinFunctionEnum function = ConfigPtr[i].pinFunction;
+[v _function `E726 ~T0 @X0 1 a ]
+[e = _function . *U + _ConfigPtr * -> _i `ux -> -> # *U _ConfigPtr `ui `ux 0 ]
+"32
+[; ;src/gpio.c: 32:         uint8 pinNumber = ConfigPtr[i].pinNumber;
+[v _pinNumber `uc ~T0 @X0 1 a ]
+[e = _pinNumber . *U + _ConfigPtr * -> _i `ux -> -> # *U _ConfigPtr `ui `ux 1 ]
+"36
+[; ;src/gpio.c: 36:         switch (function) {
+[e $U 92  ]
+{
+"38
+[; ;src/gpio.c: 38:             case GPIO_PIN0_AN0:
+[e :U 93 ]
+"39
+[; ;src/gpio.c: 39:                 if (pinNumber != 0) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 0 `i 94  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 94 ]
+"40
+[; ;src/gpio.c: 40:                 ANSEL |= (1 << 0);
+[e =| _ANSEL -> << -> 1 `i -> 0 `i `Vuc ]
+"41
+[; ;src/gpio.c: 41:                 TRISIO |= (1 << 0);
+[e =| _TRISIO -> << -> 1 `i -> 0 `i `Vuc ]
+"42
+[; ;src/gpio.c: 42:                 break;
+[e $U 91  ]
+"43
+[; ;src/gpio.c: 43:             case GPIO_PIN0_CIN_PLUS:
+[e :U 95 ]
+"44
+[; ;src/gpio.c: 44:                 if (pinNumber != 0) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 0 `i 96  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 96 ]
+"45
+[; ;src/gpio.c: 45:                 CMCON &= ~(1 << 0);
+[e =& _CMCON -> ~ << -> 1 `i -> 0 `i `Vuc ]
+"46
+[; ;src/gpio.c: 46:                 break;
+[e $U 91  ]
+"47
+[; ;src/gpio.c: 47:             case GPIO_PIN0_ICSPDAT:
+[e :U 97 ]
+"48
+[; ;src/gpio.c: 48:                 if (pinNumber != 0) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 0 `i 98  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 98 ]
+"50
+[; ;src/gpio.c: 50:                 break;
+[e $U 91  ]
+"51
+[; ;src/gpio.c: 51:             case GPIO_PIN0_GPIO:
+[e :U 99 ]
+"52
+[; ;src/gpio.c: 52:                 if (pinNumber != 0) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 0 `i 100  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 100 ]
+"53
+[; ;src/gpio.c: 53:                 ANSEL &= ~(1 << 0);
+[e =& _ANSEL -> ~ << -> 1 `i -> 0 `i `Vuc ]
+"54
+[; ;src/gpio.c: 54:                 break;
+[e $U 91  ]
+"57
+[; ;src/gpio.c: 57:             case GPIO_PIN1_AN1:
+[e :U 101 ]
+"58
+[; ;src/gpio.c: 58:                 if (pinNumber != 1) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 1 `i 102  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 102 ]
+"59
+[; ;src/gpio.c: 59:                 ANSEL |= (1 << 1);
+[e =| _ANSEL -> << -> 1 `i -> 1 `i `Vuc ]
+"60
+[; ;src/gpio.c: 60:                 TRISIO |= (1 << 1);
+[e =| _TRISIO -> << -> 1 `i -> 1 `i `Vuc ]
+"61
+[; ;src/gpio.c: 61:                 break;
+[e $U 91  ]
+"62
+[; ;src/gpio.c: 62:             case GPIO_PIN1_CIN_MINUS:
+[e :U 103 ]
+"63
+[; ;src/gpio.c: 63:                 if (pinNumber != 1) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 1 `i 104  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 104 ]
+"64
+[; ;src/gpio.c: 64:                 CMCON &= ~(1 << 1);
+[e =& _CMCON -> ~ << -> 1 `i -> 1 `i `Vuc ]
+"65
+[; ;src/gpio.c: 65:                 break;
+[e $U 91  ]
+"66
+[; ;src/gpio.c: 66:             case GPIO_PIN1_VREF:
+[e :U 105 ]
+"67
+[; ;src/gpio.c: 67:                 if (pinNumber != 1) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 1 `i 106  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 106 ]
+"68
+[; ;src/gpio.c: 68:                 VRCON |= (1 << 1);
+[e =| _VRCON -> << -> 1 `i -> 1 `i `Vuc ]
+"69
+[; ;src/gpio.c: 69:                 break;
+[e $U 91  ]
+"70
+[; ;src/gpio.c: 70:             case GPIO_PIN1_ICSPCLK:
+[e :U 107 ]
+"71
+[; ;src/gpio.c: 71:                 if (pinNumber != 1) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 1 `i 108  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 108 ]
+"73
+[; ;src/gpio.c: 73:                 break;
+[e $U 91  ]
+"74
+[; ;src/gpio.c: 74:             case GPIO_PIN1_GPIO:
+[e :U 109 ]
+"75
+[; ;src/gpio.c: 75:                 if (pinNumber != 1) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 1 `i 110  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 110 ]
+"76
+[; ;src/gpio.c: 76:                 ANSEL &= ~(1 << 1);
+[e =& _ANSEL -> ~ << -> 1 `i -> 1 `i `Vuc ]
+"77
+[; ;src/gpio.c: 77:                 break;
+[e $U 91  ]
+"80
+[; ;src/gpio.c: 80:             case GPIO_PIN2_AN2:
+[e :U 111 ]
+"81
+[; ;src/gpio.c: 81:                 if (pinNumber != 2) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 2 `i 112  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 112 ]
+"82
+[; ;src/gpio.c: 82:                 ANSEL |= (1 << 2);
+[e =| _ANSEL -> << -> 1 `i -> 2 `i `Vuc ]
+"83
+[; ;src/gpio.c: 83:                 TRISIO |= (1 << 2);
+[e =| _TRISIO -> << -> 1 `i -> 2 `i `Vuc ]
+"84
+[; ;src/gpio.c: 84:                 break;
+[e $U 91  ]
+"85
+[; ;src/gpio.c: 85:             case GPIO_PIN2_T0CKI:
+[e :U 113 ]
+"86
+[; ;src/gpio.c: 86:                 if (pinNumber != 2) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 2 `i 114  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 114 ]
+"87
+[; ;src/gpio.c: 87:                 OPTION_REG &= ~(1 << 5);
+[e =& _OPTION_REG -> ~ << -> 1 `i -> 5 `i `Vuc ]
+"88
+[; ;src/gpio.c: 88:                 break;
+[e $U 91  ]
+"89
+[; ;src/gpio.c: 89:             case GPIO_PIN2_INT:
+[e :U 115 ]
+"90
+[; ;src/gpio.c: 90:                 if (pinNumber != 2) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 2 `i 116  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 116 ]
+"91
+[; ;src/gpio.c: 91:                 OPTION_REG &= ~(1 << 6);
+[e =& _OPTION_REG -> ~ << -> 1 `i -> 6 `i `Vuc ]
+"92
+[; ;src/gpio.c: 92:                 break;
+[e $U 91  ]
+"93
+[; ;src/gpio.c: 93:             case GPIO_PIN2_COUT:
+[e :U 117 ]
+"94
+[; ;src/gpio.c: 94:                 if (pinNumber != 2) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 2 `i 118  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 118 ]
+"95
+[; ;src/gpio.c: 95:                 CMCON |= (1 << 6);
+[e =| _CMCON -> << -> 1 `i -> 6 `i `Vuc ]
+"96
+[; ;src/gpio.c: 96:                 break;
+[e $U 91  ]
+"97
+[; ;src/gpio.c: 97:             case GPIO_PIN2_GPIO:
+[e :U 119 ]
+"98
+[; ;src/gpio.c: 98:                 if (pinNumber != 2) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 2 `i 120  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 120 ]
+"99
+[; ;src/gpio.c: 99:                 ANSEL &= ~(1 << 2);
+[e =& _ANSEL -> ~ << -> 1 `i -> 2 `i `Vuc ]
+"100
+[; ;src/gpio.c: 100:                 break;
+[e $U 91  ]
+"103
+[; ;src/gpio.c: 103:             case GPIO_PIN3_MCLR:
+[e :U 121 ]
+"104
+[; ;src/gpio.c: 104:                 if (pinNumber != 3) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 3 `i 122  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 122 ]
+"106
+[; ;src/gpio.c: 106:                 break;
+[e $U 91  ]
+"107
+[; ;src/gpio.c: 107:             case GPIO_PIN3_GPIO:
+[e :U 123 ]
+"108
+[; ;src/gpio.c: 108:                 if (pinNumber != 3) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 3 `i 124  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 124 ]
+"110
+[; ;src/gpio.c: 110:                 break;
+[e $U 91  ]
+"113
+[; ;src/gpio.c: 113:             case GPIO_PIN4_AN3:
+[e :U 125 ]
+"114
+[; ;src/gpio.c: 114:                 if (pinNumber != 4) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 4 `i 126  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 126 ]
+"115
+[; ;src/gpio.c: 115:                 ANSEL |= (1 << 3);
+[e =| _ANSEL -> << -> 1 `i -> 3 `i `Vuc ]
+"116
+[; ;src/gpio.c: 116:                 TRISIO |= (1 << 4);
+[e =| _TRISIO -> << -> 1 `i -> 4 `i `Vuc ]
+"117
+[; ;src/gpio.c: 117:                 break;
+[e $U 91  ]
+"118
+[; ;src/gpio.c: 118:             case GPIO_PIN4_T1G:
+[e :U 127 ]
+"119
+[; ;src/gpio.c: 119:                 if (pinNumber != 4) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 4 `i 128  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 128 ]
+"120
+[; ;src/gpio.c: 120:                 T1CON |= (1 << 7);
+[e =| _T1CON -> << -> 1 `i -> 7 `i `Vuc ]
+"121
+[; ;src/gpio.c: 121:                 break;
+[e $U 91  ]
+"122
+[; ;src/gpio.c: 122:             case GPIO_PIN4_OSC2:
+[e :U 129 ]
+"123
+[; ;src/gpio.c: 123:                 if (pinNumber != 4) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 4 `i 130  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 130 ]
+"125
+[; ;src/gpio.c: 125:                 break;
+[e $U 91  ]
+"126
+[; ;src/gpio.c: 126:             case GPIO_PIN4_GPIO:
+[e :U 131 ]
+"127
+[; ;src/gpio.c: 127:                 if (pinNumber != 4) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 4 `i 132  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 132 ]
+"128
+[; ;src/gpio.c: 128:                 ANSEL &= ~(1 << 3);
+[e =& _ANSEL -> ~ << -> 1 `i -> 3 `i `Vuc ]
+"129
+[; ;src/gpio.c: 129:                 break;
+[e $U 91  ]
+"132
+[; ;src/gpio.c: 132:             case GPIO_PIN5_T1CKI:
+[e :U 133 ]
+"133
+[; ;src/gpio.c: 133:                 if (pinNumber != 5) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 5 `i 134  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 134 ]
+"134
+[; ;src/gpio.c: 134:                 T1CON |= (1 << 1);
+[e =| _T1CON -> << -> 1 `i -> 1 `i `Vuc ]
+"135
+[; ;src/gpio.c: 135:                 break;
+[e $U 91  ]
+"136
+[; ;src/gpio.c: 136:             case GPIO_PIN5_OSC1:
+[e :U 135 ]
+"137
+[; ;src/gpio.c: 137:                 if (pinNumber != 5) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 5 `i 136  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 136 ]
+"139
+[; ;src/gpio.c: 139:                 break;
+[e $U 91  ]
+"140
+[; ;src/gpio.c: 140:             case GPIO_PIN5_GPIO:
+[e :U 137 ]
+"141
+[; ;src/gpio.c: 141:                 if (pinNumber != 5) return (Std_ReturnType)1;
+[e $ ! != -> _pinNumber `i -> 5 `i 138  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+[e :U 138 ]
+"143
+[; ;src/gpio.c: 143:                 break;
+[e $U 91  ]
+"145
+[; ;src/gpio.c: 145:             default:
+[e :U 139 ]
+"146
+[; ;src/gpio.c: 146:                 return (Std_ReturnType)1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+"147
+[; ;src/gpio.c: 147:         }
+}
+[e $U 91  ]
+[e :U 92 ]
+[e [\ -> _function `ui , $ -> . `E726 1 `ui 93
+ , $ -> . `E726 2 `ui 95
+ , $ -> . `E726 3 `ui 97
+ , $ -> . `E726 0 `ui 99
+ , $ -> . `E726 5 `ui 101
+ , $ -> . `E726 6 `ui 103
+ , $ -> . `E726 7 `ui 105
+ , $ -> . `E726 8 `ui 107
+ , $ -> . `E726 4 `ui 109
+ , $ -> . `E726 10 `ui 111
+ , $ -> . `E726 11 `ui 113
+ , $ -> . `E726 12 `ui 115
+ , $ -> . `E726 13 `ui 117
+ , $ -> . `E726 9 `ui 119
+ , $ -> . `E726 15 `ui 121
+ , $ -> . `E726 14 `ui 123
+ , $ -> . `E726 17 `ui 125
+ , $ -> . `E726 18 `ui 127
+ , $ -> . `E726 19 `ui 129
+ , $ -> . `E726 16 `ui 131
+ , $ -> . `E726 21 `ui 133
+ , $ -> . `E726 22 `ui 135
+ , $ -> . `E726 20 `ui 137
+ 139 ]
+[e :U 91 ]
+"149
+[; ;src/gpio.c: 149:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 6 `i 88  ]
+[e :U 89 ]
+}
+"151
+[; ;src/gpio.c: 151:     return (Std_ReturnType)0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 86  ]
+"152
+[; ;src/gpio.c: 152: }
+[e :UE 86 ]
+}
+"157
+[; ;src/gpio.c: 157: uint8 Gpio_Pin_Dio(Gpio_PinNumber pinNumber,
+[v _Gpio_Pin_Dio `(uc ~T0 @X0 1 ef4`E718`E714`E710`uc ]
+"161
+[; ;src/gpio.c: 161: {
+{
+[e :U _Gpio_Pin_Dio ]
+"157
+[; ;src/gpio.c: 157: uint8 Gpio_Pin_Dio(Gpio_PinNumber pinNumber,
+[v _pinNumber `E718 ~T0 @X0 1 r1 ]
+"158
+[; ;src/gpio.c: 158:                    Gpio_PinDirectionType direction,
+[v _direction `E714 ~T0 @X0 1 r2 ]
+"159
+[; ;src/gpio.c: 159:                    Gpio_PinStateType state,
+[v _state `E710 ~T0 @X0 1 r3 ]
+"160
+[; ;src/gpio.c: 160:                    uint8 pullType)
+[v _pullType `uc ~T0 @X0 1 r4 ]
+"161
+[; ;src/gpio.c: 161: {
+[f ]
+"162
+[; ;src/gpio.c: 162:     if (pinNumber >= 6) {
+[e $ ! >= -> _pinNumber `ui -> -> 6 `i `ui 141  ]
+{
+"163
+[; ;src/gpio.c: 163:         return (Std_ReturnType)1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 140  ]
+"164
+[; ;src/gpio.c: 164:     }
+}
+[e :U 141 ]
+"167
+[; ;src/gpio.c: 167:     if (direction == GPIO_DIR_INPUT) {
+[e $ ! == -> _direction `ui -> . `E714 0 `ui 142  ]
+{
+"168
+[; ;src/gpio.c: 168:         TRISIO |= (1 << pinNumber);
+[e =| _TRISIO -> << -> 1 `i -> _pinNumber `ui `Vuc ]
+"169
+[; ;src/gpio.c: 169:     } else if (direction == GPIO_DIR_OUTPUT) {
+}
+[e $U 143  ]
+[e :U 142 ]
+[e $ ! == -> _direction `ui -> . `E714 1 `ui 144  ]
+{
+"170
+[; ;src/gpio.c: 170:         TRISIO &= ~(1 << pinNumber);
+[e =& _TRISIO -> ~ << -> 1 `i -> _pinNumber `ui `Vuc ]
+"171
+[; ;src/gpio.c: 171:     } else {
+}
+[e $U 145  ]
+[e :U 144 ]
+{
+"172
+[; ;src/gpio.c: 172:         return (Std_ReturnType)1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 140  ]
+"173
+[; ;src/gpio.c: 173:     }
+}
+[e :U 145 ]
+[e :U 143 ]
+"176
+[; ;src/gpio.c: 176:     if (pullType == 1 && pinNumber != 3) {
+[e $ ! && == -> _pullType `i -> 1 `i != -> _pinNumber `ui -> -> 3 `i `ui 146  ]
+{
+"177
+[; ;src/gpio.c: 177:         OPTION_REG &= ~(1 << 7);
+[e =& _OPTION_REG -> ~ << -> 1 `i -> 7 `i `Vuc ]
+"178
+[; ;src/gpio.c: 178:         WPU |= (1 << pinNumber);
+[e =| _WPU -> << -> 1 `i -> _pinNumber `ui `Vuc ]
+"179
+[; ;src/gpio.c: 179:     } else if (pullType == 0) {
+}
+[e $U 147  ]
+[e :U 146 ]
+[e $ ! == -> _pullType `i -> 0 `i 148  ]
+{
+"180
+[; ;src/gpio.c: 180:         WPU &= ~(1 << pinNumber);
+[e =& _WPU -> ~ << -> 1 `i -> _pinNumber `ui `Vuc ]
+"181
+[; ;src/gpio.c: 181:     } else {
+}
+[e $U 149  ]
+[e :U 148 ]
+{
+"182
+[; ;src/gpio.c: 182:         return (Std_ReturnType)1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 140  ]
+"183
+[; ;src/gpio.c: 183:     }
+}
+[e :U 149 ]
+[e :U 147 ]
+"186
+[; ;src/gpio.c: 186:     if (direction == GPIO_DIR_OUTPUT) {
+[e $ ! == -> _direction `ui -> . `E714 1 `ui 150  ]
+{
+"187
+[; ;src/gpio.c: 187:         if (state == GPIO_PIN_HIGH) {
+[e $ ! == -> _state `ui -> . `E710 1 `ui 151  ]
+{
+"188
+[; ;src/gpio.c: 188:             GPIO |= (1 << pinNumber);
+[e =| _GPIO -> << -> 1 `i -> _pinNumber `ui `Vuc ]
+"189
+[; ;src/gpio.c: 189:         } else if (state == GPIO_PIN_LOW) {
+}
+[e $U 152  ]
+[e :U 151 ]
+[e $ ! == -> _state `ui -> . `E710 0 `ui 153  ]
+{
+"190
+[; ;src/gpio.c: 190:             GPIO &= ~(1 << pinNumber);
+[e =& _GPIO -> ~ << -> 1 `i -> _pinNumber `ui `Vuc ]
+"191
+[; ;src/gpio.c: 191:         } else {
+}
+[e $U 154  ]
+[e :U 153 ]
+{
+"192
+[; ;src/gpio.c: 192:             return (Std_ReturnType)1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 140  ]
+"193
+[; ;src/gpio.c: 193:         }
+}
+[e :U 154 ]
+[e :U 152 ]
+"194
+[; ;src/gpio.c: 194:     }
+}
+[e :U 150 ]
+"196
+[; ;src/gpio.c: 196:     return (Std_ReturnType)0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 140  ]
+"197
+[; ;src/gpio.c: 197: }
+[e :UE 140 ]
+}

@@ -1,0 +1,353 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"23 src/Dio.c
+[; ;src/Dio.c: 23: uint8 Dio_Init(const Dio_ConfigType* ConfigPtr) {
+[c E20 0 1 2 3 4 5 .. ]
+[n E20 . DIO_PIN_0 DIO_PIN_1 DIO_PIN_2 DIO_PIN_3 DIO_PIN_4 DIO_PIN_5  ]
+[c E15 0 1 2 .. ]
+[n E15 . DIO_DIR_INPUT DIO_DIR_OUTPUT DIO_NOT_APPLICABLE  ]
+[c E11 0 1 .. ]
+[n E11 . DIO_PIN_LOW DIO_PIN_HIGH  ]
+[c E28 0 1 .. ]
+[n E28 . DIO_PULL_NONE DIO_PULL_UP  ]
+"24 src/../include/../config/Dio_Cfg.h
+[; ;src/../include/../config/Dio_Cfg.h: 24: typedef struct {
+[s S1 `E20 1 `E15 1 `E11 1 `E28 1 ]
+[n S1 . pinNumber PinDirection StateType PullType ]
+"218 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 218: extern volatile unsigned char GPIO __attribute__((address(0x005)));
+[v _GPIO `Vuc ~T0 @X0 0 e@5 ]
+"1404
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1404: extern volatile unsigned char ANSEL __attribute__((address(0x09F)));
+[v _ANSEL `Vuc ~T0 @X0 0 e@159 ]
+"42 src/Dio.c
+[; ;src/Dio.c: 42:                 result = Gpio_Pin_Dio(
+[c E56 0 1 2 3 4 5 .. ]
+[n E56 . GPIO_PIN_0 GPIO_PIN_1 GPIO_PIN_2 GPIO_PIN_3 GPIO_PIN_4 GPIO_PIN_5  ]
+[c E52 0 1 .. ]
+[n E52 . GPIO_DIR_INPUT GPIO_DIR_OUTPUT  ]
+[c E48 0 1 .. ]
+[n E48 . GPIO_PIN_LOW GPIO_PIN_HIGH  ]
+"22 src/../include/gpio.h
+[; ;src/../include/gpio.h: 22: uint8 Gpio_Pin_Dio(Gpio_PinNumber pinNumber,
+[v _Gpio_Pin_Dio `(uc ~T0 @X0 0 ef4`E56`E52`E48`uc ]
+"54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 54: __asm("INDF equ 00h");
+[; <" INDF equ 00h ;# ">
+"74
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 74: __asm("TMR0 equ 01h");
+[; <" TMR0 equ 01h ;# ">
+"94
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 94: __asm("PCL equ 02h");
+[; <" PCL equ 02h ;# ">
+"114
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 114: __asm("STATUS equ 03h");
+[; <" STATUS equ 03h ;# ">
+"200
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 200: __asm("FSR equ 04h");
+[; <" FSR equ 04h ;# ">
+"220
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 220: __asm("GPIO equ 05h");
+[; <" GPIO equ 05h ;# ">
+"308
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 308: __asm("PCLATH equ 0Ah");
+[; <" PCLATH equ 0Ah ;# ">
+"328
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 328: __asm("INTCON equ 0Bh");
+[; <" INTCON equ 0Bh ;# ">
+"406
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 406: __asm("PIR1 equ 0Ch");
+[; <" PIR1 equ 0Ch ;# ">
+"454
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 454: __asm("TMR1 equ 0Eh");
+[; <" TMR1 equ 0Eh ;# ">
+"461
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 461: __asm("TMR1L equ 0Eh");
+[; <" TMR1L equ 0Eh ;# ">
+"481
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 481: __asm("TMR1H equ 0Fh");
+[; <" TMR1H equ 0Fh ;# ">
+"501
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 501: __asm("T1CON equ 010h");
+[; <" T1CON equ 010h ;# ">
+"566
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 566: __asm("CMCON equ 019h");
+[; <" CMCON equ 019h ;# ">
+"625
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 625: __asm("ADRESH equ 01Eh");
+[; <" ADRESH equ 01Eh ;# ">
+"645
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 645: __asm("ADCON0 equ 01Fh");
+[; <" ADCON0 equ 01Fh ;# ">
+"729
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 729: __asm("OPTION_REG equ 081h");
+[; <" OPTION_REG equ 081h ;# ">
+"799
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 799: __asm("TRISIO equ 085h");
+[; <" TRISIO equ 085h ;# ">
+"849
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 849: __asm("PIE1 equ 08Ch");
+[; <" PIE1 equ 08Ch ;# ">
+"897
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 897: __asm("PCON equ 08Eh");
+[; <" PCON equ 08Eh ;# ">
+"931
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 931: __asm("OSCCAL equ 090h");
+[; <" OSCCAL equ 090h ;# ">
+"991
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 991: __asm("WPU equ 095h");
+[; <" WPU equ 095h ;# ">
+"1036
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1036: __asm("IOC equ 096h");
+[; <" IOC equ 096h ;# ">
+"1041
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1041: __asm("IOCB equ 096h");
+[; <" IOCB equ 096h ;# ">
+"1210
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1210: __asm("VRCON equ 099h");
+[; <" VRCON equ 099h ;# ">
+"1270
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1270: __asm("EEDATA equ 09Ah");
+[; <" EEDATA equ 09Ah ;# ">
+"1275
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1275: __asm("EEDAT equ 09Ah");
+[; <" EEDAT equ 09Ah ;# ">
+"1308
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1308: __asm("EEADR equ 09Bh");
+[; <" EEADR equ 09Bh ;# ">
+"1328
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1328: __asm("EECON1 equ 09Ch");
+[; <" EECON1 equ 09Ch ;# ">
+"1366
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1366: __asm("EECON2 equ 09Dh");
+[; <" EECON2 equ 09Dh ;# ">
+"1386
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1386: __asm("ADRESL equ 09Eh");
+[; <" ADRESL equ 09Eh ;# ">
+"1406
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1406: __asm("ANSEL equ 09Fh");
+[; <" ANSEL equ 09Fh ;# ">
+"21 src/Dio.c
+[; ;src/Dio.c: 21: static uint8 Gpio_State ;
+[v _Gpio_State `uc ~T0 @X0 1 s ]
+"23
+[; ;src/Dio.c: 23: uint8 Dio_Init(const Dio_ConfigType* ConfigPtr) {
+[v _Dio_Init `(uc ~T0 @X0 1 ef1`*CS1 ]
+{
+[e :U _Dio_Init ]
+[v _ConfigPtr `*CS1 ~T0 @X0 1 r1 ]
+[f ]
+"24
+[; ;src/Dio.c: 24:     GPIO = 0x00;
+[e = _GPIO -> -> 0 `i `uc ]
+"25
+[; ;src/Dio.c: 25:     uint8 result = (Std_ReturnType)0;
+[v _result `uc ~T0 @X0 1 a ]
+[e = _result -> -> 0 `i `uc ]
+"26
+[; ;src/Dio.c: 26:     if (ConfigPtr == ((void*)0)) {
+[e $ ! == _ConfigPtr -> -> -> 0 `i `*v `*CS1 88  ]
+{
+"27
+[; ;src/Dio.c: 27:         return (Std_ReturnType)1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 87  ]
+"28
+[; ;src/Dio.c: 28:     }
+}
+[e :U 88 ]
+"31
+[; ;src/Dio.c: 31:     for (uint8 i = 0; i < 6; i++) {
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 6 `i 89  ]
+[e $U 90  ]
+[e :U 89 ]
+{
+"33
+[; ;src/Dio.c: 33:         if (ConfigPtr[i].PinDirection != DIO_NOT_APPLICABLE) {
+[e $ ! != -> . *U + _ConfigPtr * -> _i `ux -> -> # *U _ConfigPtr `ui `ux 1 `ui -> . `E15 2 `ui 92  ]
+{
+"35
+[; ;src/Dio.c: 35:             if (!(
+[e $ ! ! || || || && == -> . *U + _ConfigPtr * -> _i `ux -> -> # *U _ConfigPtr `ui `ux 0 `ui -> -> 0 `i `ui != & -> _ANSEL `i << -> 1 `i -> 0 `i -> 0 `i && == -> . *U + _ConfigPtr * -> _i `ux -> -> # *U _ConfigPtr `ui `ux 0 `ui -> -> 1 `i `ui != & -> _ANSEL `i << -> 1 `i -> 1 `i -> 0 `i && == -> . *U + _ConfigPtr * -> _i `ux -> -> # *U _ConfigPtr `ui `ux 0 `ui -> -> 2 `i `ui != & -> _ANSEL `i << -> 1 `i -> 2 `i -> 0 `i && == -> . *U + _ConfigPtr * -> _i `ux -> -> # *U _ConfigPtr `ui `ux 0 `ui -> -> 4 `i `ui != & -> _ANSEL `i << -> 1 `i -> 3 `i -> 0 `i 93  ]
+"41
+[; ;src/Dio.c: 41:             {
+{
+"42
+[; ;src/Dio.c: 42:                 result = Gpio_Pin_Dio(
+[e = _result ( _Gpio_Pin_Dio (4 , , , -> . *U + _ConfigPtr * -> _i `ux -> -> # *U _ConfigPtr `ui `ux 0 `E56 -> . *U + _ConfigPtr * -> _i `ux -> -> # *U _ConfigPtr `ui `ux 1 `E52 -> . *U + _ConfigPtr * -> _i `ux -> -> # *U _ConfigPtr `ui `ux 2 `E48 -> . *U + _ConfigPtr * -> _i `ux -> -> # *U _ConfigPtr `ui `ux 3 `uc ]
+"48
+[; ;src/Dio.c: 48:             } else {
+}
+[e $U 94  ]
+[e :U 93 ]
+{
+"49
+[; ;src/Dio.c: 49:                 return (Std_ReturnType)1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 87  ]
+"50
+[; ;src/Dio.c: 50:             }
+}
+[e :U 94 ]
+"51
+[; ;src/Dio.c: 51:         }
+}
+[e :U 92 ]
+"52
+[; ;src/Dio.c: 52:         if (result != (Std_ReturnType)0) {
+[e $ ! != -> _result `i -> -> -> 0 `i `uc `i 95  ]
+{
+"53
+[; ;src/Dio.c: 53:             return (Std_ReturnType)1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 87  ]
+"54
+[; ;src/Dio.c: 54:         }
+}
+[e :U 95 ]
+"56
+[; ;src/Dio.c: 56:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 6 `i 89  ]
+[e :U 90 ]
+}
+"58
+[; ;src/Dio.c: 58:     return (Std_ReturnType)0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 87  ]
+"59
+[; ;src/Dio.c: 59: }
+[e :UE 87 ]
+}
+"62
+[; ;src/Dio.c: 62: Dio_PinState Dio_ReadPin(Dio_PinNumber pinNumber) {
+[v _Dio_ReadPin `(E11 ~T0 @X0 1 ef1`E20 ]
+{
+[e :U _Dio_ReadPin ]
+[v _pinNumber `E20 ~T0 @X0 1 r1 ]
+[f ]
+"63
+[; ;src/Dio.c: 63:         if (GPIO & (1 << pinNumber)) {
+[e $ ! != & -> _GPIO `i << -> 1 `i -> _pinNumber `ui -> 0 `i 97  ]
+{
+"64
+[; ;src/Dio.c: 64:             return DIO_PIN_HIGH;
+[e ) . `E11 1 ]
+[e $UE 96  ]
+"65
+[; ;src/Dio.c: 65:         } else {
+}
+[e $U 98  ]
+[e :U 97 ]
+{
+"66
+[; ;src/Dio.c: 66:             return DIO_PIN_LOW;
+[e ) . `E11 0 ]
+[e $UE 96  ]
+"67
+[; ;src/Dio.c: 67:         }
+}
+[e :U 98 ]
+"68
+[; ;src/Dio.c: 68: }
+[e :UE 96 ]
+}
+"73
+[; ;src/Dio.c: 73: uint8 Dio_WritePin(Dio_PinNumber pinNumber, Dio_PinState state) {
+[v _Dio_WritePin `(uc ~T0 @X0 1 ef2`E20`E11 ]
+{
+[e :U _Dio_WritePin ]
+[v _pinNumber `E20 ~T0 @X0 1 r1 ]
+[v _state `E11 ~T0 @X0 1 r2 ]
+[f ]
+"74
+[; ;src/Dio.c: 74:     if (pinNumber <6 ){
+[e $ ! < -> _pinNumber `ui -> -> 6 `i `ui 100  ]
+{
+"75
+[; ;src/Dio.c: 75:     if (state == DIO_PIN_HIGH) {
+[e $ ! == -> _state `ui -> . `E11 1 `ui 101  ]
+{
+"76
+[; ;src/Dio.c: 76:         Gpio_State |= (1 << pinNumber);
+[e =| _Gpio_State -> << -> 1 `i -> _pinNumber `ui `uc ]
+"77
+[; ;src/Dio.c: 77:     } else {
+}
+[e $U 102  ]
+[e :U 101 ]
+{
+"78
+[; ;src/Dio.c: 78:         Gpio_State &= ~(1 << pinNumber);
+[e =& _Gpio_State -> ~ << -> 1 `i -> _pinNumber `ui `uc ]
+"79
+[; ;src/Dio.c: 79:     }
+}
+[e :U 102 ]
+"80
+[; ;src/Dio.c: 80:     GPIO = Gpio_State ;
+[e = _GPIO _Gpio_State ]
+"81
+[; ;src/Dio.c: 81:           return (Std_ReturnType)0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 99  ]
+"82
+[; ;src/Dio.c: 82:     } else {
+}
+[e $U 103  ]
+[e :U 100 ]
+{
+"84
+[; ;src/Dio.c: 84:       return (Std_ReturnType)1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 99  ]
+"85
+[; ;src/Dio.c: 85:     }
+}
+[e :U 103 ]
+"86
+[; ;src/Dio.c: 86: }
+[e :UE 99 ]
+}
+"87
+[; ;src/Dio.c: 87: uint8 Dio_TogglePin(Dio_PinNumber pinNumber) {
+[v _Dio_TogglePin `(uc ~T0 @X0 1 ef1`E20 ]
+{
+[e :U _Dio_TogglePin ]
+[v _pinNumber `E20 ~T0 @X0 1 r1 ]
+[f ]
+"88
+[; ;src/Dio.c: 88:     if (pinNumber < 6) {
+[e $ ! < -> _pinNumber `ui -> -> 6 `i `ui 105  ]
+{
+"90
+[; ;src/Dio.c: 90:         Gpio_State ^= (1 << pinNumber);
+[e =^ _Gpio_State -> << -> 1 `i -> _pinNumber `ui `uc ]
+"91
+[; ;src/Dio.c: 91:         GPIO = Gpio_State;
+[e = _GPIO _Gpio_State ]
+"92
+[; ;src/Dio.c: 92:         return (Std_ReturnType)0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 104  ]
+"93
+[; ;src/Dio.c: 93:     } else {
+}
+[e $U 106  ]
+[e :U 105 ]
+{
+"94
+[; ;src/Dio.c: 94:         return (Std_ReturnType)1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 104  ]
+"95
+[; ;src/Dio.c: 95:     }
+}
+[e :U 106 ]
+"96
+[; ;src/Dio.c: 96: }
+[e :UE 104 ]
+}

@@ -1,0 +1,106 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"20 config/Dio_Lcfg.c
+[c E19 0 1 2 3 4 5 .. ]
+[n E19 . DIO_PIN_0 DIO_PIN_1 DIO_PIN_2 DIO_PIN_3 DIO_PIN_4 DIO_PIN_5  ]
+[c E14 0 1 2 .. ]
+[n E14 . DIO_DIR_INPUT DIO_DIR_OUTPUT DIO_NOT_APPLICABLE  ]
+[c E10 0 1 .. ]
+[n E10 . DIO_PIN_LOW DIO_PIN_HIGH  ]
+[c E27 0 1 .. ]
+[n E27 . DIO_PULL_NONE DIO_PULL_UP  ]
+"24 config/Dio_Cfg.h
+[s S1 `E19 1 `E14 1 `E10 1 `E27 1 ]
+[n S1 . pinNumber PinDirection StateType PullType ]
+[; ;Std_Types.h: 15: typedef unsigned char uint8;
+[; ;Std_Types.h: 16: typedef signed char sint8;
+[; ;Std_Types.h: 17: typedef unsigned short uint16;
+[; ;Std_Types.h: 18: typedef signed short sint16;
+[; ;Std_Types.h: 19: typedef unsigned long uint32;
+[; ;Std_Types.h: 20: typedef signed long sint32;
+[; ;Std_Types.h: 21: typedef float float32;
+[; ;Std_Types.h: 22: typedef double float64;
+[; ;Std_Types.h: 25: typedef uint8 Std_ReturnType;
+[; ;Dio_Types.h: 21: typedef enum {
+[; ;Dio_Types.h: 22: DIO_PIN_LOW = 0,
+[; ;Dio_Types.h: 23: DIO_PIN_HIGH
+[; ;Dio_Types.h: 24: } Dio_PinState;
+[; ;Dio_Types.h: 27: typedef enum {
+[; ;Dio_Types.h: 28: DIO_DIR_INPUT = 0,
+[; ;Dio_Types.h: 29: DIO_DIR_OUTPUT,
+[; ;Dio_Types.h: 30: DIO_NOT_APPLICABLE
+[; ;Dio_Types.h: 31: } Dio_PinDirectionType;
+[; ;Dio_Types.h: 33: typedef enum {
+[; ;Dio_Types.h: 34: DIO_PIN_0 = 0,
+[; ;Dio_Types.h: 35: DIO_PIN_1,
+[; ;Dio_Types.h: 36: DIO_PIN_2,
+[; ;Dio_Types.h: 37: DIO_PIN_3,
+[; ;Dio_Types.h: 38: DIO_PIN_4,
+[; ;Dio_Types.h: 39: DIO_PIN_5
+[; ;Dio_Types.h: 40: } Dio_PinNumber;
+[; ;Dio_Types.h: 43: typedef enum {
+[; ;Dio_Types.h: 44: DIO_PULL_NONE = 0,
+[; ;Dio_Types.h: 45: DIO_PULL_UP,
+[; ;Dio_Types.h: 46: } Dio_PullType;
+[; ;Dio_Cfg.h: 24: typedef struct {
+[; ;Dio_Cfg.h: 25: Dio_PinNumber pinNumber;
+[; ;Dio_Cfg.h: 26: Dio_PinDirectionType PinDirection;
+[; ;Dio_Cfg.h: 27: Dio_PinState StateType;
+[; ;Dio_Cfg.h: 28: Dio_PullType PullType;
+[; ;Dio_Cfg.h: 29: } Dio_ConfigType;
+[; ;Dio_Cfg.h: 32: extern const Dio_ConfigType Dio_Configurations[6];
+"20 config/Dio_Lcfg.c
+[v _Dio_Configurations `CS1 ~T0 @X0 -> 6 `i e ]
+[i _Dio_Configurations
+:U ..
+:U ..
+"21
+. `E19 0
+. `E14 1
+. `E10 0
+. `E27 0
+..
+:U ..
+"22
+. `E19 1
+. `E14 1
+. `E10 0
+. `E27 0
+..
+:U ..
+"23
+. `E19 2
+. `E14 2
+. `E10 0
+. `E27 0
+..
+:U ..
+"24
+. `E19 3
+. `E14 0
+. `E10 0
+. `E27 0
+..
+:U ..
+"25
+. `E19 4
+. `E14 0
+. `E10 0
+. `E27 0
+..
+:U ..
+"26
+. `E19 5
+. `E14 0
+. `E10 0
+. `E27 1
+..
+..
+]
+[; ;Dio_Lcfg.c: 20: const Dio_ConfigType Dio_Configurations[6] = {
+[; ;Dio_Lcfg.c: 21: {DIO_PIN_0, DIO_DIR_OUTPUT , DIO_PIN_LOW,DIO_PULL_NONE},
+[; ;Dio_Lcfg.c: 22: {DIO_PIN_1, DIO_DIR_OUTPUT , DIO_PIN_LOW,DIO_PULL_NONE},
+[; ;Dio_Lcfg.c: 23: {DIO_PIN_2, DIO_NOT_APPLICABLE, DIO_PIN_LOW,DIO_PULL_NONE},
+[; ;Dio_Lcfg.c: 24: {DIO_PIN_3, DIO_DIR_INPUT , DIO_PIN_LOW,DIO_PULL_NONE},
+[; ;Dio_Lcfg.c: 25: {DIO_PIN_4, DIO_DIR_INPUT , DIO_PIN_LOW,DIO_PULL_NONE},
+[; ;Dio_Lcfg.c: 26: {DIO_PIN_5, DIO_DIR_INPUT , DIO_PIN_LOW,DIO_PULL_UP }
+[; ;Dio_Lcfg.c: 27: };

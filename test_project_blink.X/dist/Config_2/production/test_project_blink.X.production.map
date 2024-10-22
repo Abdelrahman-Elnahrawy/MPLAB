@@ -1,0 +1,262 @@
+Microchip MPLAB XC8 Compiler V2.50
+
+Linker command line:
+
+-W-3 \
+  --edf=C:\Program Files\Microchip\xc8\v2.50\pic\dat\20240725155939_en.msgs \
+  -cn -h+dist/Config_2/production\test_project_blink.X.production.sym \
+  --cmf=dist/Config_2/production\test_project_blink.X.production.cmf -z -w9 \
+  --disl=596:off --norlf -Q12F675 \
+  -oC:\Users\Family\AppData\Local\Temp\xcAsmas.\driver_tmp_3.o \
+  --defsym=__MPLAB_BUILD=1 \
+  -Mdist/Config_2/production/test_project_blink.X.production.map \
+  --md=C:\Users\Family\AppData\Local\Temp\xcAsmas.\driver_tmp_0.dat -E1 \
+  -ver=XC8 Compiler --acfsm=1493 -ACODE=00h-03FFh -ASTRCODE=00h-03FFh \
+  -ASTRING=00h-0FFhx4 -ACONST=00h-0FFhx4 -AENTRY=00h-0FFhx4 \
+  -ABANK0=020h-05Dh -ARAM=020h-05Dh -AABS1=020h-05Fh -ACOMMON=05Eh-05Fh \
+  -ASFR0=00h-01Fh -ASFR1=080h-0DDh -ACONFIG=02007h-02007h -DCONFIG=2 \
+  -AIDLOC=02000h-02003h -DIDLOC=2 -AEEDATA=00h-07Fh/02100h \
+  -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
+  -DENTRY=2 -preset_vec=00h,intentry,sivt,init,end_init -ppowerup=CODE \
+  -pcinit=CODE -pfunctab=ENTRY -posccal=03FFh -k \
+  C:\Users\Family\AppData\Local\Temp\xcAsmas.\driver_tmp_12.o \
+  dist/Config_2/production\test_project_blink.X.production.o 
+
+Object code version is 3.11
+
+Machine type is 12F675
+
+
+
+                Name                               Link     Load   Length Selector   Space Scale
+C:\Users\Family\AppData\Local\Temp\xcAsmas.\driver_tmp_12.o
+                end_init                              0        0        2        0       0
+                config                             2007     2007        1        0       4
+dist/Config_2/production\test_project_blink.X.production.o
+                cinit                               3FA      3FA        6      7F4       0
+                config                             2007     2007        1        0       4
+                text4                               2C5      2C5       88      58A       0
+                text3                               23E      23E       29      47C       0
+                text2                               34D      34D       AD      69A       0
+                text1                               272      272        4      47C       0
+                maintext                            267      267        B      47C       0
+                cstackBANK0                          20       20        8       20       1
+                bssBANK0                             28       28        3       20       1
+                stringtext                          200      200       3E        4       0
+
+TOTAL           Name                               Link     Load   Length     Space
+        CLASS   CODE           
+                end_init                              0        0        2         0
+                cinit                               3FA      3FA        6         0
+                text4                               2C5      2C5       88         0
+                text3                               23E      23E       29         0
+                text2                               34D      34D       AD         0
+                text1                               272      272        4         0
+                maintext                            267      267        B         0
+
+        CLASS   STRCODE        
+                stringtext                          200      200       3E         0
+
+        CLASS   STRING         
+
+        CLASS   CONST          
+
+        CLASS   ENTRY          
+
+        CLASS   BANK0          
+                cstackBANK0                          20       20        8         1
+                bssBANK0                             28       28        3         1
+
+        CLASS   RAM            
+
+        CLASS   ABS1           
+                abs_s1                               5E       5E        2         1
+
+        CLASS   COMMON         
+
+        CLASS   SFR0           
+
+        CLASS   SFR1           
+
+        CLASS   CONFIG         
+                config                             2007     2007        1         4
+
+        CLASS   IDLOC          
+
+        CLASS   EEDATA         
+
+        CLASS   BANK1          
+
+        CLASS   HEAP           
+
+        CLASS   STACK          
+
+
+
+SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
+
+                reset_vec                      000000  000002  000002         0       0  CODE        2
+                cstackBANK0                    000020  00000B  00002B        20       1  BANK0       1
+                stringtext                     000200  00003E  00023E         4       0  STRCODE     2
+                text3                          00023E  000038  000276       47C       0  CODE        2
+                text4                          0002C5  000088  00034D       58A       0  CODE        2
+                text2                          00034D  0000AD  0003FA       69A       0  CODE        2
+                cinit                          0003FA  000006  000400       7F4       0  CODE        2
+
+
+UNUSED ADDRESS RANGES
+
+        Name                Unused          Largest block    Delta
+        BANK0            002B-005D             33           1
+        CODE             0002-01FF            1FE           2
+                         0276-02C4             4F
+        CONST            0002-01FF             FE           2
+                         0276-02C4             4F
+        EEDATA           2100-217F             80           2
+        ENTRY            0002-01FF             FE           2
+                         0276-02C4             4F
+        IDLOC            2000-2003              4           2
+        RAM              002B-005D             33           1
+        SFR0             0000-001F             20           1
+        SFR1             0080-00DD             5E           1
+        STRCODE          0002-01FF            1FE           2
+                         0276-02C4             4F
+        STRING           0002-01FF             FE           2
+                         0276-02C4             4F
+
+                                  Symbol Table
+
+_Spi_Configurations                               
+__H__absolute__                  __absolute__ 0000
+__Heeprom_data                   eeprom_data  0000
+__Hfunctab                       functab      0000
+__Hinit                          init         0000
+__Hintentry                      intentry     0000
+__Hpowerup                       powerup      0000
+__Hreset_vec                     reset_vec    0000
+__Hsivt                          sivt         0000
+__Hspace_3                       (abs)        0000
+__L__absolute__                  __absolute__ 0000
+__Lconfig                        config       0000
+__Leeprom_data                   eeprom_data  0000
+__Lend_init                      end_init     0000
+__Lfunctab                       functab      0000
+__Linit                          init         0000
+__Lintentry                      intentry     0000
+__Lpowerup                       powerup      0000
+__Lreset_vec                     reset_vec    0000
+__Lsivt                          sivt         0000
+__Lspace_0                       (abs)        0000
+__Lspace_1                       (abs)        0000
+__Lspace_2                       (abs)        0000
+__Lspace_3                       (abs)        0000
+__Lspace_4                       (abs)        0000
+__S3                             (abs)        0000
+___heap_hi                       (abs)        0000
+___heap_lo                       (abs)        0000
+___latbits                       (abs)        0000
+___stackhi                       (abs)        0000
+___stacklo                       (abs)        0000
+__pcstackCOMMON                  cstackCOMMON 0000
+__Hend_init                      end_init     0002
+_GPIO                            (abs)        0005
+Spi_Init@ConfigPtr               cstackBANK0  0020
+__pcstackBANK0                   cstackBANK0  0020
+Spi_Delay@clockSpeed             cstackBANK0  0022
+Spi_TransmitReceive@data         cstackBANK0  0024
+Spi_TransmitReceive@receivedData cstackBANK0  0025
+Spi_TransmitReceive@i            cstackBANK0  0026
+Spi_Transmit@data                cstackBANK0  0027
+__pbssBANK0                      bssBANK0     0028
+_receivedData                    bssBANK0     0028
+__S1                             (abs)        002B
+_TRISIO                          (abs)        0085
+__S0                             (abs)        0400
+__pstringtext                    stringtext   0200
+__stringtab                      stringtext   0200
+__end_of__stringtab              stringtext   0212
+__stringbase                     stringtext   0212
+__end_of_Dio_Configurations      stringtext   022A
+__end_of_Gpio_Configurations     stringtext   0236
+_Spi_Delay                       text3        023E
+__end_of_Adc_Configurations      stringtext   023E
+__ptext3                         text3        023E
+__end_of_Spi_Delay               text3        0267
+__pmaintext                      maintext     0267
+_main                            maintext     0267
+_Spi_Transmit                    text1        0272
+__end_of_main                    maintext     0272
+__ptext1                         text1        0272
+__end_of_Spi_Transmit            text1        0276
+_Spi_Init                        text4        02C5
+__ptext4                         text4        02C5
+_Spi_TransmitReceive             text2        034D
+__end_of_Spi_Init                text4        034D
+__ptext2                         text2        034D
+__Lcinit                         cinit        03FA
+__end_of_Spi_TransmitReceive     text2        03FA
+__initialization                 cinit        03FA
+__end_of__initialization         cinit        03FE
+__Habs1                          abs1         07FE
+__Hbank0                         bank0        07FE
+__Hbank1                         bank1        07FE
+__HbssBANK0                      bssBANK0     07FE
+__Hclrtext                       clrtext      07FE
+__Hcode                          code         07FE
+__Hcommon                        common       07FE
+__HcstackBANK0                   cstackBANK0  07FE
+__HcstackCOMMON                  cstackCOMMON 07FE
+__Hheap                          heap         07FE
+__Hmaintext                      maintext     07FE
+__Hosccal                        osccal       03FF
+__Hram                           ram          07FE
+__Hsfr0                          sfr0         07FE
+__Hsfr1                          sfr1         07FE
+__Hspace_0                       (abs)        07FE
+__Hspace_1                       (abs)        07FE
+__Hspace_2                       (abs)        07FE
+__Hstack                         stack        07FE
+__Hstrings                       strings      07FE
+__Hstringtext                    stringtext   07FE
+__Htext                          text         07FE
+__Labs1                          abs1         07FE
+__Lbank0                         bank0        07FE
+__Lbank1                         bank1        07FE
+__LbssBANK0                      bssBANK0     07FE
+__Lclrtext                       clrtext      07FE
+__Lcode                          code         07FE
+__Lcommon                        common       07FE
+__LcstackBANK0                   cstackBANK0  07FE
+__LcstackCOMMON                  cstackCOMMON 07FE
+__Lheap                          heap         07FE
+__Lmaintext                      maintext     07FE
+__Losccal                        osccal       03FF
+__Lram                           ram          07FE
+__Lsfr0                          sfr0         07FE
+__Lsfr1                          sfr1         07FE
+__Lstack                         stack        07FE
+__Lstrings                       strings      07FE
+__Lstringtext                    stringtext   07FE
+__Ltext                          text         07FE
+___int_sp                        stack        07FE
+___int_stack_hi                  stack        07FE
+___int_stack_lo                  stack        07FE
+___osccal_val                    osccal       03FF
+___sp                            stack        07FE
+___stack_hi                      stack        07FE
+___stack_lo                      stack        07FE
+__Hcinit                         cinit        0400
+__Hspace_4                       (abs)        400F
+__Hconfig                        config       2008
+btemp                            (abs)        005E
+intlevel0                        functab      0000
+intlevel1                        functab      0000
+intlevel2                        functab      0000
+intlevel3                        functab      0000
+intlevel4                        functab      0000
+intlevel5                        functab      0000
+end_of_initialization            cinit        03FE
+reset_vec                        reset_vec    0000
+start                            init         0000
+wtemp0                           (abs)        005E
+start_initialization             cinit        03FA

@@ -1,0 +1,1325 @@
+
+
+Microchip MPLAB XC8 Assembler V2.50 build 20240725155939 
+                                                                                               Wed Sep 18 22:59:23 2024
+
+Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og9 
+     1                           	processor	12F675
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	stringtext,global,reloc=256,class=STRCODE,space=0,delta=2,noexec
+     5                           	psect	cinit,global,class=CODE,space=0,merge=1,delta=2
+     6                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1,noexec
+     7                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     8                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+     9                           	psect	maintext,global,class=CODE,space=0,split=1,delta=2
+    10                           	psect	text1,local,class=CODE,space=0,merge=1,delta=2
+    11                           	psect	text2,local,class=CODE,space=0,merge=1,delta=2
+    12                           	psect	text3,local,class=CODE,space=0,merge=1,delta=2
+    13                           	psect	text4,local,class=CODE,space=0,merge=1,delta=2
+    14                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    15                           	dabs	1,0x5E,2
+    16  0000                     
+    17                           ; Generated 17/08/2023 GMT
+    18                           ; 
+    19                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    20                           ; All rights reserved.
+    21                           ; 
+    22                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    23                           ; 
+    24                           ; Redistribution and use in source and binary forms, with or without modification, are
+    25                           ; permitted provided that the following conditions are met:
+    26                           ; 
+    27                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    28                           ;        conditions and the following disclaimer.
+    29                           ; 
+    30                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    31                           ;        of conditions and the following disclaimer in the documentation and/or other
+    32                           ;        materials provided with the distribution. Publication is not required when
+    33                           ;        this file is used in an embedded application.
+    34                           ; 
+    35                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    36                           ;        software without specific prior written permission.
+    37                           ; 
+    38                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    39                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    40                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    41                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    42                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    43                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    44                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    45                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    46                           ; 
+    47                           ; 
+    48                           ; Code-generator required, PIC12F675 Definitions
+    49                           ; 
+    50                           ; SFR Addresses
+    51  0004                     fsr             equ	4
+    52  0004                     fsr0            equ	4
+    53  0000                     indf            equ	0
+    54  0000                     indf0           equ	0
+    55  0002                     pc              equ	2
+    56  0002                     pcl             equ	2
+    57  000A                     pclath          equ	10
+    58  0003                     status          equ	3
+    59  0000                     INDF            equ	0	;# 
+    60  0001                     TMR0            equ	1	;# 
+    61  0002                     PCL             equ	2	;# 
+    62  0003                     STATUS          equ	3	;# 
+    63  0004                     FSR             equ	4	;# 
+    64  0005                     GPIO            equ	5	;# 
+    65  000A                     PCLATH          equ	10	;# 
+    66  000B                     INTCON          equ	11	;# 
+    67  000C                     PIR1            equ	12	;# 
+    68  000E                     TMR1            equ	14	;# 
+    69  000E                     TMR1L           equ	14	;# 
+    70  000F                     TMR1H           equ	15	;# 
+    71  0010                     T1CON           equ	16	;# 
+    72  0019                     CMCON           equ	25	;# 
+    73  001E                     ADRESH          equ	30	;# 
+    74  001F                     ADCON0          equ	31	;# 
+    75  0081                     OPTION_REG      equ	129	;# 
+    76  0085                     TRISIO          equ	133	;# 
+    77  008C                     PIE1            equ	140	;# 
+    78  008E                     PCON            equ	142	;# 
+    79  0090                     OSCCAL          equ	144	;# 
+    80  0095                     WPU             equ	149	;# 
+    81  0096                     IOC             equ	150	;# 
+    82  0096                     IOCB            equ	150	;# 
+    83  0099                     VRCON           equ	153	;# 
+    84  009A                     EEDATA          equ	154	;# 
+    85  009A                     EEDAT           equ	154	;# 
+    86  009B                     EEADR           equ	155	;# 
+    87  009C                     EECON1          equ	156	;# 
+    88  009D                     EECON2          equ	157	;# 
+    89  009E                     ADRESL          equ	158	;# 
+    90  009F                     ANSEL           equ	159	;# 
+    91  0000                     INDF            equ	0	;# 
+    92  0001                     TMR0            equ	1	;# 
+    93  0002                     PCL             equ	2	;# 
+    94  0003                     STATUS          equ	3	;# 
+    95  0004                     FSR             equ	4	;# 
+    96  0005                     GPIO            equ	5	;# 
+    97  000A                     PCLATH          equ	10	;# 
+    98  000B                     INTCON          equ	11	;# 
+    99  000C                     PIR1            equ	12	;# 
+   100  000E                     TMR1            equ	14	;# 
+   101  000E                     TMR1L           equ	14	;# 
+   102  000F                     TMR1H           equ	15	;# 
+   103  0010                     T1CON           equ	16	;# 
+   104  0019                     CMCON           equ	25	;# 
+   105  001E                     ADRESH          equ	30	;# 
+   106  001F                     ADCON0          equ	31	;# 
+   107  0081                     OPTION_REG      equ	129	;# 
+   108  0085                     TRISIO          equ	133	;# 
+   109  008C                     PIE1            equ	140	;# 
+   110  008E                     PCON            equ	142	;# 
+   111  0090                     OSCCAL          equ	144	;# 
+   112  0095                     WPU             equ	149	;# 
+   113  0096                     IOC             equ	150	;# 
+   114  0096                     IOCB            equ	150	;# 
+   115  0099                     VRCON           equ	153	;# 
+   116  009A                     EEDATA          equ	154	;# 
+   117  009A                     EEDAT           equ	154	;# 
+   118  009B                     EEADR           equ	155	;# 
+   119  009C                     EECON1          equ	156	;# 
+   120  009D                     EECON2          equ	157	;# 
+   121  009E                     ADRESL          equ	158	;# 
+   122  009F                     ANSEL           equ	159	;# 
+   123  0000                     INDF            equ	0	;# 
+   124  0001                     TMR0            equ	1	;# 
+   125  0002                     PCL             equ	2	;# 
+   126  0003                     STATUS          equ	3	;# 
+   127  0004                     FSR             equ	4	;# 
+   128  0005                     GPIO            equ	5	;# 
+   129  000A                     PCLATH          equ	10	;# 
+   130  000B                     INTCON          equ	11	;# 
+   131  000C                     PIR1            equ	12	;# 
+   132  000E                     TMR1            equ	14	;# 
+   133  000E                     TMR1L           equ	14	;# 
+   134  000F                     TMR1H           equ	15	;# 
+   135  0010                     T1CON           equ	16	;# 
+   136  0019                     CMCON           equ	25	;# 
+   137  001E                     ADRESH          equ	30	;# 
+   138  001F                     ADCON0          equ	31	;# 
+   139  0081                     OPTION_REG      equ	129	;# 
+   140  0085                     TRISIO          equ	133	;# 
+   141  008C                     PIE1            equ	140	;# 
+   142  008E                     PCON            equ	142	;# 
+   143  0090                     OSCCAL          equ	144	;# 
+   144  0095                     WPU             equ	149	;# 
+   145  0096                     IOC             equ	150	;# 
+   146  0096                     IOCB            equ	150	;# 
+   147  0099                     VRCON           equ	153	;# 
+   148  009A                     EEDATA          equ	154	;# 
+   149  009A                     EEDAT           equ	154	;# 
+   150  009B                     EEADR           equ	155	;# 
+   151  009C                     EECON1          equ	156	;# 
+   152  009D                     EECON2          equ	157	;# 
+   153  009E                     ADRESL          equ	158	;# 
+   154  009F                     ANSEL           equ	159	;# 
+   155  0000                     INDF            equ	0	;# 
+   156  0001                     TMR0            equ	1	;# 
+   157  0002                     PCL             equ	2	;# 
+   158  0003                     STATUS          equ	3	;# 
+   159  0004                     FSR             equ	4	;# 
+   160  0005                     GPIO            equ	5	;# 
+   161  000A                     PCLATH          equ	10	;# 
+   162  000B                     INTCON          equ	11	;# 
+   163  000C                     PIR1            equ	12	;# 
+   164  000E                     TMR1            equ	14	;# 
+   165  000E                     TMR1L           equ	14	;# 
+   166  000F                     TMR1H           equ	15	;# 
+   167  0010                     T1CON           equ	16	;# 
+   168  0019                     CMCON           equ	25	;# 
+   169  001E                     ADRESH          equ	30	;# 
+   170  001F                     ADCON0          equ	31	;# 
+   171  0081                     OPTION_REG      equ	129	;# 
+   172  0085                     TRISIO          equ	133	;# 
+   173  008C                     PIE1            equ	140	;# 
+   174  008E                     PCON            equ	142	;# 
+   175  0090                     OSCCAL          equ	144	;# 
+   176  0095                     WPU             equ	149	;# 
+   177  0096                     IOC             equ	150	;# 
+   178  0096                     IOCB            equ	150	;# 
+   179  0099                     VRCON           equ	153	;# 
+   180  009A                     EEDATA          equ	154	;# 
+   181  009A                     EEDAT           equ	154	;# 
+   182  009B                     EEADR           equ	155	;# 
+   183  009C                     EECON1          equ	156	;# 
+   184  009D                     EECON2          equ	157	;# 
+   185  009E                     ADRESL          equ	158	;# 
+   186  009F                     ANSEL           equ	159	;# 
+   187  0000                     INDF            equ	0	;# 
+   188  0001                     TMR0            equ	1	;# 
+   189  0002                     PCL             equ	2	;# 
+   190  0003                     STATUS          equ	3	;# 
+   191  0004                     FSR             equ	4	;# 
+   192  0005                     GPIO            equ	5	;# 
+   193  000A                     PCLATH          equ	10	;# 
+   194  000B                     INTCON          equ	11	;# 
+   195  000C                     PIR1            equ	12	;# 
+   196  000E                     TMR1            equ	14	;# 
+   197  000E                     TMR1L           equ	14	;# 
+   198  000F                     TMR1H           equ	15	;# 
+   199  0010                     T1CON           equ	16	;# 
+   200  0019                     CMCON           equ	25	;# 
+   201  001E                     ADRESH          equ	30	;# 
+   202  001F                     ADCON0          equ	31	;# 
+   203  0081                     OPTION_REG      equ	129	;# 
+   204  0085                     TRISIO          equ	133	;# 
+   205  008C                     PIE1            equ	140	;# 
+   206  008E                     PCON            equ	142	;# 
+   207  0090                     OSCCAL          equ	144	;# 
+   208  0095                     WPU             equ	149	;# 
+   209  0096                     IOC             equ	150	;# 
+   210  0096                     IOCB            equ	150	;# 
+   211  0099                     VRCON           equ	153	;# 
+   212  009A                     EEDATA          equ	154	;# 
+   213  009A                     EEDAT           equ	154	;# 
+   214  009B                     EEADR           equ	155	;# 
+   215  009C                     EECON1          equ	156	;# 
+   216  009D                     EECON2          equ	157	;# 
+   217  009E                     ADRESL          equ	158	;# 
+   218  009F                     ANSEL           equ	159	;# 
+   219  0000                     INDF            equ	0	;# 
+   220  0001                     TMR0            equ	1	;# 
+   221  0002                     PCL             equ	2	;# 
+   222  0003                     STATUS          equ	3	;# 
+   223  0004                     FSR             equ	4	;# 
+   224  0005                     GPIO            equ	5	;# 
+   225  000A                     PCLATH          equ	10	;# 
+   226  000B                     INTCON          equ	11	;# 
+   227  000C                     PIR1            equ	12	;# 
+   228  000E                     TMR1            equ	14	;# 
+   229  000E                     TMR1L           equ	14	;# 
+   230  000F                     TMR1H           equ	15	;# 
+   231  0010                     T1CON           equ	16	;# 
+   232  0019                     CMCON           equ	25	;# 
+   233  001E                     ADRESH          equ	30	;# 
+   234  001F                     ADCON0          equ	31	;# 
+   235  0081                     OPTION_REG      equ	129	;# 
+   236  0085                     TRISIO          equ	133	;# 
+   237  008C                     PIE1            equ	140	;# 
+   238  008E                     PCON            equ	142	;# 
+   239  0090                     OSCCAL          equ	144	;# 
+   240  0095                     WPU             equ	149	;# 
+   241  0096                     IOC             equ	150	;# 
+   242  0096                     IOCB            equ	150	;# 
+   243  0099                     VRCON           equ	153	;# 
+   244  009A                     EEDATA          equ	154	;# 
+   245  009A                     EEDAT           equ	154	;# 
+   246  009B                     EEADR           equ	155	;# 
+   247  009C                     EECON1          equ	156	;# 
+   248  009D                     EECON2          equ	157	;# 
+   249  009E                     ADRESL          equ	158	;# 
+   250  009F                     ANSEL           equ	159	;# 
+   251  0000                     INDF            equ	0	;# 
+   252  0001                     TMR0            equ	1	;# 
+   253  0002                     PCL             equ	2	;# 
+   254  0003                     STATUS          equ	3	;# 
+   255  0004                     FSR             equ	4	;# 
+   256  0005                     GPIO            equ	5	;# 
+   257  000A                     PCLATH          equ	10	;# 
+   258  000B                     INTCON          equ	11	;# 
+   259  000C                     PIR1            equ	12	;# 
+   260  000E                     TMR1            equ	14	;# 
+   261  000E                     TMR1L           equ	14	;# 
+   262  000F                     TMR1H           equ	15	;# 
+   263  0010                     T1CON           equ	16	;# 
+   264  0019                     CMCON           equ	25	;# 
+   265  001E                     ADRESH          equ	30	;# 
+   266  001F                     ADCON0          equ	31	;# 
+   267  0081                     OPTION_REG      equ	129	;# 
+   268  0085                     TRISIO          equ	133	;# 
+   269  008C                     PIE1            equ	140	;# 
+   270  008E                     PCON            equ	142	;# 
+   271  0090                     OSCCAL          equ	144	;# 
+   272  0095                     WPU             equ	149	;# 
+   273  0096                     IOC             equ	150	;# 
+   274  0096                     IOCB            equ	150	;# 
+   275  0099                     VRCON           equ	153	;# 
+   276  009A                     EEDATA          equ	154	;# 
+   277  009A                     EEDAT           equ	154	;# 
+   278  009B                     EEADR           equ	155	;# 
+   279  009C                     EECON1          equ	156	;# 
+   280  009D                     EECON2          equ	157	;# 
+   281  009E                     ADRESL          equ	158	;# 
+   282  009F                     ANSEL           equ	159	;# 
+   283                           
+   284                           	psect	stringtext
+   285  0000'                    __pstringtext:
+   286  0000'                    stringtab:
+   287  0000'                    __stringtab:
+   288                           
+   289                           ;	String table - string pointers are 2 bytes each
+   290  0000' 1BDF               	btfsc	btemp+1,7
+   291  0001' 280A'              	ljmp	stringcode
+   292  0002' 1383               	bcf	3,7
+   293  0003' 185F               	btfsc	btemp+1,0
+   294  0004' 1783               	bsf	3,7
+   295  0005' 0800               	movf	0,w
+   296  0006' 0A84               	incf	4,f
+   297  0007' 1903               	skipnz
+   298  0008' 0ADF               	incf	btemp+1,f
+   299  0009' 0008               	return
+   300  000A'                    stringcode:
+   301  000A' 085F               	movf	btemp+1,w
+   302  000B' 397F               	andlw	127
+   303  000C' 008A               	movwf	10
+   304  000D' 0804               	movf	4,w
+   305  000E' 0A84               	incf	4,f
+   306  000F' 1903               	skipnz
+   307  0010' 0ADF               	incf	btemp+1,f
+   308  0011' 0082               	movwf	2
+   309  0012'                    __stringbase:
+   310  0012'                    __end_of__stringtab:
+   311  0012'                    _Dio_Configurations:
+   312  0012' 3400               	retlw	0
+   313  0013' 3401               	retlw	1
+   314  0014' 3400               	retlw	0
+   315  0015' 3400               	retlw	0
+   316  0016' 3401               	retlw	1
+   317  0017' 3401               	retlw	1
+   318  0018' 3400               	retlw	0
+   319  0019' 3400               	retlw	0
+   320  001A' 3402               	retlw	2
+   321  001B' 3402               	retlw	2
+   322  001C' 3400               	retlw	0
+   323  001D' 3400               	retlw	0
+   324  001E' 3403               	retlw	3
+   325  001F' 3400               	retlw	0
+   326  0020' 3400               	retlw	0
+   327  0021' 3400               	retlw	0
+   328  0022' 3404               	retlw	4
+   329  0023' 3400               	retlw	0
+   330  0024' 3400               	retlw	0
+   331  0025' 3400               	retlw	0
+   332  0026' 3405               	retlw	5
+   333  0027' 3400               	retlw	0
+   334  0028' 3400               	retlw	0
+   335  0029' 3401               	retlw	1
+   336  002A'                    __end_of_Dio_Configurations:
+   337  002A'                    _Gpio_Configurations:
+   338  002A' 3400               	retlw	0
+   339  002B' 3400               	retlw	0
+   340  002C' 3404               	retlw	4
+   341  002D' 3401               	retlw	1
+   342  002E' 340A               	retlw	10
+   343  002F' 3402               	retlw	2
+   344  0030' 340E               	retlw	14
+   345  0031' 3403               	retlw	3
+   346  0032' 3410               	retlw	16
+   347  0033' 3404               	retlw	4
+   348  0034' 3414               	retlw	20
+   349  0035' 3405               	retlw	5
+   350  0036'                    __end_of_Gpio_Configurations:
+   351  0036'                    _Adc_Configurations:
+   352  0036' 3400               	retlw	0
+   353  0037' 3400               	retlw	0
+   354  0038' 3401               	retlw	1
+   355  0039' 3400               	retlw	0
+   356  003A' 3402               	retlw	2
+   357  003B' 3400               	retlw	0
+   358  003C' 3403               	retlw	3
+   359  003D' 3400               	retlw	0
+   360  003E'                    __end_of_Adc_Configurations:
+   361  0005                     _GPIO           set	5
+   362  0085                     _TRISIO         set	133
+   363                           
+   364                           	psect	cinit
+   365  0000'                    start_initialization:	
+   366                           ; #config settings
+   367                           
+   368  0000'                    __initialization:
+   369                           
+   370                           ; Clear objects allocated to BANK0
+   371  0000' 1283               	bcf	3,5	;RP0=0, select bank0
+   372  0001' 0180'              	clrf	__pbssBANK0& (0+127)
+   373  0002' 0180'              	clrf	(__pbssBANK0+1)& (0+127)
+   374  0003' 0180'              	clrf	(__pbssBANK0+2)& (0+127)
+   375  0004'                    end_of_initialization:	
+   376                           ;End of C runtime variable initialization code
+   377                           
+   378  0004'                    __end_of__initialization:
+   379  0004' 0183               	clrf	3
+   380  0005' 2800'              	ljmp	_main	;jump to C main() function
+   381                           
+   382                           	psect	bssBANK0
+   383  0000'                    __pbssBANK0:
+   384  0000'                    _receivedData:
+   385  0000'                    	ds	1
+   386  0001'                    _Gpio_State@Dio$F200:
+   387  0001'                    	ds	1
+   388  0002'                    _Gpio_State:
+   389  0002'                    	ds	1
+   390                           
+   391                           	psect	cstackCOMMON
+   392  0000'                    __pcstackCOMMON:
+   393  0000'                    ??_Spi_Transmit:
+   394  0000'                    ??_main:	
+   395                           ; 1 bytes @ 0x0
+   396                           
+   397                           
+   398                           	psect	cstackBANK0
+   399  0000'                    __pcstackBANK0:	
+   400                           ; 1 bytes @ 0x0
+   401                           
+   402  0000'                    ?_Spi_Init:
+   403  0000'                    ?_Spi_TransmitReceive:	
+   404                           ; 1 bytes @ 0x0
+   405                           
+   406  0000'                    ?_Spi_Transmit:	
+   407                           ; 1 bytes @ 0x0
+   408                           
+   409  0000'                    ?_Spi_Delay:	
+   410                           ; 1 bytes @ 0x0
+   411                           
+   412  0000'                    ?_main:	
+   413                           ; 1 bytes @ 0x0
+   414                           
+   415  0000'                    Spi_Init@ConfigPtr:	
+   416                           ; 2 bytes @ 0x0
+   417                           
+   418  0000'                    ??_Spi_Delay:	
+   419                           ; 2 bytes @ 0x0
+   420                           
+   421                           
+   422                           ; 1 bytes @ 0x0
+   423  0000'                    	ds	2
+   424  0002'                    Spi_Delay@clockSpeed:
+   425  0002'                    ??_Spi_Init:	
+   426                           ; 1 bytes @ 0x2
+   427                           
+   428                           
+   429                           ; 1 bytes @ 0x2
+   430  0002'                    	ds	1
+   431  0003'                    ??_Spi_TransmitReceive:
+   432                           
+   433                           ; 1 bytes @ 0x3
+   434  0003'                    	ds	1
+   435  0004'                    Spi_TransmitReceive@data:
+   436                           
+   437                           ; 1 bytes @ 0x4
+   438  0004'                    	ds	1
+   439  0005'                    Spi_TransmitReceive@receivedData:
+   440                           
+   441                           ; 1 bytes @ 0x5
+   442  0005'                    	ds	1
+   443  0006'                    Spi_TransmitReceive@i:
+   444                           
+   445                           ; 1 bytes @ 0x6
+   446  0006'                    	ds	1
+   447  0007'                    Spi_Transmit@data:
+   448                           
+   449                           ; 1 bytes @ 0x7
+   450  0007'                    	ds	1
+   451                           
+   452                           	psect	maintext
+   453  0000'                    __pmaintext:	
+   454 ;;
+   455 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   456 ;;
+   457 ;; *************** function _main *****************
+   458 ;; Defined at:
+   459 ;;		line 27 in file "main.c"
+   460 ;; Parameters:    Size  Location     Type
+   461 ;;		None
+   462 ;; Auto vars:     Size  Location     Type
+   463 ;;		None
+   464 ;; Return value:  Size  Location     Type
+   465 ;;                  2  258[None  ] int 
+   466 ;; Registers used:
+   467 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   468 ;; Tracked objects:
+   469 ;;		On entry : B00/0
+   470 ;;		On exit  : 100/0
+   471 ;;		Unchanged: 0/0
+   472 ;; Data sizes:     COMMON   BANK0
+   473 ;;      Params:         0       0
+   474 ;;      Locals:         0       0
+   475 ;;      Temps:          0       0
+   476 ;;      Totals:         0       0
+   477 ;;Total ram usage:        0 bytes
+   478 ;; Hardware stack levels required when called: 3
+   479 ;; This function calls:
+   480 ;;		_Spi_Init
+   481 ;;		_Spi_Transmit
+   482 ;;		_Spi_TransmitReceive
+   483 ;; This function is called by:
+   484 ;;		Startup code after reset
+   485 ;; This function uses a non-reentrant model
+   486 ;;
+   487                           
+   488  0000'                    _main:	
+   489                           ;psect for function _main
+   490                           
+   491                           
+   492                           ;main.c: 32:     Spi_Init(&Spi_Configurations);
+   493                           
+   494                           ;incstack = 0
+   495                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   496  0000' 3000'              	movlw	low (_Spi_Configurations| (0+32768))
+   497  0001' 0080'              	movwf	Spi_Init@ConfigPtr
+   498  0002' 3000'              	movlw	high (_Spi_Configurations| (0+32768))
+   499  0003' 0081'              	movwf	Spi_Init@ConfigPtr+1
+   500  0004' 2000'              	fcall	_Spi_Init
+   501  0005'                    l259:	
+   502                           ;main.c: 35:     while (1){
+   503                           
+   504                           
+   505                           ;main.c: 38:         receivedData = Spi_TransmitReceive(0xFF);
+   506  0005' 30FF               	movlw	255
+   507  0006' 2000'              	fcall	_Spi_TransmitReceive
+   508  0007' 0080'              	movwf	_receivedData
+   509                           
+   510                           ;main.c: 39:         Spi_Transmit(receivedData);
+   511  0008' 0800'              	movf	_receivedData,w
+   512  0009' 2000'              	fcall	_Spi_Transmit
+   513  000A' 2805'              	goto	l259
+   514  000B'                    __end_of_main:
+   515                           
+   516                           	psect	text1
+   517  0000'                    __ptext1:	
+   518 ;; *************** function _Spi_Transmit *****************
+   519 ;; Defined at:
+   520 ;;		line 100 in file "src/Spi.c"
+   521 ;; Parameters:    Size  Location     Type
+   522 ;;  data            1    wreg     unsigned char 
+   523 ;; Auto vars:     Size  Location     Type
+   524 ;;  data            1    7[BANK0 ] unsigned char 
+   525 ;; Return value:  Size  Location     Type
+   526 ;;                  1    wreg      void 
+   527 ;; Registers used:
+   528 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   529 ;; Tracked objects:
+   530 ;;		On entry : 100/0
+   531 ;;		On exit  : 100/0
+   532 ;;		Unchanged: 0/0
+   533 ;; Data sizes:     COMMON   BANK0
+   534 ;;      Params:         0       0
+   535 ;;      Locals:         0       1
+   536 ;;      Temps:          0       0
+   537 ;;      Totals:         0       1
+   538 ;;Total ram usage:        1 bytes
+   539 ;; Hardware stack levels used: 1
+   540 ;; Hardware stack levels required when called: 2
+   541 ;; This function calls:
+   542 ;;		_Spi_TransmitReceive
+   543 ;; This function is called by:
+   544 ;;		_main
+   545 ;; This function uses a non-reentrant model
+   546 ;;
+   547                           
+   548  0000'                    _Spi_Transmit:	
+   549                           ;psect for function _Spi_Transmit
+   550                           
+   551                           
+   552                           ;incstack = 0
+   553                           ; Regs used in _Spi_Transmit: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   554                           ;Spi_Transmit@data stored from wreg
+   555  0000' 0087'              	movwf	Spi_Transmit@data
+   556                           
+   557                           ;src/Spi.c: 101:     Spi_TransmitReceive(data);
+   558  0001' 0807'              	movf	Spi_Transmit@data,w
+   559  0002' 2000'              	fcall	_Spi_TransmitReceive
+   560  0003' 0008               	return
+   561  0004'                    __end_of_Spi_Transmit:
+   562                           
+   563                           	psect	text2
+   564  0000'                    __ptext2:	
+   565 ;; *************** function _Spi_TransmitReceive *****************
+   566 ;; Defined at:
+   567 ;;		line 63 in file "src/Spi.c"
+   568 ;; Parameters:    Size  Location     Type
+   569 ;;  data            1    wreg     unsigned char 
+   570 ;; Auto vars:     Size  Location     Type
+   571 ;;  data            1    4[BANK0 ] unsigned char 
+   572 ;;  i               1    6[BANK0 ] unsigned char 
+   573 ;;  receivedData    1    5[BANK0 ] unsigned char 
+   574 ;; Return value:  Size  Location     Type
+   575 ;;                  1    wreg      unsigned char 
+   576 ;; Registers used:
+   577 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   578 ;; Tracked objects:
+   579 ;;		On entry : 100/0
+   580 ;;		On exit  : 100/0
+   581 ;;		Unchanged: 0/0
+   582 ;; Data sizes:     COMMON   BANK0
+   583 ;;      Params:         0       0
+   584 ;;      Locals:         0       3
+   585 ;;      Temps:          0       1
+   586 ;;      Totals:         0       4
+   587 ;;Total ram usage:        4 bytes
+   588 ;; Hardware stack levels used: 1
+   589 ;; Hardware stack levels required when called: 1
+   590 ;; This function calls:
+   591 ;;		_Spi_Delay
+   592 ;; This function is called by:
+   593 ;;		_main
+   594 ;;		_Spi_Transmit
+   595 ;; This function uses a non-reentrant model
+   596 ;;
+   597                           
+   598  0000'                    _Spi_TransmitReceive:	
+   599                           ;psect for function _Spi_TransmitReceive
+   600                           
+   601                           
+   602                           ;incstack = 0
+   603                           ; Regs used in _Spi_TransmitReceive: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack
+      +                          ]
+   604                           ;Spi_TransmitReceive@data stored from wreg
+   605  0000' 0084'              	movwf	Spi_TransmitReceive@data
+   606                           
+   607                           ;src/Spi.c: 64:     uint8 receivedData = 0;
+   608  0001' 0185'              	clrf	Spi_TransmitReceive@receivedData
+   609                           
+   610                           ;src/Spi.c: 67:     for (uint8 i = 0; i < 8; i++) {
+   611  0002' 0186'              	clrf	Spi_TransmitReceive@i
+   612  0003'                    l286:
+   613                           
+   614                           ;src/Spi.c: 69:         if (data & 0x80) {
+   615  0003' 1F84'              	btfss	Spi_TransmitReceive@data,7
+   616  0004' 2816'              	goto	l959
+   617                           
+   618                           ;src/Spi.c: 70:             GPIO |= (1 << Spi_Configurations.mosiPin);
+   619  0005' 3001               	movlw	1
+   620  0006' 0083'              	movwf	??_Spi_TransmitReceive
+   621  0007' 3000'              	movlw	low ((_Spi_Configurations+3)| (0+32768))
+   622  0008' 0084               	movwf	4
+   623  0009' 3000'              	movlw	high ((_Spi_Configurations+3)| (0+32768))
+   624  000A' 00DF               	movwf	95
+   625  000B' 2000'              	fcall	stringtab
+   626  000C' 3E01               	addlw	1
+   627  000D' 2810'              	goto	u204
+   628  000E'                    u205:
+   629  000E' 1003               	clrc
+   630  000F' 0D83'              	rlf	??_Spi_TransmitReceive,f
+   631  0010'                    u204:
+   632  0010' 3EFF               	addlw	-1
+   633  0011' 1D03               	skipz
+   634  0012' 280E'              	goto	u205
+   635  0013' 0803'              	movf	??_Spi_TransmitReceive,w
+   636  0014' 0485               	iorwf	5,f	;volatile
+   637                           
+   638                           ;src/Spi.c: 71:         } else {
+   639  0015' 2827'              	goto	l961
+   640  0016'                    l959:
+   641                           
+   642                           ;src/Spi.c: 72:             GPIO &= ~(1 << Spi_Configurations.mosiPin);
+   643  0016' 3001               	movlw	1
+   644  0017' 0083'              	movwf	??_Spi_TransmitReceive
+   645  0018' 3000'              	movlw	low ((_Spi_Configurations+3)| (0+32768))
+   646  0019' 0084               	movwf	4
+   647  001A' 3000'              	movlw	high ((_Spi_Configurations+3)| (0+32768))
+   648  001B' 00DF               	movwf	95
+   649  001C' 2000'              	fcall	stringtab
+   650  001D' 3E01               	addlw	1
+   651  001E' 2821'              	goto	u214
+   652  001F'                    u215:
+   653  001F' 1003               	clrc
+   654  0020' 0D83'              	rlf	??_Spi_TransmitReceive,f
+   655  0021'                    u214:
+   656  0021' 3EFF               	addlw	-1
+   657  0022' 1D03               	skipz
+   658  0023' 281F'              	goto	u215
+   659  0024' 0803'              	movf	??_Spi_TransmitReceive,w
+   660  0025' 3AFF               	xorlw	255
+   661  0026' 0585               	andwf	5,f	;volatile
+   662  0027'                    l961:
+   663                           
+   664                           ;src/Spi.c: 76:         if (Spi_Configurations.spiMode == SPI_MODE0 || Spi_Configuration
+      +                          s.spiMode == SPI_MODE2) {
+   665  0027' 3000'              	movlw	low (_Spi_Configurations| (0+32768))
+   666  0028' 0084               	movwf	4
+   667  0029' 3000'              	movlw	high (_Spi_Configurations| (0+32768))
+   668  002A' 00DF               	movwf	95
+   669  002B' 2000'              	fcall	stringtab
+   670  002C' 3A00               	xorlw	0
+   671  002D' 1903               	skipnz
+   672  002E' 2837'              	goto	l965
+   673  002F' 3000'              	movlw	low (_Spi_Configurations| (0+32768))
+   674  0030' 0084               	movwf	4
+   675  0031' 3000'              	movlw	high (_Spi_Configurations| (0+32768))
+   676  0032' 00DF               	movwf	95
+   677  0033' 2000'              	fcall	stringtab
+   678  0034' 3A02               	xorlw	2
+   679  0035' 1D03               	skipz
+   680  0036' 2860'              	goto	l971
+   681  0037'                    l965:
+   682                           
+   683                           ;src/Spi.c: 78:             GPIO &= ~(1 << Spi_Configurations.sckPin);
+   684  0037' 3001               	movlw	1
+   685  0038' 0083'              	movwf	??_Spi_TransmitReceive
+   686  0039' 3000'              	movlw	low ((_Spi_Configurations+2)| (0+32768))
+   687  003A' 0084               	movwf	4
+   688  003B' 3000'              	movlw	high ((_Spi_Configurations+2)| (0+32768))
+   689  003C' 00DF               	movwf	95
+   690  003D' 2000'              	fcall	stringtab
+   691  003E' 3E01               	addlw	1
+   692  003F' 2842'              	goto	u244
+   693  0040'                    u245:
+   694  0040' 1003               	clrc
+   695  0041' 0D83'              	rlf	??_Spi_TransmitReceive,f
+   696  0042'                    u244:
+   697  0042' 3EFF               	addlw	-1
+   698  0043' 1D03               	skipz
+   699  0044' 2840'              	goto	u245
+   700  0045' 0803'              	movf	??_Spi_TransmitReceive,w
+   701  0046' 3AFF               	xorlw	255
+   702  0047' 0585               	andwf	5,f	;volatile
+   703                           
+   704                           ;src/Spi.c: 79:             Spi_Delay(Spi_Configurations.clockSpeed);
+   705  0048' 3000'              	movlw	low ((_Spi_Configurations+1)| (0+32768))
+   706  0049' 0084               	movwf	4
+   707  004A' 3000'              	movlw	high ((_Spi_Configurations+1)| (0+32768))
+   708  004B' 00DF               	movwf	95
+   709  004C' 2000'              	fcall	stringtab
+   710  004D' 2000'              	fcall	_Spi_Delay
+   711                           
+   712                           ;src/Spi.c: 80:             GPIO |= (1 << Spi_Configurations.sckPin);
+   713  004E' 3001               	movlw	1
+   714  004F' 1283               	bcf	3,5	;RP0=0, select bank0
+   715  0050' 0083'              	movwf	??_Spi_TransmitReceive
+   716  0051' 3000'              	movlw	low ((_Spi_Configurations+2)| (0+32768))
+   717  0052' 0084               	movwf	4
+   718  0053' 3000'              	movlw	high ((_Spi_Configurations+2)| (0+32768))
+   719  0054' 00DF               	movwf	95
+   720  0055' 2000'              	fcall	stringtab
+   721  0056' 3E01               	addlw	1
+   722  0057' 285A'              	goto	u254
+   723  0058'                    u255:
+   724  0058' 1003               	clrc
+   725  0059' 0D83'              	rlf	??_Spi_TransmitReceive,f
+   726  005A'                    u254:
+   727  005A' 3EFF               	addlw	-1
+   728  005B' 1D03               	skipz
+   729  005C' 2858'              	goto	u255
+   730  005D' 0803'              	movf	??_Spi_TransmitReceive,w
+   731  005E' 0485               	iorwf	5,f	;volatile
+   732                           
+   733                           ;src/Spi.c: 81:         } else {
+   734  005F' 2888'              	goto	l977
+   735  0060'                    l971:
+   736                           
+   737                           ;src/Spi.c: 83:             GPIO |= (1 << Spi_Configurations.sckPin);
+   738  0060' 3001               	movlw	1
+   739  0061' 0083'              	movwf	??_Spi_TransmitReceive
+   740  0062' 3000'              	movlw	low ((_Spi_Configurations+2)| (0+32768))
+   741  0063' 0084               	movwf	4
+   742  0064' 3000'              	movlw	high ((_Spi_Configurations+2)| (0+32768))
+   743  0065' 00DF               	movwf	95
+   744  0066' 2000'              	fcall	stringtab
+   745  0067' 3E01               	addlw	1
+   746  0068' 286B'              	goto	u264
+   747  0069'                    u265:
+   748  0069' 1003               	clrc
+   749  006A' 0D83'              	rlf	??_Spi_TransmitReceive,f
+   750  006B'                    u264:
+   751  006B' 3EFF               	addlw	-1
+   752  006C' 1D03               	skipz
+   753  006D' 2869'              	goto	u265
+   754  006E' 0803'              	movf	??_Spi_TransmitReceive,w
+   755  006F' 0485               	iorwf	5,f	;volatile
+   756                           
+   757                           ;src/Spi.c: 84:             Spi_Delay(Spi_Configurations.clockSpeed);
+   758  0070' 3000'              	movlw	low ((_Spi_Configurations+1)| (0+32768))
+   759  0071' 0084               	movwf	4
+   760  0072' 3000'              	movlw	high ((_Spi_Configurations+1)| (0+32768))
+   761  0073' 00DF               	movwf	95
+   762  0074' 2000'              	fcall	stringtab
+   763  0075' 2000'              	fcall	_Spi_Delay
+   764                           
+   765                           ;src/Spi.c: 85:             GPIO &= ~(1 << Spi_Configurations.sckPin);
+   766  0076' 3001               	movlw	1
+   767  0077' 1283               	bcf	3,5	;RP0=0, select bank0
+   768  0078' 0083'              	movwf	??_Spi_TransmitReceive
+   769  0079' 3000'              	movlw	low ((_Spi_Configurations+2)| (0+32768))
+   770  007A' 0084               	movwf	4
+   771  007B' 3000'              	movlw	high ((_Spi_Configurations+2)| (0+32768))
+   772  007C' 00DF               	movwf	95
+   773  007D' 2000'              	fcall	stringtab
+   774  007E' 3E01               	addlw	1
+   775  007F' 2882'              	goto	u274
+   776  0080'                    u275:
+   777  0080' 1003               	clrc
+   778  0081' 0D83'              	rlf	??_Spi_TransmitReceive,f
+   779  0082'                    u274:
+   780  0082' 3EFF               	addlw	-1
+   781  0083' 1D03               	skipz
+   782  0084' 2880'              	goto	u275
+   783  0085' 0803'              	movf	??_Spi_TransmitReceive,w
+   784  0086' 3AFF               	xorlw	255
+   785  0087' 0585               	andwf	5,f	;volatile
+   786  0088'                    l977:
+   787                           
+   788                           ;src/Spi.c: 88:         receivedData <<= 1;
+   789  0088' 1003               	clrc
+   790  0089' 0D85'              	rlf	Spi_TransmitReceive@receivedData,f
+   791                           
+   792                           ;src/Spi.c: 89:         if (GPIO & (1 << Spi_Configurations.misoPin)) {
+   793  008A' 3001               	movlw	1
+   794  008B' 0083'              	movwf	??_Spi_TransmitReceive
+   795  008C' 3000'              	movlw	low ((_Spi_Configurations+4)| (0+32768))
+   796  008D' 0084               	movwf	4
+   797  008E' 3000'              	movlw	high ((_Spi_Configurations+4)| (0+32768))
+   798  008F' 00DF               	movwf	95
+   799  0090' 2000'              	fcall	stringtab
+   800  0091' 3E01               	addlw	1
+   801  0092' 2895'              	goto	u284
+   802  0093'                    u285:
+   803  0093' 1003               	clrc
+   804  0094' 0D83'              	rlf	??_Spi_TransmitReceive,f
+   805  0095'                    u284:
+   806  0095' 3EFF               	addlw	-1
+   807  0096' 1D03               	skipz
+   808  0097' 2893'              	goto	u285
+   809  0098' 0803'              	movf	??_Spi_TransmitReceive,w
+   810  0099' 0505               	andwf	5,w	;volatile
+   811  009A' 1D03               	btfss	3,2
+   812                           
+   813                           ;src/Spi.c: 90:             receivedData |= 0x01;
+   814  009B' 1405'              	bsf	Spi_TransmitReceive@receivedData,0
+   815                           
+   816                           ;src/Spi.c: 93:         data <<= 1;
+   817  009C' 1003               	clrc
+   818  009D' 0D84'              	rlf	Spi_TransmitReceive@data,f
+   819                           
+   820                           ;src/Spi.c: 94:         Spi_Delay(Spi_Configurations.clockSpeed);
+   821  009E' 3000'              	movlw	low ((_Spi_Configurations+1)| (0+32768))
+   822  009F' 0084               	movwf	4
+   823  00A0' 3000'              	movlw	high ((_Spi_Configurations+1)| (0+32768))
+   824  00A1' 00DF               	movwf	95
+   825  00A2' 2000'              	fcall	stringtab
+   826  00A3' 2000'              	fcall	_Spi_Delay
+   827                           
+   828                           ;src/Spi.c: 95:     }
+   829  00A4' 3001               	movlw	1
+   830  00A5' 1283               	bcf	3,5	;RP0=0, select bank0
+   831  00A6' 0786'              	addwf	Spi_TransmitReceive@i,f
+   832  00A7' 3008               	movlw	8
+   833  00A8' 0206'              	subwf	Spi_TransmitReceive@i,w
+   834  00A9' 1C03               	skipc
+   835  00AA' 2803'              	goto	l286
+   836                           
+   837                           ;src/Spi.c: 96:     return receivedData;
+   838  00AB' 0805'              	movf	Spi_TransmitReceive@receivedData,w
+   839  00AC' 0008               	return
+   840  00AD'                    __end_of_Spi_TransmitReceive:
+   841                           
+   842                           	psect	text3
+   843  0000'                    __ptext3:	
+   844 ;; *************** function _Spi_Delay *****************
+   845 ;; Defined at:
+   846 ;;		line 25 in file "src/Spi.c"
+   847 ;; Parameters:    Size  Location     Type
+   848 ;;  clockSpeed      1    wreg     enum E716
+   849 ;; Auto vars:     Size  Location     Type
+   850 ;;  clockSpeed      1    2[BANK0 ] enum E716
+   851 ;; Return value:  Size  Location     Type
+   852 ;;                  1    wreg      void 
+   853 ;; Registers used:
+   854 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+   855 ;; Tracked objects:
+   856 ;;		On entry : 100/0
+   857 ;;		On exit  : 0/0
+   858 ;;		Unchanged: 0/0
+   859 ;; Data sizes:     COMMON   BANK0
+   860 ;;      Params:         0       0
+   861 ;;      Locals:         0       1
+   862 ;;      Temps:          0       2
+   863 ;;      Totals:         0       3
+   864 ;;Total ram usage:        3 bytes
+   865 ;; Hardware stack levels used: 1
+   866 ;; This function calls:
+   867 ;;		Nothing
+   868 ;; This function is called by:
+   869 ;;		_Spi_TransmitReceive
+   870 ;; This function uses a non-reentrant model
+   871 ;;
+   872                           
+   873  0000'                    _Spi_Delay:	
+   874                           ;psect for function _Spi_Delay
+   875                           
+   876                           
+   877                           ;incstack = 0
+   878                           ; Regs used in _Spi_Delay: [wreg-fsr0h+status,2+status,0]
+   879                           ;Spi_Delay@clockSpeed stored from wreg
+   880  0000' 0082'              	movwf	Spi_Delay@clockSpeed
+   881                           
+   882                           ;src/Spi.c: 26:     switch (clockSpeed) {
+   883  0001' 2812'              	goto	l945
+   884  0002'                    l274:	
+   885                           ;src/Spi.c: 27:         case SPI_CLOCK_DIV4:
+   886                           
+   887                           
+   888                           ;src/Spi.c: 28:             _delay((unsigned long)((1)*(4000000/4000000.0)));
+   889  0002' 0000               	nop
+   890                           
+   891                           ;src/Spi.c: 29:             break;
+   892  0003' 0008               	return
+   893  0004'                    l276:	
+   894                           ;src/Spi.c: 30:         case SPI_CLOCK_DIV16:
+   895                           
+   896                           
+   897                           ;src/Spi.c: 31:             _delay((unsigned long)((4)*(4000000/4000000.0)));
+   898  0004' 2805'              	nop2	;2 cycle nop
+   899  0005' 2806'              	nop2	;2 cycle nop
+   900                           
+   901                           ;src/Spi.c: 32:             break;
+   902  0006' 0008               	return
+   903  0007'                    l939:
+   904                           
+   905                           ;src/Spi.c: 34:             _delay((unsigned long)((16)*(4000000/4000000.0)));
+   906  0007' 3005               	movlw	5
+   907  0008' 0080'              	movwf	??_Spi_Delay
+   908  0009'                    u377:
+   909  0009' 0B80'              	decfsz	??_Spi_Delay,f
+   910  000A' 2809'              	goto	u377
+   911                           
+   912                           ;src/Spi.c: 35:             break;
+   913  000B' 0008               	return
+   914  000C'                    l941:
+   915                           
+   916                           ;src/Spi.c: 37:             _delay((unsigned long)((32)*(4000000/4000000.0)));
+   917  000C' 300A               	movlw	10
+   918  000D' 0080'              	movwf	??_Spi_Delay
+   919  000E'                    u387:
+   920  000E' 0B80'              	decfsz	??_Spi_Delay,f
+   921  000F' 280E'              	goto	u387
+   922  0010' 0000               	nop
+   923                           
+   924                           ;src/Spi.c: 38:             break;
+   925  0011' 0008               	return
+   926  0012'                    l945:
+   927  0012' 0802'              	movf	Spi_Delay@clockSpeed,w
+   928  0013' 0080'              	movwf	??_Spi_Delay
+   929  0014' 0181'              	clrf	??_Spi_Delay+1
+   930                           
+   931                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+      +                          itches
+   932                           ; Switch size 1, requested type "simple"
+   933                           ; Number of cases is 1, Range of values is 0 to 0
+   934                           ; switch strategies available:
+   935                           ; Name         Instructions Cycles
+   936                           ; simple_byte            4     3 (average)
+   937                           ; direct_byte            7     6 (fixed)
+   938                           ; jumptable            260     6 (fixed)
+   939                           ;	Chosen strategy is simple_byte
+   940  0015' 0801'              	movf	??_Spi_Delay+1,w
+   941  0016' 3A00               	xorlw	0	; case 0
+   942  0017' 1903               	skipnz
+   943  0018' 281A'              	goto	l1027
+   944  0019' 2828'              	goto	l279
+   945  001A'                    l1027:
+   946                           
+   947                           ; Switch size 1, requested type "simple"
+   948                           ; Number of cases is 4, Range of values is 4 to 128
+   949                           ; switch strategies available:
+   950                           ; Name         Instructions Cycles
+   951                           ; simple_byte           13     7 (average)
+   952                           ; direct_byte          134     9 (fixed)
+   953                           ; jumptable            263     9 (fixed)
+   954                           ;	Chosen strategy is simple_byte
+   955  001A' 0800'              	movf	??_Spi_Delay,w
+   956  001B' 3A04               	xorlw	4	; case 4
+   957  001C' 1903               	skipnz
+   958  001D' 2802'              	goto	l274
+   959  001E' 3A14               	xorlw	20	; case 16
+   960  001F' 1903               	skipnz
+   961  0020' 2804'              	goto	l276
+   962  0021' 3A50               	xorlw	80	; case 64
+   963  0022' 1903               	skipnz
+   964  0023' 2807'              	goto	l939
+   965  0024' 3AC0               	xorlw	192	; case 128
+   966  0025' 1903               	skipnz
+   967  0026' 280C'              	goto	l941
+   968  0027' 2828'              	goto	l279
+   969  0028'                    l279:
+   970  0028' 0008               	return
+   971  0029'                    __end_of_Spi_Delay:
+   972                           
+   973                           	psect	text4
+   974  0000'                    __ptext4:	
+   975 ;; *************** function _Spi_Init *****************
+   976 ;; Defined at:
+   977 ;;		line 43 in file "src/Spi.c"
+   978 ;; Parameters:    Size  Location     Type
+   979 ;;  ConfigPtr       2    0[BANK0 ] PTR const struct .
+   980 ;;		 -> Spi_Configurations(6), 
+   981 ;; Auto vars:     Size  Location     Type
+   982 ;;		None
+   983 ;; Return value:  Size  Location     Type
+   984 ;;                  1    wreg      unsigned char 
+   985 ;; Registers used:
+   986 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath
+   987 ;; Tracked objects:
+   988 ;;		On entry : B00/0
+   989 ;;		On exit  : 300/0
+   990 ;;		Unchanged: 200/0
+   991 ;; Data sizes:     COMMON   BANK0
+   992 ;;      Params:         0       2
+   993 ;;      Locals:         0       0
+   994 ;;      Temps:          0       3
+   995 ;;      Totals:         0       5
+   996 ;;Total ram usage:        5 bytes
+   997 ;; Hardware stack levels used: 2
+   998 ;; This function calls:
+   999 ;;		Nothing
+  1000 ;; This function is called by:
+  1001 ;;		_main
+  1002 ;; This function uses a non-reentrant model
+  1003 ;;
+  1004                           
+  1005  0000'                    _Spi_Init:	
+  1006                           ;psect for function _Spi_Init
+  1007                           
+  1008                           
+  1009                           ;src/Spi.c: 44:     if (ConfigPtr == ((void*)0)) {
+  1010                           
+  1011                           ;incstack = 0
+  1012                           ; Regs used in _Spi_Init: [wreg-fsr0h+status,2+status,0+btemp+1+pclath]
+  1013  0000' 0800'              	movf	Spi_Init@ConfigPtr,w
+  1014  0001' 0401'              	iorwf	Spi_Init@ConfigPtr+1,w
+  1015  0002' 1903               	btfsc	3,2
+  1016  0003' 0008               	return
+  1017                           
+  1018                           ;src/Spi.c: 49:     TRISIO &= ~(1 << ConfigPtr->sckPin);
+  1019  0004' 3001               	movlw	1
+  1020  0005' 0082'              	movwf	??_Spi_Init
+  1021  0006' 3002               	movlw	2
+  1022  0007' 0083'              	movwf	??_Spi_Init+1
+  1023  0008' 3000               	movlw	0
+  1024  0009' 0084'              	movwf	??_Spi_Init+2
+  1025  000A' 0803'              	movf	??_Spi_Init+1,w
+  1026  000B' 0700'              	addwf	Spi_Init@ConfigPtr,w
+  1027  000C' 0084               	movwf	4
+  1028  000D' 0804'              	movf	??_Spi_Init+2,w
+  1029  000E' 1803               	skipnc
+  1030  000F' 0A04'              	incf	??_Spi_Init+2,w
+  1031  0010' 0701'              	addwf	Spi_Init@ConfigPtr+1,w
+  1032  0011' 00DF               	movwf	95
+  1033  0012' 2000'              	fcall	stringtab
+  1034  0013' 3E01               	addlw	1
+  1035  0014' 2817'              	goto	u324
+  1036  0015'                    u325:
+  1037  0015' 1003               	clrc
+  1038  0016' 0D82'              	rlf	??_Spi_Init,f
+  1039  0017'                    u324:
+  1040  0017' 3EFF               	addlw	-1
+  1041  0018' 1D03               	skipz
+  1042  0019' 2815'              	goto	u325
+  1043  001A' 0802'              	movf	??_Spi_Init,w
+  1044  001B' 3AFF               	xorlw	255
+  1045  001C' 1683               	bsf	3,5	;RP0=1, select bank1
+  1046  001D' 0585               	andwf	5,f	;volatile
+  1047                           
+  1048                           ;src/Spi.c: 50:     TRISIO &= ~(1 << ConfigPtr->mosiPin);
+  1049  001E' 3001               	movlw	1
+  1050  001F' 1283               	bcf	3,5	;RP0=0, select bank0
+  1051  0020' 0082'              	movwf	??_Spi_Init
+  1052  0021' 3003               	movlw	3
+  1053  0022' 0083'              	movwf	??_Spi_Init+1
+  1054  0023' 3000               	movlw	0
+  1055  0024' 0084'              	movwf	??_Spi_Init+2
+  1056  0025' 0803'              	movf	??_Spi_Init+1,w
+  1057  0026' 0700'              	addwf	Spi_Init@ConfigPtr,w
+  1058  0027' 0084               	movwf	4
+  1059  0028' 0804'              	movf	??_Spi_Init+2,w
+  1060  0029' 1803               	skipnc
+  1061  002A' 0A04'              	incf	??_Spi_Init+2,w
+  1062  002B' 0701'              	addwf	Spi_Init@ConfigPtr+1,w
+  1063  002C' 00DF               	movwf	95
+  1064  002D' 2000'              	fcall	stringtab
+  1065  002E' 3E01               	addlw	1
+  1066  002F' 2832'              	goto	u334
+  1067  0030'                    u335:
+  1068  0030' 1003               	clrc
+  1069  0031' 0D82'              	rlf	??_Spi_Init,f
+  1070  0032'                    u334:
+  1071  0032' 3EFF               	addlw	-1
+  1072  0033' 1D03               	skipz
+  1073  0034' 2830'              	goto	u335
+  1074  0035' 0802'              	movf	??_Spi_Init,w
+  1075  0036' 3AFF               	xorlw	255
+  1076  0037' 1683               	bsf	3,5	;RP0=1, select bank1
+  1077  0038' 0585               	andwf	5,f	;volatile
+  1078                           
+  1079                           ;src/Spi.c: 51:     TRISIO &= ~(1 << ConfigPtr->ssPin);
+  1080  0039' 3001               	movlw	1
+  1081  003A' 1283               	bcf	3,5	;RP0=0, select bank0
+  1082  003B' 0082'              	movwf	??_Spi_Init
+  1083  003C' 3005               	movlw	5
+  1084  003D' 0083'              	movwf	??_Spi_Init+1
+  1085  003E' 3000               	movlw	0
+  1086  003F' 0084'              	movwf	??_Spi_Init+2
+  1087  0040' 0803'              	movf	??_Spi_Init+1,w
+  1088  0041' 0700'              	addwf	Spi_Init@ConfigPtr,w
+  1089  0042' 0084               	movwf	4
+  1090  0043' 0804'              	movf	??_Spi_Init+2,w
+  1091  0044' 1803               	skipnc
+  1092  0045' 0A04'              	incf	??_Spi_Init+2,w
+  1093  0046' 0701'              	addwf	Spi_Init@ConfigPtr+1,w
+  1094  0047' 00DF               	movwf	95
+  1095  0048' 2000'              	fcall	stringtab
+  1096  0049' 3E01               	addlw	1
+  1097  004A' 284D'              	goto	u344
+  1098  004B'                    u345:
+  1099  004B' 1003               	clrc
+  1100  004C' 0D82'              	rlf	??_Spi_Init,f
+  1101  004D'                    u344:
+  1102  004D' 3EFF               	addlw	-1
+  1103  004E' 1D03               	skipz
+  1104  004F' 284B'              	goto	u345
+  1105  0050' 0802'              	movf	??_Spi_Init,w
+  1106  0051' 3AFF               	xorlw	255
+  1107  0052' 1683               	bsf	3,5	;RP0=1, select bank1
+  1108  0053' 0585               	andwf	5,f	;volatile
+  1109                           
+  1110                           ;src/Spi.c: 54:     TRISIO |= (1 << ConfigPtr->misoPin);
+  1111  0054' 3001               	movlw	1
+  1112  0055' 1283               	bcf	3,5	;RP0=0, select bank0
+  1113  0056' 0082'              	movwf	??_Spi_Init
+  1114  0057' 3004               	movlw	4
+  1115  0058' 0083'              	movwf	??_Spi_Init+1
+  1116  0059' 3000               	movlw	0
+  1117  005A' 0084'              	movwf	??_Spi_Init+2
+  1118  005B' 0803'              	movf	??_Spi_Init+1,w
+  1119  005C' 0700'              	addwf	Spi_Init@ConfigPtr,w
+  1120  005D' 0084               	movwf	4
+  1121  005E' 0804'              	movf	??_Spi_Init+2,w
+  1122  005F' 1803               	skipnc
+  1123  0060' 0A04'              	incf	??_Spi_Init+2,w
+  1124  0061' 0701'              	addwf	Spi_Init@ConfigPtr+1,w
+  1125  0062' 00DF               	movwf	95
+  1126  0063' 2000'              	fcall	stringtab
+  1127  0064' 3E01               	addlw	1
+  1128  0065' 2868'              	goto	u354
+  1129  0066'                    u355:
+  1130  0066' 1003               	clrc
+  1131  0067' 0D82'              	rlf	??_Spi_Init,f
+  1132  0068'                    u354:
+  1133  0068' 3EFF               	addlw	-1
+  1134  0069' 1D03               	skipz
+  1135  006A' 2866'              	goto	u355
+  1136  006B' 0802'              	movf	??_Spi_Init,w
+  1137  006C' 1683               	bsf	3,5	;RP0=1, select bank1
+  1138  006D' 0485               	iorwf	5,f	;volatile
+  1139                           
+  1140                           ;src/Spi.c: 57:     GPIO |= (1 << ConfigPtr->ssPin);
+  1141  006E' 3001               	movlw	1
+  1142  006F' 1283               	bcf	3,5	;RP0=0, select bank0
+  1143  0070' 0082'              	movwf	??_Spi_Init
+  1144  0071' 3005               	movlw	5
+  1145  0072' 0083'              	movwf	??_Spi_Init+1
+  1146  0073' 3000               	movlw	0
+  1147  0074' 0084'              	movwf	??_Spi_Init+2
+  1148  0075' 0803'              	movf	??_Spi_Init+1,w
+  1149  0076' 0700'              	addwf	Spi_Init@ConfigPtr,w
+  1150  0077' 0084               	movwf	4
+  1151  0078' 0804'              	movf	??_Spi_Init+2,w
+  1152  0079' 1803               	skipnc
+  1153  007A' 0A04'              	incf	??_Spi_Init+2,w
+  1154  007B' 0701'              	addwf	Spi_Init@ConfigPtr+1,w
+  1155  007C' 00DF               	movwf	95
+  1156  007D' 2000'              	fcall	stringtab
+  1157  007E' 3E01               	addlw	1
+  1158  007F' 2882'              	goto	u364
+  1159  0080'                    u365:
+  1160  0080' 1003               	clrc
+  1161  0081' 0D82'              	rlf	??_Spi_Init,f
+  1162  0082'                    u364:
+  1163  0082' 3EFF               	addlw	-1
+  1164  0083' 1D03               	skipz
+  1165  0084' 2880'              	goto	u365
+  1166  0085' 0802'              	movf	??_Spi_Init,w
+  1167  0086' 0485               	iorwf	5,f	;volatile
+  1168  0087' 0008               	return
+  1169  0088'                    __end_of_Spi_Init:
+  1170  0000                     ___latbits      equ	0
+  1171  005E                     btemp           set	94	;btemp
+  1172  005E                     wtemp0          set	94
+  1173                           
+  1174                           	psect	config
+  1175                           
+  1176                           ;Config register CONFIG @ 0x2007
+  1177                           ;	Oscillator Selection bits
+  1178                           ;	FOSC = INTRCIO, INTOSC oscillator: I/O function on GP4/OSC2/CLKOUT pin, I/O function o
+      +                          n GP5/OSC1/CLKIN
+  1179                           ;	Watchdog Timer Enable bit
+  1180                           ;	WDTE = OFF, WDT disabled
+  1181                           ;	Power-Up Timer Enable bit
+  1182                           ;	PWRTE = OFF, PWRT disabled
+  1183                           ;	GP3/MCLR pin function select
+  1184                           ;	MCLRE = OFF, GP3/MCLR pin function is digital I/O, MCLR internally tied to VDD
+  1185                           ;	Brown-out Detect Enable bit
+  1186                           ;	BOREN = OFF, BOD disabled
+  1187                           ;	Code Protection bit
+  1188                           ;	CP = OFF, Program Memory code protection is disabled
+  1189                           ;	Data Code Protection bit
+  1190                           ;	CPD = OFF, Data memory code protection is disabled
+  1191  2007                     	org	8199
+  1192  2007  3194               	dw	12692
+
+Data Sizes:
+    Strings     0
+    Constant    44
+    Data        0
+    BSS         3
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON            0      0       0
+    BANK0            62      8      11
+
+Pointer List with Targets:
+
+    Spi_Init@ConfigPtr	PTR const struct . size(2) Largest target is 6
+		 -> Spi_Configurations(CODE[6]), 
+
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    _main->_Spi_Transmit
+    _Spi_Transmit->_Spi_TransmitReceive
+    _Spi_TransmitReceive->_Spi_Delay
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0     424
+                           _Spi_Init
+                       _Spi_Transmit
+                _Spi_TransmitReceive
+ ---------------------------------------------------------------------------------
+ (1) _Spi_Transmit                                         1     1      0     160
+                                              7 BANK0      1     1      0
+                _Spi_TransmitReceive
+ ---------------------------------------------------------------------------------
+ (1) _Spi_TransmitReceive                                  4     4      0     131
+                                              3 BANK0      4     4      0
+                          _Spi_Delay
+ ---------------------------------------------------------------------------------
+ (2) _Spi_Delay                                            3     3      0      29
+                                              0 BANK0      3     3      0
+ ---------------------------------------------------------------------------------
+ (2) _Spi_Init                                             5     3      2     133
+                                              0 BANK0      5     3      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _Spi_Init
+   _Spi_Transmit
+     _Spi_TransmitReceive
+       _Spi_Delay
+   _Spi_TransmitReceive
+
+Address spaces:
+Name               Size   Autos  Total    Usage
+BITCOMMON            0      0       0      0.0%
+BITBANK0            62      0       0      0.0%
+COMMON               0      0       0      0.0%
+BANK0               62      8      11     17.7%
+STACK                0      0       0      0.0%
+DATA                 0      0      11      0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.50 build 20240725155939 
+Symbol Table                                                                                   Wed Sep 18 22:59:23 2024
+
+                              pc 0002                               fsr 0004                              l274 0002  
+                            l259 0005                              l276 0004                              l286 0003  
+                            l279 0028                              l941 000C                              l945 0012  
+                            l961 0027                              l939 0007                              l971 0060  
+                            l965 0037                              l959 0016                              l977 0088  
+                            u204 0010                              u205 000E                              u214 0021  
+                            u215 001F                              u324 0017                              u244 0042  
+                            u325 0015                              u245 0040                              u334 0032  
+                            u254 005A                              u335 0030                              u255 0058  
+                            u344 004D                              u264 006B                              u345 004B  
+                            u265 0069                              u354 0068                              u274 0082  
+                            u355 0066                              u275 0080                              u364 0082  
+                            u284 0095                              u365 0080                              u285 0093  
+                            u377 0009                              u387 000E                              fsr0 0004  
+                            indf 0000                             l1027 001A                             _GPIO 0005  
+             _Adc_Configurations 0036                             _main 0000                             btemp 005E  
+                           start 0000*                           ?_main 0000                            pclath 000A  
+                          status 0003                            wtemp0 005E                       _Gpio_State 0002  
+            _Gpio_State@Dio$F200 0001                  __initialization 0000                     __end_of_main 000B  
+                         ??_main 0000              _Spi_TransmitReceive 0000              _Gpio_Configurations 002A  
+               __end_of_Spi_Init 0088       __end_of_Dio_Configurations 002A             ?_Spi_TransmitReceive 0000  
+                         _TRISIO 0085             Spi_TransmitReceive@i 0006            ??_Spi_TransmitReceive 0003  
+        __end_of__initialization 0004                   __pcstackCOMMON 0000               _Spi_Configurations 0000* 
+                     __pbssBANK0 0000                __end_of_Spi_Delay 0029                       __pmaintext 0000  
+                      ?_Spi_Init 0000                    ?_Spi_Transmit 0000                       __stringtab 0000  
+                     ??_Spi_Init 0002                          __ptext1 0000                          __ptext2 0000  
+                        __ptext3 0000                          __ptext4 0000                   ??_Spi_Transmit 0000  
+            Spi_Delay@clockSpeed 0002             end_of_initialization 0004               _Dio_Configurations 0012  
+                   __pstringtext 0000          Spi_TransmitReceive@data 0004              start_initialization 0000  
+    __end_of_Spi_TransmitReceive 00AD      __end_of_Gpio_Configurations 0036                        _Spi_Delay 0000  
+Spi_TransmitReceive@receivedData 0005             __end_of_Spi_Transmit 0004                        ___latbits 0000  
+                  __pcstackBANK0 0000                       ?_Spi_Delay 0000                     _receivedData 0000  
+                    __stringbase 0012       __end_of_Adc_Configurations 003E                      ??_Spi_Delay 0000  
+                       _Spi_Init 0000               __end_of__stringtab 0012                     _Spi_Transmit 0000  
+              Spi_Init@ConfigPtr 0000                        stringcode 000A                 Spi_Transmit@data 0007  
+                       stringtab 0000  

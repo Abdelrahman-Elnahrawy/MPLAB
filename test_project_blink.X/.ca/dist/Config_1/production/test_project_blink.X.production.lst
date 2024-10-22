@@ -1,0 +1,2260 @@
+
+
+Microchip MPLAB XC8 Assembler V2.50 build 20240725155939 
+                                                                                               Wed Sep 18 23:12:21 2024
+
+Microchip MPLAB XC8 C Compiler v2.50 (Free license) build 20240725155939 Og1 
+     1                           	processor	12F675
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	stringtext,global,reloc=256,class=STRCODE,space=0,delta=2,noexec
+     5                           	psect	cinit,global,class=CODE,space=0,merge=1,delta=2
+     6                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1,noexec
+     7                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     8                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+     9                           	psect	maintext,global,class=CODE,space=0,split=1,delta=2
+    10                           	psect	text1,local,class=CODE,space=0,merge=1,delta=2
+    11                           	psect	text2,local,class=CODE,space=0,merge=1,delta=2
+    12                           	psect	text3,local,class=CODE,space=0,merge=1,delta=2
+    13                           	psect	text4,local,class=CODE,space=0,merge=1,delta=2
+    14                           	psect	text5,local,class=CODE,space=0,merge=1,delta=2
+    15                           	psect	text6,local,class=CODE,space=0,merge=1,delta=2
+    16                           	psect	text7,local,class=CODE,space=0,merge=1,delta=2
+    17                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    18                           	dabs	1,0x5E,2
+    19  0000                     
+    20                           ; Generated 17/08/2023 GMT
+    21                           ; 
+    22                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    23                           ; All rights reserved.
+    24                           ; 
+    25                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    26                           ; 
+    27                           ; Redistribution and use in source and binary forms, with or without modification, are
+    28                           ; permitted provided that the following conditions are met:
+    29                           ; 
+    30                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    31                           ;        conditions and the following disclaimer.
+    32                           ; 
+    33                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    34                           ;        of conditions and the following disclaimer in the documentation and/or other
+    35                           ;        materials provided with the distribution. Publication is not required when
+    36                           ;        this file is used in an embedded application.
+    37                           ; 
+    38                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    39                           ;        software without specific prior written permission.
+    40                           ; 
+    41                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    42                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    43                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    44                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    45                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    46                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    47                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    48                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    49                           ; 
+    50                           ; 
+    51                           ; Code-generator required, PIC12F675 Definitions
+    52                           ; 
+    53                           ; SFR Addresses
+    54  0004                     fsr             equ	4
+    55  0004                     fsr0            equ	4
+    56  0000                     indf            equ	0
+    57  0000                     indf0           equ	0
+    58  0002                     pc              equ	2
+    59  0002                     pcl             equ	2
+    60  000A                     pclath          equ	10
+    61  0003                     status          equ	3
+    62  0000                     INDF            equ	0	;# 
+    63  0001                     TMR0            equ	1	;# 
+    64  0002                     PCL             equ	2	;# 
+    65  0003                     STATUS          equ	3	;# 
+    66  0004                     FSR             equ	4	;# 
+    67  0005                     GPIO            equ	5	;# 
+    68  000A                     PCLATH          equ	10	;# 
+    69  000B                     INTCON          equ	11	;# 
+    70  000C                     PIR1            equ	12	;# 
+    71  000E                     TMR1            equ	14	;# 
+    72  000E                     TMR1L           equ	14	;# 
+    73  000F                     TMR1H           equ	15	;# 
+    74  0010                     T1CON           equ	16	;# 
+    75  0019                     CMCON           equ	25	;# 
+    76  001E                     ADRESH          equ	30	;# 
+    77  001F                     ADCON0          equ	31	;# 
+    78  0081                     OPTION_REG      equ	129	;# 
+    79  0085                     TRISIO          equ	133	;# 
+    80  008C                     PIE1            equ	140	;# 
+    81  008E                     PCON            equ	142	;# 
+    82  0090                     OSCCAL          equ	144	;# 
+    83  0095                     WPU             equ	149	;# 
+    84  0096                     IOC             equ	150	;# 
+    85  0096                     IOCB            equ	150	;# 
+    86  0099                     VRCON           equ	153	;# 
+    87  009A                     EEDATA          equ	154	;# 
+    88  009A                     EEDAT           equ	154	;# 
+    89  009B                     EEADR           equ	155	;# 
+    90  009C                     EECON1          equ	156	;# 
+    91  009D                     EECON2          equ	157	;# 
+    92  009E                     ADRESL          equ	158	;# 
+    93  009F                     ANSEL           equ	159	;# 
+    94  0000                     INDF            equ	0	;# 
+    95  0001                     TMR0            equ	1	;# 
+    96  0002                     PCL             equ	2	;# 
+    97  0003                     STATUS          equ	3	;# 
+    98  0004                     FSR             equ	4	;# 
+    99  0005                     GPIO            equ	5	;# 
+   100  000A                     PCLATH          equ	10	;# 
+   101  000B                     INTCON          equ	11	;# 
+   102  000C                     PIR1            equ	12	;# 
+   103  000E                     TMR1            equ	14	;# 
+   104  000E                     TMR1L           equ	14	;# 
+   105  000F                     TMR1H           equ	15	;# 
+   106  0010                     T1CON           equ	16	;# 
+   107  0019                     CMCON           equ	25	;# 
+   108  001E                     ADRESH          equ	30	;# 
+   109  001F                     ADCON0          equ	31	;# 
+   110  0081                     OPTION_REG      equ	129	;# 
+   111  0085                     TRISIO          equ	133	;# 
+   112  008C                     PIE1            equ	140	;# 
+   113  008E                     PCON            equ	142	;# 
+   114  0090                     OSCCAL          equ	144	;# 
+   115  0095                     WPU             equ	149	;# 
+   116  0096                     IOC             equ	150	;# 
+   117  0096                     IOCB            equ	150	;# 
+   118  0099                     VRCON           equ	153	;# 
+   119  009A                     EEDATA          equ	154	;# 
+   120  009A                     EEDAT           equ	154	;# 
+   121  009B                     EEADR           equ	155	;# 
+   122  009C                     EECON1          equ	156	;# 
+   123  009D                     EECON2          equ	157	;# 
+   124  009E                     ADRESL          equ	158	;# 
+   125  009F                     ANSEL           equ	159	;# 
+   126  0000                     INDF            equ	0	;# 
+   127  0001                     TMR0            equ	1	;# 
+   128  0002                     PCL             equ	2	;# 
+   129  0003                     STATUS          equ	3	;# 
+   130  0004                     FSR             equ	4	;# 
+   131  0005                     GPIO            equ	5	;# 
+   132  000A                     PCLATH          equ	10	;# 
+   133  000B                     INTCON          equ	11	;# 
+   134  000C                     PIR1            equ	12	;# 
+   135  000E                     TMR1            equ	14	;# 
+   136  000E                     TMR1L           equ	14	;# 
+   137  000F                     TMR1H           equ	15	;# 
+   138  0010                     T1CON           equ	16	;# 
+   139  0019                     CMCON           equ	25	;# 
+   140  001E                     ADRESH          equ	30	;# 
+   141  001F                     ADCON0          equ	31	;# 
+   142  0081                     OPTION_REG      equ	129	;# 
+   143  0085                     TRISIO          equ	133	;# 
+   144  008C                     PIE1            equ	140	;# 
+   145  008E                     PCON            equ	142	;# 
+   146  0090                     OSCCAL          equ	144	;# 
+   147  0095                     WPU             equ	149	;# 
+   148  0096                     IOC             equ	150	;# 
+   149  0096                     IOCB            equ	150	;# 
+   150  0099                     VRCON           equ	153	;# 
+   151  009A                     EEDATA          equ	154	;# 
+   152  009A                     EEDAT           equ	154	;# 
+   153  009B                     EEADR           equ	155	;# 
+   154  009C                     EECON1          equ	156	;# 
+   155  009D                     EECON2          equ	157	;# 
+   156  009E                     ADRESL          equ	158	;# 
+   157  009F                     ANSEL           equ	159	;# 
+   158  0000                     INDF            equ	0	;# 
+   159  0001                     TMR0            equ	1	;# 
+   160  0002                     PCL             equ	2	;# 
+   161  0003                     STATUS          equ	3	;# 
+   162  0004                     FSR             equ	4	;# 
+   163  0005                     GPIO            equ	5	;# 
+   164  000A                     PCLATH          equ	10	;# 
+   165  000B                     INTCON          equ	11	;# 
+   166  000C                     PIR1            equ	12	;# 
+   167  000E                     TMR1            equ	14	;# 
+   168  000E                     TMR1L           equ	14	;# 
+   169  000F                     TMR1H           equ	15	;# 
+   170  0010                     T1CON           equ	16	;# 
+   171  0019                     CMCON           equ	25	;# 
+   172  001E                     ADRESH          equ	30	;# 
+   173  001F                     ADCON0          equ	31	;# 
+   174  0081                     OPTION_REG      equ	129	;# 
+   175  0085                     TRISIO          equ	133	;# 
+   176  008C                     PIE1            equ	140	;# 
+   177  008E                     PCON            equ	142	;# 
+   178  0090                     OSCCAL          equ	144	;# 
+   179  0095                     WPU             equ	149	;# 
+   180  0096                     IOC             equ	150	;# 
+   181  0096                     IOCB            equ	150	;# 
+   182  0099                     VRCON           equ	153	;# 
+   183  009A                     EEDATA          equ	154	;# 
+   184  009A                     EEDAT           equ	154	;# 
+   185  009B                     EEADR           equ	155	;# 
+   186  009C                     EECON1          equ	156	;# 
+   187  009D                     EECON2          equ	157	;# 
+   188  009E                     ADRESL          equ	158	;# 
+   189  009F                     ANSEL           equ	159	;# 
+   190  0000                     INDF            equ	0	;# 
+   191  0001                     TMR0            equ	1	;# 
+   192  0002                     PCL             equ	2	;# 
+   193  0003                     STATUS          equ	3	;# 
+   194  0004                     FSR             equ	4	;# 
+   195  0005                     GPIO            equ	5	;# 
+   196  000A                     PCLATH          equ	10	;# 
+   197  000B                     INTCON          equ	11	;# 
+   198  000C                     PIR1            equ	12	;# 
+   199  000E                     TMR1            equ	14	;# 
+   200  000E                     TMR1L           equ	14	;# 
+   201  000F                     TMR1H           equ	15	;# 
+   202  0010                     T1CON           equ	16	;# 
+   203  0019                     CMCON           equ	25	;# 
+   204  001E                     ADRESH          equ	30	;# 
+   205  001F                     ADCON0          equ	31	;# 
+   206  0081                     OPTION_REG      equ	129	;# 
+   207  0085                     TRISIO          equ	133	;# 
+   208  008C                     PIE1            equ	140	;# 
+   209  008E                     PCON            equ	142	;# 
+   210  0090                     OSCCAL          equ	144	;# 
+   211  0095                     WPU             equ	149	;# 
+   212  0096                     IOC             equ	150	;# 
+   213  0096                     IOCB            equ	150	;# 
+   214  0099                     VRCON           equ	153	;# 
+   215  009A                     EEDATA          equ	154	;# 
+   216  009A                     EEDAT           equ	154	;# 
+   217  009B                     EEADR           equ	155	;# 
+   218  009C                     EECON1          equ	156	;# 
+   219  009D                     EECON2          equ	157	;# 
+   220  009E                     ADRESL          equ	158	;# 
+   221  009F                     ANSEL           equ	159	;# 
+   222  0000                     INDF            equ	0	;# 
+   223  0001                     TMR0            equ	1	;# 
+   224  0002                     PCL             equ	2	;# 
+   225  0003                     STATUS          equ	3	;# 
+   226  0004                     FSR             equ	4	;# 
+   227  0005                     GPIO            equ	5	;# 
+   228  000A                     PCLATH          equ	10	;# 
+   229  000B                     INTCON          equ	11	;# 
+   230  000C                     PIR1            equ	12	;# 
+   231  000E                     TMR1            equ	14	;# 
+   232  000E                     TMR1L           equ	14	;# 
+   233  000F                     TMR1H           equ	15	;# 
+   234  0010                     T1CON           equ	16	;# 
+   235  0019                     CMCON           equ	25	;# 
+   236  001E                     ADRESH          equ	30	;# 
+   237  001F                     ADCON0          equ	31	;# 
+   238  0081                     OPTION_REG      equ	129	;# 
+   239  0085                     TRISIO          equ	133	;# 
+   240  008C                     PIE1            equ	140	;# 
+   241  008E                     PCON            equ	142	;# 
+   242  0090                     OSCCAL          equ	144	;# 
+   243  0095                     WPU             equ	149	;# 
+   244  0096                     IOC             equ	150	;# 
+   245  0096                     IOCB            equ	150	;# 
+   246  0099                     VRCON           equ	153	;# 
+   247  009A                     EEDATA          equ	154	;# 
+   248  009A                     EEDAT           equ	154	;# 
+   249  009B                     EEADR           equ	155	;# 
+   250  009C                     EECON1          equ	156	;# 
+   251  009D                     EECON2          equ	157	;# 
+   252  009E                     ADRESL          equ	158	;# 
+   253  009F                     ANSEL           equ	159	;# 
+   254  0000                     INDF            equ	0	;# 
+   255  0001                     TMR0            equ	1	;# 
+   256  0002                     PCL             equ	2	;# 
+   257  0003                     STATUS          equ	3	;# 
+   258  0004                     FSR             equ	4	;# 
+   259  0005                     GPIO            equ	5	;# 
+   260  000A                     PCLATH          equ	10	;# 
+   261  000B                     INTCON          equ	11	;# 
+   262  000C                     PIR1            equ	12	;# 
+   263  000E                     TMR1            equ	14	;# 
+   264  000E                     TMR1L           equ	14	;# 
+   265  000F                     TMR1H           equ	15	;# 
+   266  0010                     T1CON           equ	16	;# 
+   267  0019                     CMCON           equ	25	;# 
+   268  001E                     ADRESH          equ	30	;# 
+   269  001F                     ADCON0          equ	31	;# 
+   270  0081                     OPTION_REG      equ	129	;# 
+   271  0085                     TRISIO          equ	133	;# 
+   272  008C                     PIE1            equ	140	;# 
+   273  008E                     PCON            equ	142	;# 
+   274  0090                     OSCCAL          equ	144	;# 
+   275  0095                     WPU             equ	149	;# 
+   276  0096                     IOC             equ	150	;# 
+   277  0096                     IOCB            equ	150	;# 
+   278  0099                     VRCON           equ	153	;# 
+   279  009A                     EEDATA          equ	154	;# 
+   280  009A                     EEDAT           equ	154	;# 
+   281  009B                     EEADR           equ	155	;# 
+   282  009C                     EECON1          equ	156	;# 
+   283  009D                     EECON2          equ	157	;# 
+   284  009E                     ADRESL          equ	158	;# 
+   285  009F                     ANSEL           equ	159	;# 
+   286                           
+   287                           	psect	stringtext
+   288  0000'                    __pstringtext:
+   289  0000'                    stringtab:
+   290  0000'                    __stringtab:
+   291                           
+   292                           ;	String table - string pointers are 2 bytes each
+   293  0000' 1BDF               	btfsc	btemp+1,7
+   294  0001' 280A'              	ljmp	stringcode
+   295  0002' 1383               	bcf	3,7
+   296  0003' 185F               	btfsc	btemp+1,0
+   297  0004' 1783               	bsf	3,7
+   298  0005' 0800               	movf	0,w
+   299  0006' 0A84               	incf	4,f
+   300  0007' 1903               	skipnz
+   301  0008' 0ADF               	incf	btemp+1,f
+   302  0009' 0008               	return
+   303  000A'                    stringcode:
+   304  000A' 085F               	movf	btemp+1,w
+   305  000B' 397F               	andlw	127
+   306  000C' 008A               	movwf	10
+   307  000D' 0804               	movf	4,w
+   308  000E' 0A84               	incf	4,f
+   309  000F' 1903               	skipnz
+   310  0010' 0ADF               	incf	btemp+1,f
+   311  0011' 0082               	movwf	2
+   312  0012'                    __stringbase:
+   313  0012'                    __end_of__stringtab:
+   314  0012'                    _Adc_Configurations:
+   315  0012' 3400               	retlw	0
+   316  0013' 3400               	retlw	0
+   317  0014' 3401               	retlw	1
+   318  0015' 3400               	retlw	0
+   319  0016' 3402               	retlw	2
+   320  0017' 3400               	retlw	0
+   321  0018' 3403               	retlw	3
+   322  0019' 3400               	retlw	0
+   323  001A'                    __end_of_Adc_Configurations:
+   324  001A'                    _Dio_Configurations:
+   325  001A' 3400               	retlw	0
+   326  001B' 3401               	retlw	1
+   327  001C' 3400               	retlw	0
+   328  001D' 3400               	retlw	0
+   329  001E' 3401               	retlw	1
+   330  001F' 3401               	retlw	1
+   331  0020' 3400               	retlw	0
+   332  0021' 3400               	retlw	0
+   333  0022' 3402               	retlw	2
+   334  0023' 3402               	retlw	2
+   335  0024' 3400               	retlw	0
+   336  0025' 3400               	retlw	0
+   337  0026' 3403               	retlw	3
+   338  0027' 3400               	retlw	0
+   339  0028' 3400               	retlw	0
+   340  0029' 3400               	retlw	0
+   341  002A' 3404               	retlw	4
+   342  002B' 3400               	retlw	0
+   343  002C' 3400               	retlw	0
+   344  002D' 3400               	retlw	0
+   345  002E' 3405               	retlw	5
+   346  002F' 3400               	retlw	0
+   347  0030' 3400               	retlw	0
+   348  0031' 3401               	retlw	1
+   349  0032'                    __end_of_Dio_Configurations:
+   350  0032'                    _Gpio_Configurations:
+   351  0032' 3400               	retlw	0
+   352  0033' 3400               	retlw	0
+   353  0034' 3404               	retlw	4
+   354  0035' 3401               	retlw	1
+   355  0036' 340A               	retlw	10
+   356  0037' 3402               	retlw	2
+   357  0038' 340E               	retlw	14
+   358  0039' 3403               	retlw	3
+   359  003A' 3410               	retlw	16
+   360  003B' 3404               	retlw	4
+   361  003C' 3414               	retlw	20
+   362  003D' 3405               	retlw	5
+   363  003E'                    __end_of_Gpio_Configurations:
+   364  001E                     _ADRESH         set	30
+   365  001F                     _ADCON0         set	31
+   366  0005                     _GPIO           set	5
+   367  0010                     _T1CON          set	16
+   368  0019                     _CMCON          set	25
+   369  009E                     _ADRESL         set	158
+   370  0095                     _WPU            set	149
+   371  0081                     _OPTION_REG     set	129
+   372  0099                     _VRCON          set	153
+   373  0085                     _TRISIO         set	133
+   374  009F                     _ANSEL          set	159
+   375                           
+   376                           	psect	cinit
+   377  0000'                    start_initialization:	
+   378                           ; #config settings
+   379                           
+   380  0000'                    __initialization:
+   381                           
+   382                           ; Clear objects allocated to BANK0
+   383  0000' 1283               	bcf	3,5	;RP0=0, select bank0
+   384  0001' 0180'              	clrf	__pbssBANK0& (0+127)
+   385  0002' 0180'              	clrf	(__pbssBANK0+1)& (0+127)
+   386  0003' 0180'              	clrf	(__pbssBANK0+2)& (0+127)
+   387  0004' 0180'              	clrf	(__pbssBANK0+3)& (0+127)
+   388  0005'                    end_of_initialization:	
+   389                           ;End of C runtime variable initialization code
+   390                           
+   391  0005'                    __end_of__initialization:
+   392  0005' 0183               	clrf	3
+   393  0006' 2800'              	ljmp	_main	;jump to C main() function
+   394                           
+   395                           	psect	bssBANK0
+   396  0000'                    __pbssBANK0:
+   397  0000'                    _analog:
+   398  0000'                    	ds	2
+   399  0002'                    _Gpio_State@Dio$F200:
+   400  0002'                    	ds	1
+   401  0003'                    _Gpio_State:
+   402  0003'                    	ds	1
+   403                           
+   404                           	psect	cstackCOMMON
+   405  0000'                    __pcstackCOMMON:
+   406  0000'                    ??_Adc_Init_pin:
+   407  0000'                    ??_main:	
+   408                           ; 1 bytes @ 0x0
+   409                           
+   410                           
+   411                           	psect	cstackBANK0
+   412  0000'                    __pcstackBANK0:	
+   413                           ; 1 bytes @ 0x0
+   414                           
+   415  0000'                    ?_Gpio_Init:
+   416  0000'                    ?_Gpio_Pin_Dio:	
+   417                           ; 1 bytes @ 0x0
+   418                           
+   419  0000'                    ?_Dio_WritePin:	
+   420                           ; 1 bytes @ 0x0
+   421                           
+   422  0000'                    ?_Adc_Init_pin:	
+   423                           ; 1 bytes @ 0x0
+   424                           
+   425  0000'                    ?_Adc_StartConversion:	
+   426                           ; 1 bytes @ 0x0
+   427                           
+   428  0000'                    ?_Adc_ReadResult:	
+   429                           ; 1 bytes @ 0x0
+   430                           
+   431  0000'                    ?_main:	
+   432                           ; 2 bytes @ 0x0
+   433                           
+   434  0000'                    Gpio_Pin_Dio@direction:	
+   435                           ; 2 bytes @ 0x0
+   436                           
+   437  0000'                    Dio_WritePin@state:	
+   438                           ; 1 bytes @ 0x0
+   439                           
+   440  0000'                    Adc_Init_pin@format:	
+   441                           ; 1 bytes @ 0x0
+   442                           
+   443  0000'                    Gpio_Init@ConfigPtr:	
+   444                           ; 1 bytes @ 0x0
+   445                           
+   446  0000'                    ??_Adc_StartConversion:	
+   447                           ; 2 bytes @ 0x0
+   448                           
+   449                           
+   450                           ; 1 bytes @ 0x0
+   451  0000'                    	ds	1
+   452  0001'                    Gpio_Pin_Dio@state:
+   453  0001'                    Adc_Init_pin@channel:	
+   454                           ; 1 bytes @ 0x1
+   455                           
+   456  0001'                    Adc_StartConversion@channel:	
+   457                           ; 1 bytes @ 0x1
+   458                           
+   459  0001'                    ??_Dio_WritePin:	
+   460                           ; 1 bytes @ 0x1
+   461                           
+   462                           
+   463                           ; 1 bytes @ 0x1
+   464  0001'                    	ds	1
+   465  0002'                    Gpio_Pin_Dio@pullType:
+   466  0002'                    Dio_WritePin@pinNumber:	
+   467                           ; 1 bytes @ 0x2
+   468                           
+   469  0002'                    ??_Gpio_Init:	
+   470                           ; 1 bytes @ 0x2
+   471                           
+   472  0002'                    ??_Adc_ReadResult:	
+   473                           ; 1 bytes @ 0x2
+   474                           
+   475                           
+   476                           ; 1 bytes @ 0x2
+   477  0002'                    	ds	1
+   478  0003'                    ??_Gpio_Pin_Dio:
+   479                           
+   480                           ; 1 bytes @ 0x3
+   481  0003'                    	ds	1
+   482  0004'                    Gpio_Pin_Dio@pinNumber:
+   483                           
+   484                           ; 1 bytes @ 0x4
+   485  0004'                    	ds	1
+   486  0005'                    ?_Dio_Init:
+   487  0005'                    Dio_Init@ConfigPtr:	
+   488                           ; 1 bytes @ 0x5
+   489                           
+   490                           
+   491                           ; 2 bytes @ 0x5
+   492  0005'                    	ds	2
+   493  0007'                    Gpio_Init@function:
+   494  0007'                    ??_Dio_Init:	
+   495                           ; 1 bytes @ 0x7
+   496                           
+   497                           
+   498                           ; 1 bytes @ 0x7
+   499  0007'                    	ds	1
+   500  0008'                    Gpio_Init@i:
+   501                           
+   502                           ; 1 bytes @ 0x8
+   503  0008'                    	ds	1
+   504  0009'                    Gpio_Init@pinNumber:
+   505                           
+   506                           ; 1 bytes @ 0x9
+   507  0009'                    	ds	14
+   508  0017'                    Dio_Init@result:
+   509                           
+   510                           ; 1 bytes @ 0x17
+   511  0017'                    	ds	1
+   512  0018'                    Dio_Init@i:
+   513                           
+   514                           ; 1 bytes @ 0x18
+   515  0018'                    	ds	1
+   516                           
+   517                           	psect	maintext
+   518  0000'                    __pmaintext:	
+   519 ;;
+   520 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   521 ;;
+   522 ;; *************** function _main *****************
+   523 ;; Defined at:
+   524 ;;		line 26 in file "main.c"
+   525 ;; Parameters:    Size  Location     Type
+   526 ;;		None
+   527 ;; Auto vars:     Size  Location     Type
+   528 ;;		None
+   529 ;; Return value:  Size  Location     Type
+   530 ;;                  2  266[None  ] int 
+   531 ;; Registers used:
+   532 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   533 ;; Tracked objects:
+   534 ;;		On entry : B00/0
+   535 ;;		On exit  : 0/0
+   536 ;;		Unchanged: 0/0
+   537 ;; Data sizes:     COMMON   BANK0
+   538 ;;      Params:         0       0
+   539 ;;      Locals:         0       0
+   540 ;;      Temps:          0       0
+   541 ;;      Totals:         0       0
+   542 ;;Total ram usage:        0 bytes
+   543 ;; Hardware stack levels required when called: 2
+   544 ;; This function calls:
+   545 ;;		_Adc_Init_pin
+   546 ;;		_Adc_ReadResult
+   547 ;;		_Adc_StartConversion
+   548 ;;		_Dio_Init
+   549 ;;		_Dio_WritePin
+   550 ;;		_Gpio_Init
+   551 ;; This function is called by:
+   552 ;;		Startup code after reset
+   553 ;; This function uses a non-reentrant model
+   554 ;;
+   555                           
+   556  0000'                    _main:	
+   557                           ;psect for function _main
+   558                           
+   559                           
+   560                           ;main.c: 27: Gpio_Init(Gpio_Configurations);
+   561                           
+   562                           ;incstack = 0
+   563                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   564  0000' 3000'              	movlw	low (_Gpio_Configurations| (0+32768))
+   565  0001' 1283               	bcf	3,5	;RP0=0, select bank0
+   566  0002' 0080'              	movwf	Gpio_Init@ConfigPtr
+   567  0003' 3000'              	movlw	high (_Gpio_Configurations| (0+32768))
+   568  0004' 0081'              	movwf	Gpio_Init@ConfigPtr+1
+   569  0005' 2000'              	fcall	_Gpio_Init
+   570                           
+   571                           ;main.c: 28: Dio_Init(Dio_Configurations);
+   572  0006' 3000'              	movlw	low (_Dio_Configurations| (0+32768))
+   573  0007' 1283               	bcf	3,5	;RP0=0, select bank0
+   574  0008' 0085'              	movwf	Dio_Init@ConfigPtr
+   575  0009' 3000'              	movlw	high (_Dio_Configurations| (0+32768))
+   576  000A' 0086'              	movwf	Dio_Init@ConfigPtr+1
+   577  000B' 2000'              	fcall	_Dio_Init
+   578                           
+   579                           ;main.c: 29: Adc_Init_pin(ADC_CHANNEL_AN2 ,ADC_RESULT_RIGHT );
+   580  000C' 1283               	bcf	3,5	;RP0=0, select bank0
+   581  000D' 0180'              	clrf	Adc_Init_pin@format
+   582  000E' 0A80'              	incf	Adc_Init_pin@format,f
+   583  000F' 3002               	movlw	2
+   584  0010' 2000'              	fcall	_Adc_Init_pin
+   585  0011' 2816'              	goto	l1723
+   586  0012'                    l1729:
+   587                           
+   588                           ;main.c: 34: Dio_WritePin(DIO_PIN_0 ,DIO_PIN_HIGH);
+   589  0012' 0180'              	clrf	Dio_WritePin@state
+   590  0013' 0A80'              	incf	Dio_WritePin@state,f
+   591  0014'                    L1:
+   592  0014' 3000               	movlw	0
+   593  0015' 2000'              	fcall	_Dio_WritePin
+   594  0016'                    l1723:	
+   595                           ;main.c: 35: }
+   596                           
+   597                           
+   598                           ;main.c: 31: Adc_StartConversion(ADC_CHANNEL_AN2);
+   599  0016' 3002               	movlw	2
+   600  0017' 2000'              	fcall	_Adc_StartConversion
+   601                           
+   602                           ;main.c: 32: analog = Adc_ReadResult();
+   603  0018' 2000'              	fcall	_Adc_ReadResult
+   604  0019' 1283               	bcf	3,5	;RP0=0, select bank0
+   605  001A' 0801'              	movf	?_Adc_ReadResult+1,w
+   606  001B' 0081'              	movwf	_analog+1
+   607  001C' 0800'              	movf	?_Adc_ReadResult,w
+   608  001D' 0080'              	movwf	_analog
+   609                           
+   610                           ;main.c: 33: if(analog < 512){
+   611  001E' 3002               	movlw	2
+   612  001F' 0201'              	subwf	_analog+1,w
+   613  0020' 3000               	movlw	0
+   614  0021' 1903               	skipnz
+   615  0022' 0200'              	subwf	_analog,w
+   616  0023' 1C03               	btfss	3,0
+   617  0024' 2812'              	goto	l1729
+   618                           
+   619                           ;main.c: 36: else {;main.c: 37: Dio_WritePin(DIO_PIN_0 ,DIO_PIN_LOW);
+   620  0025' 0180'              	clrf	Dio_WritePin@state
+   621  0026' 2814'              	goto	L1
+   622  0027'                    __end_of_main:
+   623                           
+   624                           	psect	text1
+   625  0000'                    __ptext1:	
+   626 ;; *************** function _Gpio_Init *****************
+   627 ;; Defined at:
+   628 ;;		line 24 in file "src/gpio.c"
+   629 ;; Parameters:    Size  Location     Type
+   630 ;;  ConfigPtr       2    0[BANK0 ] PTR const struct .
+   631 ;;		 -> Gpio_Configurations(12), 
+   632 ;; Auto vars:     Size  Location     Type
+   633 ;;  pinNumber       1    9[BANK0 ] unsigned char 
+   634 ;;  function        1    7[BANK0 ] enum E600
+   635 ;;  i               1    8[BANK0 ] unsigned char 
+   636 ;; Return value:  Size  Location     Type
+   637 ;;                  1    wreg      unsigned char 
+   638 ;; Registers used:
+   639 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath
+   640 ;; Tracked objects:
+   641 ;;		On entry : 0/0
+   642 ;;		On exit  : 0/0
+   643 ;;		Unchanged: 0/0
+   644 ;; Data sizes:     COMMON   BANK0
+   645 ;;      Params:         0       2
+   646 ;;      Locals:         0       3
+   647 ;;      Temps:          0       5
+   648 ;;      Totals:         0      10
+   649 ;;Total ram usage:       10 bytes
+   650 ;; Hardware stack levels used: 2
+   651 ;; This function calls:
+   652 ;;		Nothing
+   653 ;; This function is called by:
+   654 ;;		_main
+   655 ;; This function uses a non-reentrant model
+   656 ;;
+   657                           
+   658  0000'                    _Gpio_Init:	
+   659                           ;psect for function _Gpio_Init
+   660                           
+   661                           
+   662                           ;gpio.c: 25: if (ConfigPtr == ((void*)0)) {
+   663                           
+   664                           ;incstack = 0
+   665                           ; Regs used in _Gpio_Init: [wreg-fsr0h+status,2+status,0+btemp+1+pclath]
+   666  0000' 1283               	bcf	3,5	;RP0=0, select bank0
+   667  0001' 0800'              	movf	Gpio_Init@ConfigPtr,w
+   668  0002' 0401'              	iorwf	Gpio_Init@ConfigPtr+1,w
+   669  0003' 1903               	btfsc	3,2
+   670  0004' 0008               	return
+   671                           
+   672                           ;gpio.c: 27: };gpio.c: 30: for (uint8 i = 0; i < 6; i++) {
+   673  0005' 0188'              	clrf	Gpio_Init@i
+   674  0006'                    l1427:
+   675                           
+   676                           ;gpio.c: 31: Gpio_PinFunctionEnum function = ConfigPtr[i].pinFunction;
+   677  0006' 0808'              	movf	Gpio_Init@i,w
+   678  0007' 0082'              	movwf	??_Gpio_Init
+   679  0008' 0702'              	addwf	??_Gpio_Init,w
+   680  0009' 0700'              	addwf	Gpio_Init@ConfigPtr,w
+   681  000A' 0084               	movwf	4
+   682  000B' 0801'              	movf	Gpio_Init@ConfigPtr+1,w
+   683  000C' 1803               	skipnc
+   684  000D' 0A01'              	incf	Gpio_Init@ConfigPtr+1,w
+   685  000E' 00DF               	movwf	95
+   686  000F' 2000'              	fcall	stringtab
+   687  0010' 0087'              	movwf	Gpio_Init@function
+   688                           
+   689                           ;gpio.c: 32: uint8 pinNumber = ConfigPtr[i].pinNumber;
+   690  0011' 3001               	movlw	1
+   691  0012' 0082'              	movwf	??_Gpio_Init
+   692  0013' 3000               	movlw	0
+   693  0014' 0083'              	movwf	??_Gpio_Init+1
+   694  0015' 0808'              	movf	Gpio_Init@i,w
+   695  0016' 0084'              	movwf	??_Gpio_Init+2
+   696  0017' 0704'              	addwf	??_Gpio_Init+2,w
+   697  0018' 0700'              	addwf	Gpio_Init@ConfigPtr,w
+   698  0019' 0085'              	movwf	??_Gpio_Init+3
+   699  001A' 0801'              	movf	Gpio_Init@ConfigPtr+1,w
+   700  001B' 1803               	skipnc
+   701  001C' 3E01               	addlw	1
+   702  001D' 0086'              	movwf	??_Gpio_Init+4
+   703  001E' 0802'              	movf	??_Gpio_Init,w
+   704  001F' 0705'              	addwf	??_Gpio_Init+3,w
+   705  0020' 0084               	movwf	4
+   706  0021' 0803'              	movf	??_Gpio_Init+1,w
+   707  0022' 1803               	skipnc
+   708  0023' 0A03'              	incf	??_Gpio_Init+1,w
+   709  0024' 0706'              	addwf	??_Gpio_Init+4,w
+   710  0025' 00DF               	movwf	95
+   711  0026' 2000'              	fcall	stringtab
+   712  0027' 0089'              	movwf	Gpio_Init@pinNumber
+   713                           
+   714                           ;gpio.c: 36: switch (function) {
+   715  0028' 289D'              	goto	l1539
+   716  0029'                    l1429:
+   717                           
+   718                           ;gpio.c: 39: if (pinNumber != 0) return (Std_ReturnType)1;
+   719  0029' 0809'              	movf	Gpio_Init@pinNumber,w
+   720  002A' 1D03               	btfss	3,2
+   721  002B' 0008               	return
+   722                           
+   723                           ;gpio.c: 40: ANSEL |= (1 << 0);
+   724  002C' 1683               	bsf	3,5	;RP0=1, select bank1
+   725  002D' 141F               	bsf	31,0	;volatile
+   726                           
+   727                           ;gpio.c: 41: TRISIO |= (1 << 0);
+   728  002E' 1405               	bsf	5,0	;volatile
+   729                           
+   730                           ;gpio.c: 42: break;
+   731  002F' 28E4'              	goto	l1541
+   732  0030'                    l1433:
+   733                           
+   734                           ;gpio.c: 44: if (pinNumber != 0) return (Std_ReturnType)1;
+   735  0030' 0809'              	movf	Gpio_Init@pinNumber,w
+   736  0031' 1D03               	btfss	3,2
+   737  0032' 0008               	return
+   738                           
+   739                           ;gpio.c: 45: CMCON &= ~(1 << 0);
+   740  0033' 30FE               	movlw	254
+   741  0034' 2847'              	goto	L2
+   742  0035'                    l1439:	
+   743                           ;gpio.c: 46: break;
+   744                           
+   745                           
+   746                           ;gpio.c: 48: if (pinNumber != 0) return (Std_ReturnType)1;
+   747  0035' 0809'              	movf	Gpio_Init@pinNumber,w
+   748  0036' 289A'              	goto	L12
+   749  0037'                    l1443:
+   750                           
+   751                           ;gpio.c: 52: if (pinNumber != 0) return (Std_ReturnType)1;
+   752  0037' 0809'              	movf	Gpio_Init@pinNumber,w
+   753  0038' 1D03               	btfss	3,2
+   754  0039' 0008               	return
+   755                           
+   756                           ;gpio.c: 53: ANSEL &= ~(1 << 0);
+   757  003A' 30FE               	movlw	254
+   758  003B' 288F'              	goto	L6
+   759  003C'                    l1449:	
+   760                           ;gpio.c: 54: break;
+   761                           
+   762                           
+   763                           ;gpio.c: 58: if (pinNumber != 1) return (Std_ReturnType)1;
+   764  003C' 0309'              	decf	Gpio_Init@pinNumber,w
+   765  003D' 1D03               	btfss	3,2
+   766  003E' 0008               	return
+   767                           
+   768                           ;gpio.c: 59: ANSEL |= (1 << 1);
+   769  003F' 1683               	bsf	3,5	;RP0=1, select bank1
+   770  0040' 149F               	bsf	31,1	;volatile
+   771                           
+   772                           ;gpio.c: 60: TRISIO |= (1 << 1);
+   773  0041' 1485               	bsf	5,1	;volatile
+   774                           
+   775                           ;gpio.c: 61: break;
+   776  0042' 28E4'              	goto	l1541
+   777  0043'                    l1453:
+   778                           
+   779                           ;gpio.c: 63: if (pinNumber != 1) return (Std_ReturnType)1;
+   780  0043' 0309'              	decf	Gpio_Init@pinNumber,w
+   781  0044' 1D03               	btfss	3,2
+   782  0045' 0008               	return
+   783                           
+   784                           ;gpio.c: 64: CMCON &= ~(1 << 1);
+   785  0046' 30FD               	movlw	253
+   786  0047'                    L2:
+   787  0047' 0599               	andwf	25,f	;volatile
+   788                           
+   789                           ;gpio.c: 65: break;
+   790  0048' 28E4'              	goto	l1541
+   791  0049'                    l1459:
+   792                           
+   793                           ;gpio.c: 67: if (pinNumber != 1) return (Std_ReturnType)1;
+   794  0049' 0309'              	decf	Gpio_Init@pinNumber,w
+   795  004A' 1D03               	btfss	3,2
+   796  004B' 0008               	return
+   797                           
+   798                           ;gpio.c: 68: VRCON |= (1 << 1);
+   799  004C' 1683               	bsf	3,5	;RP0=1, select bank1
+   800  004D' 1499               	bsf	25,1	;volatile
+   801                           
+   802                           ;gpio.c: 69: break;
+   803  004E' 28E4'              	goto	l1541
+   804  004F'                    l1463:
+   805                           
+   806                           ;gpio.c: 71: if (pinNumber != 1) return (Std_ReturnType)1;
+   807  004F' 0309'              	decf	Gpio_Init@pinNumber,w
+   808  0050' 289A'              	goto	L12
+   809  0051'                    l1467:
+   810                           
+   811                           ;gpio.c: 75: if (pinNumber != 1) return (Std_ReturnType)1;
+   812  0051' 0309'              	decf	Gpio_Init@pinNumber,w
+   813  0052' 1D03               	btfss	3,2
+   814  0053' 0008               	return
+   815                           
+   816                           ;gpio.c: 76: ANSEL &= ~(1 << 1);
+   817  0054' 30FD               	movlw	253
+   818  0055' 288F'              	goto	L6
+   819  0056'                    l1473:	
+   820                           ;gpio.c: 77: break;
+   821                           
+   822                           
+   823                           ;gpio.c: 81: if (pinNumber != 2) return (Std_ReturnType)1;
+   824  0056' 3002               	movlw	2
+   825  0057' 0609'              	xorwf	Gpio_Init@pinNumber,w
+   826  0058' 1D03               	btfss	3,2
+   827  0059' 0008               	return
+   828                           
+   829                           ;gpio.c: 82: ANSEL |= (1 << 2);
+   830  005A' 1683               	bsf	3,5	;RP0=1, select bank1
+   831  005B' 151F               	bsf	31,2	;volatile
+   832                           
+   833                           ;gpio.c: 83: TRISIO |= (1 << 2);
+   834  005C' 1505               	bsf	5,2	;volatile
+   835                           
+   836                           ;gpio.c: 84: break;
+   837  005D' 28E4'              	goto	l1541
+   838  005E'                    l1477:
+   839                           
+   840                           ;gpio.c: 86: if (pinNumber != 2) return (Std_ReturnType)1;
+   841  005E' 3002               	movlw	2
+   842  005F' 0609'              	xorwf	Gpio_Init@pinNumber,w
+   843  0060' 1D03               	btfss	3,2
+   844  0061' 0008               	return
+   845                           
+   846                           ;gpio.c: 87: OPTION_REG &= ~(1 << 5);
+   847  0062' 30DF               	movlw	223
+   848  0063' 2869'              	goto	L5
+   849  0064'                    l1483:	
+   850                           ;gpio.c: 88: break;
+   851                           
+   852                           
+   853                           ;gpio.c: 90: if (pinNumber != 2) return (Std_ReturnType)1;
+   854  0064' 3002               	movlw	2
+   855  0065' 0609'              	xorwf	Gpio_Init@pinNumber,w
+   856  0066' 1D03               	btfss	3,2
+   857  0067' 0008               	return
+   858                           
+   859                           ;gpio.c: 91: OPTION_REG &= ~(1 << 6);
+   860  0068' 30BF               	movlw	191
+   861  0069'                    L5:
+   862  0069' 1683               	bsf	3,5	;RP0=1, select bank1
+   863  006A' 0581               	andwf	1,f	;volatile
+   864                           
+   865                           ;gpio.c: 92: break;
+   866  006B' 28E4'              	goto	l1541
+   867  006C'                    l1489:
+   868                           
+   869                           ;gpio.c: 94: if (pinNumber != 2) return (Std_ReturnType)1;
+   870  006C' 3002               	movlw	2
+   871  006D' 0609'              	xorwf	Gpio_Init@pinNumber,w
+   872  006E' 1D03               	btfss	3,2
+   873  006F' 0008               	return
+   874                           
+   875                           ;gpio.c: 95: CMCON |= (1 << 6);
+   876  0070' 1719               	bsf	25,6	;volatile
+   877                           
+   878                           ;gpio.c: 96: break;
+   879  0071' 28E4'              	goto	l1541
+   880  0072'                    l1493:
+   881                           
+   882                           ;gpio.c: 98: if (pinNumber != 2) return (Std_ReturnType)1;
+   883  0072' 3002               	movlw	2
+   884  0073' 0609'              	xorwf	Gpio_Init@pinNumber,w
+   885  0074' 1D03               	btfss	3,2
+   886  0075' 0008               	return
+   887                           
+   888                           ;gpio.c: 99: ANSEL &= ~(1 << 2);
+   889  0076' 30FB               	movlw	251
+   890  0077' 288F'              	goto	L6
+   891  0078'                    l1499:	
+   892                           ;gpio.c: 100: break;
+   893                           
+   894  0078'                    l1503:	
+   895                           ;gpio.c: 104: if (pinNumber != 3) return (Std_ReturnType)1;
+   896                           
+   897                           
+   898                           ;gpio.c: 108: if (pinNumber != 3) return (Std_ReturnType)1;
+   899  0078' 3003               	movlw	3
+   900  0079' 2899'              	goto	L13
+   901  007A'                    l1507:
+   902                           
+   903                           ;gpio.c: 114: if (pinNumber != 4) return (Std_ReturnType)1;
+   904  007A' 3004               	movlw	4
+   905  007B' 0609'              	xorwf	Gpio_Init@pinNumber,w
+   906  007C' 1D03               	btfss	3,2
+   907  007D' 0008               	return
+   908                           
+   909                           ;gpio.c: 115: ANSEL |= (1 << 3);
+   910  007E' 1683               	bsf	3,5	;RP0=1, select bank1
+   911  007F' 159F               	bsf	31,3	;volatile
+   912                           
+   913                           ;gpio.c: 116: TRISIO |= (1 << 4);
+   914  0080' 1605               	bsf	5,4	;volatile
+   915                           
+   916                           ;gpio.c: 117: break;
+   917  0081' 28E4'              	goto	l1541
+   918  0082'                    l1511:
+   919                           
+   920                           ;gpio.c: 119: if (pinNumber != 4) return (Std_ReturnType)1;
+   921  0082' 3004               	movlw	4
+   922  0083' 0609'              	xorwf	Gpio_Init@pinNumber,w
+   923  0084' 1D03               	btfss	3,2
+   924  0085' 0008               	return
+   925                           
+   926                           ;gpio.c: 120: T1CON |= (1 << 7);
+   927  0086' 1790               	bsf	16,7	;volatile
+   928                           
+   929                           ;gpio.c: 121: break;
+   930  0087' 28E4'              	goto	l1541
+   931  0088'                    l1515:
+   932                           
+   933                           ;gpio.c: 123: if (pinNumber != 4) return (Std_ReturnType)1;
+   934  0088' 3004               	movlw	4
+   935  0089' 2899'              	goto	L13
+   936  008A'                    l1519:
+   937                           
+   938                           ;gpio.c: 127: if (pinNumber != 4) return (Std_ReturnType)1;
+   939  008A' 3004               	movlw	4
+   940  008B' 0609'              	xorwf	Gpio_Init@pinNumber,w
+   941  008C' 1D03               	btfss	3,2
+   942  008D' 0008               	return
+   943                           
+   944                           ;gpio.c: 128: ANSEL &= ~(1 << 3);
+   945  008E' 30F7               	movlw	247
+   946  008F'                    L6:
+   947  008F' 1683               	bsf	3,5	;RP0=1, select bank1
+   948  0090' 059F               	andwf	31,f	;volatile
+   949                           
+   950                           ;gpio.c: 129: break;
+   951  0091' 28E4'              	goto	l1541
+   952  0092'                    l1525:
+   953                           
+   954                           ;gpio.c: 133: if (pinNumber != 5) return (Std_ReturnType)1;
+   955  0092' 3005               	movlw	5
+   956  0093' 0609'              	xorwf	Gpio_Init@pinNumber,w
+   957  0094' 1D03               	btfss	3,2
+   958  0095' 0008               	return
+   959                           
+   960                           ;gpio.c: 134: T1CON |= (1 << 1);
+   961  0096' 1490               	bsf	16,1	;volatile
+   962                           
+   963                           ;gpio.c: 135: break;
+   964  0097' 28E4'              	goto	l1541
+   965  0098'                    l1529:
+   966  0098'                    l1533:	
+   967                           ;gpio.c: 137: if (pinNumber != 5) return (Std_ReturnType)1;
+   968                           
+   969                           
+   970                           ;gpio.c: 141: if (pinNumber != 5) return (Std_ReturnType)1;
+   971  0098' 3005               	movlw	5
+   972  0099'                    L13:
+   973  0099' 0609'              	xorwf	Gpio_Init@pinNumber,w
+   974  009A'                    L12:
+   975  009A' 1D03               	btfss	3,2
+   976  009B' 0008               	return
+   977  009C' 28E4'              	goto	l1541
+   978  009D'                    l1539:
+   979  009D' 0807'              	movf	Gpio_Init@function,w
+   980                           
+   981                           ; Switch size 1, requested type "simple"
+   982                           ; Number of cases is 23, Range of values is 0 to 22
+   983                           ; switch strategies available:
+   984                           ; Name         Instructions Cycles
+   985                           ; direct_byte           29     6 (fixed)
+   986                           ; simple_byte           70    36 (average)
+   987                           ; jumptable            260     6 (fixed)
+   988                           ;	Chosen strategy is simple_byte
+   989  009E' 3A00               	xorlw	0	; case 0
+   990  009F' 1903               	skipnz
+   991  00A0' 2837'              	goto	l1443
+   992  00A1' 3A01               	xorlw	1	; case 1
+   993  00A2' 1903               	skipnz
+   994  00A3' 2829'              	goto	l1429
+   995  00A4' 3A03               	xorlw	3	; case 2
+   996  00A5' 1903               	skipnz
+   997  00A6' 2830'              	goto	l1433
+   998  00A7' 3A01               	xorlw	1	; case 3
+   999  00A8' 1903               	skipnz
+  1000  00A9' 2835'              	goto	l1439
+  1001  00AA' 3A07               	xorlw	7	; case 4
+  1002  00AB' 1903               	skipnz
+  1003  00AC' 2851'              	goto	l1467
+  1004  00AD' 3A01               	xorlw	1	; case 5
+  1005  00AE' 1903               	skipnz
+  1006  00AF' 283C'              	goto	l1449
+  1007  00B0' 3A03               	xorlw	3	; case 6
+  1008  00B1' 1903               	skipnz
+  1009  00B2' 2843'              	goto	l1453
+  1010  00B3' 3A01               	xorlw	1	; case 7
+  1011  00B4' 1903               	skipnz
+  1012  00B5' 2849'              	goto	l1459
+  1013  00B6' 3A0F               	xorlw	15	; case 8
+  1014  00B7' 1903               	skipnz
+  1015  00B8' 284F'              	goto	l1463
+  1016  00B9' 3A01               	xorlw	1	; case 9
+  1017  00BA' 1903               	skipnz
+  1018  00BB' 2872'              	goto	l1493
+  1019  00BC' 3A03               	xorlw	3	; case 10
+  1020  00BD' 1903               	skipnz
+  1021  00BE' 2856'              	goto	l1473
+  1022  00BF' 3A01               	xorlw	1	; case 11
+  1023  00C0' 1903               	skipnz
+  1024  00C1' 285E'              	goto	l1477
+  1025  00C2' 3A07               	xorlw	7	; case 12
+  1026  00C3' 1903               	skipnz
+  1027  00C4' 2864'              	goto	l1483
+  1028  00C5' 3A01               	xorlw	1	; case 13
+  1029  00C6' 1903               	skipnz
+  1030  00C7' 286C'              	goto	l1489
+  1031  00C8' 3A03               	xorlw	3	; case 14
+  1032  00C9' 1903               	skipnz
+  1033  00CA' 2878'              	goto	l1503
+  1034  00CB' 3A01               	xorlw	1	; case 15
+  1035  00CC' 1903               	skipnz
+  1036  00CD' 2878'              	goto	l1499
+  1037  00CE' 3A1F               	xorlw	31	; case 16
+  1038  00CF' 1903               	skipnz
+  1039  00D0' 288A'              	goto	l1519
+  1040  00D1' 3A01               	xorlw	1	; case 17
+  1041  00D2' 1903               	skipnz
+  1042  00D3' 287A'              	goto	l1507
+  1043  00D4' 3A03               	xorlw	3	; case 18
+  1044  00D5' 1903               	skipnz
+  1045  00D6' 2882'              	goto	l1511
+  1046  00D7' 3A01               	xorlw	1	; case 19
+  1047  00D8' 1903               	skipnz
+  1048  00D9' 2888'              	goto	l1515
+  1049  00DA' 3A07               	xorlw	7	; case 20
+  1050  00DB' 1903               	skipnz
+  1051  00DC' 2898'              	goto	l1533
+  1052  00DD' 3A01               	xorlw	1	; case 21
+  1053  00DE' 1903               	skipnz
+  1054  00DF' 2892'              	goto	l1525
+  1055  00E0' 3A03               	xorlw	3	; case 22
+  1056  00E1' 1903               	skipnz
+  1057  00E2' 2898'              	goto	l1529
+  1058  00E3' 28EC'              	goto	l28
+  1059  00E4'                    l1541:
+  1060  00E4' 3001               	movlw	1
+  1061  00E5' 1283               	bcf	3,5	;RP0=0, select bank0
+  1062  00E6' 0788'              	addwf	Gpio_Init@i,f
+  1063  00E7' 3006               	movlw	6
+  1064  00E8' 0208'              	subwf	Gpio_Init@i,w
+  1065  00E9' 1803               	btfsc	3,0
+  1066  00EA' 0008               	return
+  1067  00EB' 2806'              	goto	l1427
+  1068  00EC'                    l28:
+  1069  00EC' 0008               	return
+  1070  00ED'                    __end_of_Gpio_Init:
+  1071                           
+  1072                           	psect	text2
+  1073  0000'                    __ptext2:	
+  1074 ;; *************** function _Dio_WritePin *****************
+  1075 ;; Defined at:
+  1076 ;;		line 73 in file "src/Dio.c"
+  1077 ;; Parameters:    Size  Location     Type
+  1078 ;;  pinNumber       1    wreg     enum E19
+  1079 ;;  state           1    0[BANK0 ] enum E10
+  1080 ;; Auto vars:     Size  Location     Type
+  1081 ;;  pinNumber       1    2[BANK0 ] enum E19
+  1082 ;; Return value:  Size  Location     Type
+  1083 ;;                  1    wreg      unsigned char 
+  1084 ;; Registers used:
+  1085 ;;		wreg, status,2, status,0
+  1086 ;; Tracked objects:
+  1087 ;;		On entry : 0/0
+  1088 ;;		On exit  : 0/0
+  1089 ;;		Unchanged: 0/0
+  1090 ;; Data sizes:     COMMON   BANK0
+  1091 ;;      Params:         0       1
+  1092 ;;      Locals:         0       1
+  1093 ;;      Temps:          0       1
+  1094 ;;      Totals:         0       3
+  1095 ;;Total ram usage:        3 bytes
+  1096 ;; Hardware stack levels used: 1
+  1097 ;; This function calls:
+  1098 ;;		Nothing
+  1099 ;; This function is called by:
+  1100 ;;		_main
+  1101 ;; This function uses a non-reentrant model
+  1102 ;;
+  1103                           
+  1104  0000'                    _Dio_WritePin:	
+  1105                           ;psect for function _Dio_WritePin
+  1106                           
+  1107                           
+  1108                           ;incstack = 0
+  1109                           ; Regs used in _Dio_WritePin: [wreg+status,2+status,0]
+  1110                           ;Dio_WritePin@pinNumber stored from wreg
+  1111  0000' 1283               	bcf	3,5	;RP0=0, select bank0
+  1112  0001' 0082'              	movwf	Dio_WritePin@pinNumber
+  1113                           
+  1114                           ;Dio.c: 74: if (pinNumber <6 ){
+  1115  0002' 3006               	movlw	6
+  1116  0003' 0202'              	subwf	Dio_WritePin@pinNumber,w
+  1117  0004' 1803               	skipnc
+  1118  0005' 0008               	return
+  1119                           
+  1120                           ;Dio.c: 75: if (state == DIO_PIN_HIGH) {
+  1121  0006' 0300'              	decf	Dio_WritePin@state,w
+  1122  0007' 1D03               	btfss	3,2
+  1123  0008' 2815'              	goto	l1591
+  1124                           
+  1125                           ;Dio.c: 76: Gpio_State |= (1 << pinNumber);
+  1126  0009' 3001               	movlw	1
+  1127  000A' 0081'              	movwf	??_Dio_WritePin
+  1128  000B' 0A02'              	incf	Dio_WritePin@pinNumber,w
+  1129  000C' 280F'              	goto	u1734
+  1130  000D'                    u1735:
+  1131  000D' 1003               	clrc
+  1132  000E' 0D81'              	rlf	??_Dio_WritePin,f
+  1133  000F'                    u1734:
+  1134  000F' 3EFF               	addlw	-1
+  1135  0010' 1D03               	skipz
+  1136  0011' 280D'              	goto	u1735
+  1137  0012' 0801'              	movf	??_Dio_WritePin,w
+  1138  0013' 0482'              	iorwf	_Gpio_State@Dio$F200,f
+  1139                           
+  1140                           ;Dio.c: 77: } else {
+  1141  0014' 2821'              	goto	l1593
+  1142  0015'                    l1591:
+  1143                           
+  1144                           ;Dio.c: 78: Gpio_State &= ~(1 << pinNumber);
+  1145  0015' 3001               	movlw	1
+  1146  0016' 0081'              	movwf	??_Dio_WritePin
+  1147  0017' 0A02'              	incf	Dio_WritePin@pinNumber,w
+  1148  0018' 281B'              	goto	u1744
+  1149  0019'                    u1745:
+  1150  0019' 1003               	clrc
+  1151  001A' 0D81'              	rlf	??_Dio_WritePin,f
+  1152  001B'                    u1744:
+  1153  001B' 3EFF               	addlw	-1
+  1154  001C' 1D03               	skipz
+  1155  001D' 2819'              	goto	u1745
+  1156  001E' 0801'              	movf	??_Dio_WritePin,w
+  1157  001F' 3AFF               	xorlw	255
+  1158  0020' 0582'              	andwf	_Gpio_State@Dio$F200,f
+  1159  0021'                    l1593:
+  1160                           
+  1161                           ;Dio.c: 79: };Dio.c: 80: GPIO = Gpio_State ;
+  1162  0021' 0802'              	movf	_Gpio_State@Dio$F200,w
+  1163  0022' 0085               	movwf	5	;volatile
+  1164  0023' 0008               	return
+  1165  0024'                    __end_of_Dio_WritePin:
+  1166                           
+  1167                           	psect	text3
+  1168  0000'                    __ptext3:	
+  1169 ;; *************** function _Dio_Init *****************
+  1170 ;; Defined at:
+  1171 ;;		line 23 in file "src/Dio.c"
+  1172 ;; Parameters:    Size  Location     Type
+  1173 ;;  ConfigPtr       2    5[BANK0 ] PTR const struct .
+  1174 ;;		 -> Dio_Configurations(24), 
+  1175 ;; Auto vars:     Size  Location     Type
+  1176 ;;  i               1   24[BANK0 ] unsigned char 
+  1177 ;;  result          1   23[BANK0 ] unsigned char 
+  1178 ;; Return value:  Size  Location     Type
+  1179 ;;                  1    wreg      unsigned char 
+  1180 ;; Registers used:
+  1181 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+  1182 ;; Tracked objects:
+  1183 ;;		On entry : 0/0
+  1184 ;;		On exit  : 0/0
+  1185 ;;		Unchanged: 0/0
+  1186 ;; Data sizes:     COMMON   BANK0
+  1187 ;;      Params:         0       2
+  1188 ;;      Locals:         0       2
+  1189 ;;      Temps:          0      16
+  1190 ;;      Totals:         0      20
+  1191 ;;Total ram usage:       20 bytes
+  1192 ;; Hardware stack levels used: 1
+  1193 ;; Hardware stack levels required when called: 1
+  1194 ;; This function calls:
+  1195 ;;		_Gpio_Pin_Dio
+  1196 ;; This function is called by:
+  1197 ;;		_main
+  1198 ;; This function uses a non-reentrant model
+  1199 ;;
+  1200                           
+  1201  0000'                    _Dio_Init:	
+  1202                           ;psect for function _Dio_Init
+  1203                           
+  1204                           
+  1205                           ;Dio.c: 24: GPIO = 0x00;
+  1206                           
+  1207                           ;incstack = 0
+  1208                           ; Regs used in _Dio_Init: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+  1209  0000' 1283               	bcf	3,5	;RP0=0, select bank0
+  1210  0001' 0185               	clrf	5	;volatile
+  1211                           
+  1212                           ;Dio.c: 25: uint8 result = (Std_ReturnType)0;
+  1213  0002' 0197'              	clrf	Dio_Init@result
+  1214                           
+  1215                           ;Dio.c: 26: if (ConfigPtr == ((void*)0)) {
+  1216  0003' 0805'              	movf	Dio_Init@ConfigPtr,w
+  1217  0004' 0406'              	iorwf	Dio_Init@ConfigPtr+1,w
+  1218  0005' 1903               	btfsc	3,2
+  1219  0006' 0008               	return
+  1220                           
+  1221                           ;Dio.c: 28: };Dio.c: 31: for (uint8 i = 0; i < 6; i++) {
+  1222  0007' 0198'              	clrf	Dio_Init@i
+  1223  0008'                    l1557:
+  1224                           
+  1225                           ;Dio.c: 33: if (ConfigPtr[i].PinDirection != DIO_NOT_APPLICABLE) {
+  1226  0008' 3001               	movlw	1
+  1227  0009' 0087'              	movwf	??_Dio_Init
+  1228  000A' 3000               	movlw	0
+  1229  000B' 0088'              	movwf	??_Dio_Init+1
+  1230  000C' 0818'              	movf	Dio_Init@i,w
+  1231  000D' 0089'              	movwf	??_Dio_Init+2
+  1232  000E' 3001               	movlw	1
+  1233  000F'                    u1515:
+  1234  000F' 1003               	clrc
+  1235  0010' 0D89'              	rlf	??_Dio_Init+2,f
+  1236  0011' 3EFF               	addlw	-1
+  1237  0012' 1D03               	skipz
+  1238  0013' 280F'              	goto	u1515
+  1239  0014' 1003               	clrc
+  1240  0015' 0D09'              	rlf	??_Dio_Init+2,w
+  1241  0016' 0705'              	addwf	Dio_Init@ConfigPtr,w
+  1242  0017' 008A'              	movwf	??_Dio_Init+3
+  1243  0018' 0806'              	movf	Dio_Init@ConfigPtr+1,w
+  1244  0019' 1803               	skipnc
+  1245  001A' 3E01               	addlw	1
+  1246  001B' 008B'              	movwf	??_Dio_Init+4
+  1247  001C' 0807'              	movf	??_Dio_Init,w
+  1248  001D' 070A'              	addwf	??_Dio_Init+3,w
+  1249  001E' 0084               	movwf	4
+  1250  001F' 0808'              	movf	??_Dio_Init+1,w
+  1251  0020' 1803               	skipnc
+  1252  0021' 0A08'              	incf	??_Dio_Init+1,w
+  1253  0022' 070B'              	addwf	??_Dio_Init+4,w
+  1254  0023' 00DF               	movwf	95
+  1255  0024' 2000'              	fcall	stringtab
+  1256  0025' 3A02               	xorlw	2
+  1257  0026' 1903               	skipnz
+  1258  0027' 28F6'              	goto	l1577
+  1259                           
+  1260                           ;Dio.c: 35: if (!(;Dio.c: 36: (ConfigPtr[i].pinNumber == 0 && (ANSEL & (1 << 0))) ||;Dio
+      +                          .c: 37: (ConfigPtr[i].pinNumber == 1 && (ANSEL & (1 << 1))) ||;Dio.c: 38: (ConfigPtr[i].
+      +                          pinNumber == 2 && (ANSEL & (1 << 2))) ||;Dio.c: 39: (ConfigPtr[i].pinNumber == 4 && (ANS
+      +                          EL & (1 << 3)));Dio.c: 40: ))
+  1261  0028' 0818'              	movf	Dio_Init@i,w
+  1262  0029' 0087'              	movwf	??_Dio_Init
+  1263  002A' 3001               	movlw	1
+  1264  002B'                    u1535:
+  1265  002B' 1003               	clrc
+  1266  002C' 0D87'              	rlf	??_Dio_Init,f
+  1267  002D' 3EFF               	addlw	-1
+  1268  002E' 1D03               	skipz
+  1269  002F' 282B'              	goto	u1535
+  1270  0030' 1003               	clrc
+  1271  0031' 0D07'              	rlf	??_Dio_Init,w
+  1272  0032' 0705'              	addwf	Dio_Init@ConfigPtr,w
+  1273  0033' 0084               	movwf	4
+  1274  0034' 0806'              	movf	Dio_Init@ConfigPtr+1,w
+  1275  0035' 1803               	skipnc
+  1276  0036' 0A06'              	incf	Dio_Init@ConfigPtr+1,w
+  1277  0037' 00DF               	movwf	95
+  1278  0038' 2000'              	fcall	stringtab
+  1279  0039' 3A00               	xorlw	0
+  1280  003A' 1D03               	skipz
+  1281  003B' 283F'              	goto	l1563
+  1282  003C' 1683               	bsf	3,5	;RP0=1, select bank1
+  1283  003D' 181F               	btfsc	31,0	;volatile
+  1284  003E' 0008               	return
+  1285  003F'                    l1563:
+  1286  003F' 1283               	bcf	3,5	;RP0=0, select bank0
+  1287  0040' 0818'              	movf	Dio_Init@i,w
+  1288  0041' 0087'              	movwf	??_Dio_Init
+  1289  0042' 3001               	movlw	1
+  1290  0043'                    u1565:
+  1291  0043' 1003               	clrc
+  1292  0044' 0D87'              	rlf	??_Dio_Init,f
+  1293  0045' 3EFF               	addlw	-1
+  1294  0046' 1D03               	skipz
+  1295  0047' 2843'              	goto	u1565
+  1296  0048' 1003               	clrc
+  1297  0049' 0D07'              	rlf	??_Dio_Init,w
+  1298  004A' 0705'              	addwf	Dio_Init@ConfigPtr,w
+  1299  004B' 0084               	movwf	4
+  1300  004C' 0806'              	movf	Dio_Init@ConfigPtr+1,w
+  1301  004D' 1803               	skipnc
+  1302  004E' 0A06'              	incf	Dio_Init@ConfigPtr+1,w
+  1303  004F' 00DF               	movwf	95
+  1304  0050' 2000'              	fcall	stringtab
+  1305  0051' 3A01               	xorlw	1
+  1306  0052' 1D03               	skipz
+  1307  0053' 2857'              	goto	l1567
+  1308  0054' 1683               	bsf	3,5	;RP0=1, select bank1
+  1309  0055' 189F               	btfsc	31,1	;volatile
+  1310  0056' 0008               	return
+  1311  0057'                    l1567:
+  1312  0057' 1283               	bcf	3,5	;RP0=0, select bank0
+  1313  0058' 0818'              	movf	Dio_Init@i,w
+  1314  0059' 0087'              	movwf	??_Dio_Init
+  1315  005A' 3001               	movlw	1
+  1316  005B'                    u1595:
+  1317  005B' 1003               	clrc
+  1318  005C' 0D87'              	rlf	??_Dio_Init,f
+  1319  005D' 3EFF               	addlw	-1
+  1320  005E' 1D03               	skipz
+  1321  005F' 285B'              	goto	u1595
+  1322  0060' 1003               	clrc
+  1323  0061' 0D07'              	rlf	??_Dio_Init,w
+  1324  0062' 0705'              	addwf	Dio_Init@ConfigPtr,w
+  1325  0063' 0084               	movwf	4
+  1326  0064' 0806'              	movf	Dio_Init@ConfigPtr+1,w
+  1327  0065' 1803               	skipnc
+  1328  0066' 0A06'              	incf	Dio_Init@ConfigPtr+1,w
+  1329  0067' 00DF               	movwf	95
+  1330  0068' 2000'              	fcall	stringtab
+  1331  0069' 3A02               	xorlw	2
+  1332  006A' 1D03               	skipz
+  1333  006B' 286F'              	goto	l1571
+  1334  006C' 1683               	bsf	3,5	;RP0=1, select bank1
+  1335  006D' 191F               	btfsc	31,2	;volatile
+  1336  006E' 0008               	return
+  1337  006F'                    l1571:
+  1338  006F' 1283               	bcf	3,5	;RP0=0, select bank0
+  1339  0070' 0818'              	movf	Dio_Init@i,w
+  1340  0071' 0087'              	movwf	??_Dio_Init
+  1341  0072' 3001               	movlw	1
+  1342  0073'                    u1625:
+  1343  0073' 1003               	clrc
+  1344  0074' 0D87'              	rlf	??_Dio_Init,f
+  1345  0075' 3EFF               	addlw	-1
+  1346  0076' 1D03               	skipz
+  1347  0077' 2873'              	goto	u1625
+  1348  0078' 1003               	clrc
+  1349  0079' 0D07'              	rlf	??_Dio_Init,w
+  1350  007A' 0705'              	addwf	Dio_Init@ConfigPtr,w
+  1351  007B' 0084               	movwf	4
+  1352  007C' 0806'              	movf	Dio_Init@ConfigPtr+1,w
+  1353  007D' 1803               	skipnc
+  1354  007E' 0A06'              	incf	Dio_Init@ConfigPtr+1,w
+  1355  007F' 00DF               	movwf	95
+  1356  0080' 2000'              	fcall	stringtab
+  1357  0081' 3A04               	xorlw	4
+  1358  0082' 1D03               	skipz
+  1359  0083' 2887'              	goto	l1575
+  1360  0084' 1683               	bsf	3,5	;RP0=1, select bank1
+  1361  0085' 199F               	btfsc	31,3	;volatile
+  1362  0086' 0008               	return
+  1363  0087'                    l1575:
+  1364                           
+  1365                           ;Dio.c: 41: {;Dio.c: 42: result = Gpio_Pin_Dio(;Dio.c: 43: (Gpio_PinNumber)ConfigPtr[i].
+      +                          pinNumber,;Dio.c: 44: (Gpio_PinDirectionType)ConfigPtr[i].PinDirection,;Dio.c: 45: (Gpio
+      +                          _PinStateType)ConfigPtr[i].StateType,;Dio.c: 46: ConfigPtr[i].PullType;Dio.c: 47: );
+  1366  0087' 3001               	movlw	1
+  1367  0088' 1283               	bcf	3,5	;RP0=0, select bank0
+  1368  0089' 0087'              	movwf	??_Dio_Init
+  1369  008A' 3000               	movlw	0
+  1370  008B' 0088'              	movwf	??_Dio_Init+1
+  1371  008C' 0818'              	movf	Dio_Init@i,w
+  1372  008D' 0089'              	movwf	??_Dio_Init+2
+  1373  008E' 3001               	movlw	1
+  1374  008F'                    u1655:
+  1375  008F' 1003               	clrc
+  1376  0090' 0D89'              	rlf	??_Dio_Init+2,f
+  1377  0091' 3EFF               	addlw	-1
+  1378  0092' 1D03               	skipz
+  1379  0093' 288F'              	goto	u1655
+  1380  0094' 1003               	clrc
+  1381  0095' 0D09'              	rlf	??_Dio_Init+2,w
+  1382  0096' 0705'              	addwf	Dio_Init@ConfigPtr,w
+  1383  0097' 008A'              	movwf	??_Dio_Init+3
+  1384  0098' 0806'              	movf	Dio_Init@ConfigPtr+1,w
+  1385  0099' 1803               	skipnc
+  1386  009A' 3E01               	addlw	1
+  1387  009B' 008B'              	movwf	??_Dio_Init+4
+  1388  009C' 0807'              	movf	??_Dio_Init,w
+  1389  009D' 070A'              	addwf	??_Dio_Init+3,w
+  1390  009E' 0084               	movwf	4
+  1391  009F' 0808'              	movf	??_Dio_Init+1,w
+  1392  00A0' 1803               	skipnc
+  1393  00A1' 0A08'              	incf	??_Dio_Init+1,w
+  1394  00A2' 070B'              	addwf	??_Dio_Init+4,w
+  1395  00A3' 00DF               	movwf	95
+  1396  00A4' 2000'              	fcall	stringtab
+  1397  00A5' 0080'              	movwf	Gpio_Pin_Dio@direction
+  1398  00A6' 3002               	movlw	2
+  1399  00A7' 008C'              	movwf	??_Dio_Init+5
+  1400  00A8' 3000               	movlw	0
+  1401  00A9' 008D'              	movwf	??_Dio_Init+6
+  1402  00AA' 0818'              	movf	Dio_Init@i,w
+  1403  00AB' 008E'              	movwf	??_Dio_Init+7
+  1404  00AC' 3001               	movlw	1
+  1405  00AD'                    u1665:
+  1406  00AD' 1003               	clrc
+  1407  00AE' 0D8E'              	rlf	??_Dio_Init+7,f
+  1408  00AF' 3EFF               	addlw	-1
+  1409  00B0' 1D03               	skipz
+  1410  00B1' 28AD'              	goto	u1665
+  1411  00B2' 1003               	clrc
+  1412  00B3' 0D0E'              	rlf	??_Dio_Init+7,w
+  1413  00B4' 0705'              	addwf	Dio_Init@ConfigPtr,w
+  1414  00B5' 008F'              	movwf	??_Dio_Init+8
+  1415  00B6' 0806'              	movf	Dio_Init@ConfigPtr+1,w
+  1416  00B7' 1803               	skipnc
+  1417  00B8' 3E01               	addlw	1
+  1418  00B9' 0090'              	movwf	??_Dio_Init+9
+  1419  00BA' 080C'              	movf	??_Dio_Init+5,w
+  1420  00BB' 070F'              	addwf	??_Dio_Init+8,w
+  1421  00BC' 0084               	movwf	4
+  1422  00BD' 080D'              	movf	??_Dio_Init+6,w
+  1423  00BE' 1803               	skipnc
+  1424  00BF' 0A0D'              	incf	??_Dio_Init+6,w
+  1425  00C0' 0710'              	addwf	??_Dio_Init+9,w
+  1426  00C1' 00DF               	movwf	95
+  1427  00C2' 2000'              	fcall	stringtab
+  1428  00C3' 0081'              	movwf	Gpio_Pin_Dio@state
+  1429  00C4' 3003               	movlw	3
+  1430  00C5' 0091'              	movwf	??_Dio_Init+10
+  1431  00C6' 3000               	movlw	0
+  1432  00C7' 0092'              	movwf	??_Dio_Init+11
+  1433  00C8' 0818'              	movf	Dio_Init@i,w
+  1434  00C9' 0093'              	movwf	??_Dio_Init+12
+  1435  00CA' 3001               	movlw	1
+  1436  00CB'                    u1675:
+  1437  00CB' 1003               	clrc
+  1438  00CC' 0D93'              	rlf	??_Dio_Init+12,f
+  1439  00CD' 3EFF               	addlw	-1
+  1440  00CE' 1D03               	skipz
+  1441  00CF' 28CB'              	goto	u1675
+  1442  00D0' 1003               	clrc
+  1443  00D1' 0D13'              	rlf	??_Dio_Init+12,w
+  1444  00D2' 0705'              	addwf	Dio_Init@ConfigPtr,w
+  1445  00D3' 0094'              	movwf	??_Dio_Init+13
+  1446  00D4' 0806'              	movf	Dio_Init@ConfigPtr+1,w
+  1447  00D5' 1803               	skipnc
+  1448  00D6' 3E01               	addlw	1
+  1449  00D7' 0095'              	movwf	??_Dio_Init+14
+  1450  00D8' 0811'              	movf	??_Dio_Init+10,w
+  1451  00D9' 0714'              	addwf	??_Dio_Init+13,w
+  1452  00DA' 0084               	movwf	4
+  1453  00DB' 0812'              	movf	??_Dio_Init+11,w
+  1454  00DC' 1803               	skipnc
+  1455  00DD' 0A12'              	incf	??_Dio_Init+11,w
+  1456  00DE' 0715'              	addwf	??_Dio_Init+14,w
+  1457  00DF' 00DF               	movwf	95
+  1458  00E0' 2000'              	fcall	stringtab
+  1459  00E1' 0082'              	movwf	Gpio_Pin_Dio@pullType
+  1460  00E2' 0818'              	movf	Dio_Init@i,w
+  1461  00E3' 0096'              	movwf	??_Dio_Init+15
+  1462  00E4' 3001               	movlw	1
+  1463  00E5'                    u1685:
+  1464  00E5' 1003               	clrc
+  1465  00E6' 0D96'              	rlf	??_Dio_Init+15,f
+  1466  00E7' 3EFF               	addlw	-1
+  1467  00E8' 1D03               	skipz
+  1468  00E9' 28E5'              	goto	u1685
+  1469  00EA' 1003               	clrc
+  1470  00EB' 0D16'              	rlf	??_Dio_Init+15,w
+  1471  00EC' 0705'              	addwf	Dio_Init@ConfigPtr,w
+  1472  00ED' 0084               	movwf	4
+  1473  00EE' 0806'              	movf	Dio_Init@ConfigPtr+1,w
+  1474  00EF' 1803               	skipnc
+  1475  00F0' 0A06'              	incf	Dio_Init@ConfigPtr+1,w
+  1476  00F1' 00DF               	movwf	95
+  1477  00F2' 2000'              	fcall	stringtab
+  1478  00F3' 2000'              	fcall	_Gpio_Pin_Dio
+  1479  00F4' 1283               	bcf	3,5	;RP0=0, select bank0
+  1480  00F5' 0097'              	movwf	Dio_Init@result
+  1481  00F6'                    l1577:	
+  1482                           ;Dio.c: 48: } else {
+  1483                           
+  1484                           
+  1485                           ;Dio.c: 50: };Dio.c: 51: };Dio.c: 52: if (result != (Std_ReturnType)0) {
+  1486  00F6' 0817'              	movf	Dio_Init@result,w
+  1487  00F7' 1D03               	btfss	3,2
+  1488  00F8' 0008               	return
+  1489  00F9' 3001               	movlw	1
+  1490  00FA' 0798'              	addwf	Dio_Init@i,f
+  1491  00FB' 3006               	movlw	6
+  1492  00FC' 0218'              	subwf	Dio_Init@i,w
+  1493  00FD' 1803               	btfsc	3,0
+  1494  00FE' 0008               	return
+  1495  00FF' 2808'              	goto	l1557
+  1496  0100'                    __end_of_Dio_Init:
+  1497                           
+  1498                           	psect	text4
+  1499  0000'                    __ptext4:	
+  1500 ;; *************** function _Gpio_Pin_Dio *****************
+  1501 ;; Defined at:
+  1502 ;;		line 157 in file "src/gpio.c"
+  1503 ;; Parameters:    Size  Location     Type
+  1504 ;;  pinNumber       1    wreg     enum E592
+  1505 ;;  direction       1    0[BANK0 ] enum E588
+  1506 ;;  state           1    1[BANK0 ] enum E584
+  1507 ;;  pullType        1    2[BANK0 ] unsigned char 
+  1508 ;; Auto vars:     Size  Location     Type
+  1509 ;;  pinNumber       1    4[BANK0 ] enum E592
+  1510 ;; Return value:  Size  Location     Type
+  1511 ;;                  1    wreg      unsigned char 
+  1512 ;; Registers used:
+  1513 ;;		wreg, status,2, status,0
+  1514 ;; Tracked objects:
+  1515 ;;		On entry : 0/0
+  1516 ;;		On exit  : 0/0
+  1517 ;;		Unchanged: 0/0
+  1518 ;; Data sizes:     COMMON   BANK0
+  1519 ;;      Params:         0       3
+  1520 ;;      Locals:         0       1
+  1521 ;;      Temps:          0       1
+  1522 ;;      Totals:         0       5
+  1523 ;;Total ram usage:        5 bytes
+  1524 ;; Hardware stack levels used: 1
+  1525 ;; This function calls:
+  1526 ;;		Nothing
+  1527 ;; This function is called by:
+  1528 ;;		_Dio_Init
+  1529 ;; This function uses a non-reentrant model
+  1530 ;;
+  1531                           
+  1532  0000'                    _Gpio_Pin_Dio:	
+  1533                           ;psect for function _Gpio_Pin_Dio
+  1534                           
+  1535                           
+  1536                           ;incstack = 0
+  1537                           ; Regs used in _Gpio_Pin_Dio: [wreg+status,2+status,0]
+  1538                           ;Gpio_Pin_Dio@pinNumber stored from wreg
+  1539  0000' 1283               	bcf	3,5	;RP0=0, select bank0
+  1540  0001' 0084'              	movwf	Gpio_Pin_Dio@pinNumber
+  1541                           
+  1542                           ;gpio.c: 162: if (pinNumber >= 6) {
+  1543  0002' 3006               	movlw	6
+  1544  0003' 0204'              	subwf	Gpio_Pin_Dio@pinNumber,w
+  1545  0004' 1C03               	skipc
+  1546  0005' 2808'              	goto	l1373
+  1547  0006'                    l1369:
+  1548                           
+  1549                           ;gpio.c: 163: return (Std_ReturnType)1;
+  1550  0006' 3001               	movlw	1
+  1551  0007' 0008               	return
+  1552  0008'                    l1373:
+  1553                           
+  1554                           ;gpio.c: 164: };gpio.c: 167: if (direction == GPIO_DIR_INPUT) {
+  1555  0008' 0800'              	movf	Gpio_Pin_Dio@direction,w
+  1556  0009' 1D03               	btfss	3,2
+  1557  000A' 2818'              	goto	l1377
+  1558                           
+  1559                           ;gpio.c: 168: TRISIO |= (1 << pinNumber);
+  1560  000B' 3001               	movlw	1
+  1561  000C' 0083'              	movwf	??_Gpio_Pin_Dio
+  1562  000D' 0A04'              	incf	Gpio_Pin_Dio@pinNumber,w
+  1563  000E' 2811'              	goto	u1124
+  1564  000F'                    u1125:
+  1565  000F' 1003               	clrc
+  1566  0010' 0D83'              	rlf	??_Gpio_Pin_Dio,f
+  1567  0011'                    u1124:
+  1568  0011' 3EFF               	addlw	-1
+  1569  0012' 1D03               	skipz
+  1570  0013' 280F'              	goto	u1125
+  1571  0014' 0803'              	movf	??_Gpio_Pin_Dio,w
+  1572  0015' 1683               	bsf	3,5	;RP0=1, select bank1
+  1573  0016' 0485               	iorwf	5,f	;volatile
+  1574                           
+  1575                           ;gpio.c: 169: } else if (direction == GPIO_DIR_OUTPUT) {
+  1576  0017' 2828'              	goto	l1385
+  1577  0018'                    l1377:
+  1578  0018' 0300'              	decf	Gpio_Pin_Dio@direction,w
+  1579  0019' 1D03               	btfss	3,2
+  1580  001A' 2806'              	goto	l1369
+  1581                           
+  1582                           ;gpio.c: 170: TRISIO &= ~(1 << pinNumber);
+  1583  001B' 3001               	movlw	1
+  1584  001C' 0083'              	movwf	??_Gpio_Pin_Dio
+  1585  001D' 0A04'              	incf	Gpio_Pin_Dio@pinNumber,w
+  1586  001E' 2821'              	goto	u1144
+  1587  001F'                    u1145:
+  1588  001F' 1003               	clrc
+  1589  0020' 0D83'              	rlf	??_Gpio_Pin_Dio,f
+  1590  0021'                    u1144:
+  1591  0021' 3EFF               	addlw	-1
+  1592  0022' 1D03               	skipz
+  1593  0023' 281F'              	goto	u1145
+  1594  0024' 0803'              	movf	??_Gpio_Pin_Dio,w
+  1595  0025' 3AFF               	xorlw	255
+  1596  0026' 1683               	bsf	3,5	;RP0=1, select bank1
+  1597  0027' 0585               	andwf	5,f	;volatile
+  1598  0028'                    l1385:	
+  1599                           ;gpio.c: 171: } else {
+  1600                           
+  1601                           
+  1602                           ;gpio.c: 173: };gpio.c: 176: if (pullType == 1 && pinNumber != 3) {
+  1603  0028' 1283               	bcf	3,5	;RP0=0, select bank0
+  1604  0029' 0302'              	decf	Gpio_Pin_Dio@pullType,w
+  1605  002A' 1D03               	btfss	3,2
+  1606  002B' 2841'              	goto	l1391
+  1607  002C' 3003               	movlw	3
+  1608  002D' 0604'              	xorwf	Gpio_Pin_Dio@pinNumber,w
+  1609  002E' 1903               	btfsc	3,2
+  1610  002F' 2841'              	goto	l1391
+  1611                           
+  1612                           ;gpio.c: 177: OPTION_REG &= ~(1 << 7);
+  1613  0030' 307F               	movlw	127
+  1614  0031' 1683               	bsf	3,5	;RP0=1, select bank1
+  1615  0032' 0581               	andwf	1,f	;volatile
+  1616                           
+  1617                           ;gpio.c: 178: WPU |= (1 << pinNumber);
+  1618  0033' 3001               	movlw	1
+  1619  0034' 1283               	bcf	3,5	;RP0=0, select bank0
+  1620  0035' 0083'              	movwf	??_Gpio_Pin_Dio
+  1621  0036' 0A04'              	incf	Gpio_Pin_Dio@pinNumber,w
+  1622  0037' 283A'              	goto	u1174
+  1623  0038'                    u1175:
+  1624  0038' 1003               	clrc
+  1625  0039' 0D83'              	rlf	??_Gpio_Pin_Dio,f
+  1626  003A'                    u1174:
+  1627  003A' 3EFF               	addlw	-1
+  1628  003B' 1D03               	skipz
+  1629  003C' 2838'              	goto	u1175
+  1630  003D' 0803'              	movf	??_Gpio_Pin_Dio,w
+  1631  003E' 1683               	bsf	3,5	;RP0=1, select bank1
+  1632  003F' 0495               	iorwf	21,f	;volatile
+  1633                           
+  1634                           ;gpio.c: 179: } else if (pullType == 0) {
+  1635  0040' 2851'              	goto	l1399
+  1636  0041'                    l1391:
+  1637  0041' 0802'              	movf	Gpio_Pin_Dio@pullType,w
+  1638  0042' 1D03               	btfss	3,2
+  1639  0043' 2806'              	goto	l1369
+  1640                           
+  1641                           ;gpio.c: 180: WPU &= ~(1 << pinNumber);
+  1642  0044' 3001               	movlw	1
+  1643  0045' 0083'              	movwf	??_Gpio_Pin_Dio
+  1644  0046' 0A04'              	incf	Gpio_Pin_Dio@pinNumber,w
+  1645  0047' 284A'              	goto	u1194
+  1646  0048'                    u1195:
+  1647  0048' 1003               	clrc
+  1648  0049' 0D83'              	rlf	??_Gpio_Pin_Dio,f
+  1649  004A'                    u1194:
+  1650  004A' 3EFF               	addlw	-1
+  1651  004B' 1D03               	skipz
+  1652  004C' 2848'              	goto	u1195
+  1653  004D' 0803'              	movf	??_Gpio_Pin_Dio,w
+  1654  004E' 3AFF               	xorlw	255
+  1655  004F' 1683               	bsf	3,5	;RP0=1, select bank1
+  1656  0050' 0595               	andwf	21,f	;volatile
+  1657  0051'                    l1399:	
+  1658                           ;gpio.c: 181: } else {
+  1659                           
+  1660                           
+  1661                           ;gpio.c: 183: };gpio.c: 186: if (direction == GPIO_DIR_OUTPUT) {
+  1662  0051' 1283               	bcf	3,5	;RP0=0, select bank0
+  1663  0052' 0300'              	decf	Gpio_Pin_Dio@direction,w
+  1664  0053' 1D03               	btfss	3,2
+  1665  0054' 2873'              	goto	l1413
+  1666                           
+  1667                           ;gpio.c: 187: if (state == GPIO_PIN_HIGH) {
+  1668  0055' 0301'              	decf	Gpio_Pin_Dio@state,w
+  1669  0056' 1D03               	btfss	3,2
+  1670  0057' 2864'              	goto	l1405
+  1671                           
+  1672                           ;gpio.c: 188: GPIO |= (1 << pinNumber);
+  1673  0058' 3001               	movlw	1
+  1674  0059' 0083'              	movwf	??_Gpio_Pin_Dio
+  1675  005A' 0A04'              	incf	Gpio_Pin_Dio@pinNumber,w
+  1676  005B' 285E'              	goto	u1224
+  1677  005C'                    u1225:
+  1678  005C' 1003               	clrc
+  1679  005D' 0D83'              	rlf	??_Gpio_Pin_Dio,f
+  1680  005E'                    u1224:
+  1681  005E' 3EFF               	addlw	-1
+  1682  005F' 1D03               	skipz
+  1683  0060' 285C'              	goto	u1225
+  1684  0061' 0803'              	movf	??_Gpio_Pin_Dio,w
+  1685  0062' 0485               	iorwf	5,f	;volatile
+  1686                           
+  1687                           ;gpio.c: 189: } else if (state == GPIO_PIN_LOW) {
+  1688  0063' 2873'              	goto	l1413
+  1689  0064'                    l1405:
+  1690  0064' 0801'              	movf	Gpio_Pin_Dio@state,w
+  1691  0065' 1D03               	btfss	3,2
+  1692  0066' 2806'              	goto	l1369
+  1693                           
+  1694                           ;gpio.c: 190: GPIO &= ~(1 << pinNumber);
+  1695  0067' 3001               	movlw	1
+  1696  0068' 0083'              	movwf	??_Gpio_Pin_Dio
+  1697  0069' 0A04'              	incf	Gpio_Pin_Dio@pinNumber,w
+  1698  006A' 286D'              	goto	u1244
+  1699  006B'                    u1245:
+  1700  006B' 1003               	clrc
+  1701  006C' 0D83'              	rlf	??_Gpio_Pin_Dio,f
+  1702  006D'                    u1244:
+  1703  006D' 3EFF               	addlw	-1
+  1704  006E' 1D03               	skipz
+  1705  006F' 286B'              	goto	u1245
+  1706  0070' 0803'              	movf	??_Gpio_Pin_Dio,w
+  1707  0071' 3AFF               	xorlw	255
+  1708  0072' 0585               	andwf	5,f	;volatile
+  1709  0073'                    l1413:	
+  1710                           ;gpio.c: 191: } else {
+  1711                           
+  1712                           
+  1713                           ;gpio.c: 193: };gpio.c: 194: };gpio.c: 196: return (Std_ReturnType)0;
+  1714  0073' 3000               	movlw	0
+  1715  0074' 0008               	return
+  1716  0075'                    __end_of_Gpio_Pin_Dio:
+  1717                           
+  1718                           	psect	text5
+  1719  0000'                    __ptext5:	
+  1720 ;; *************** function _Adc_StartConversion *****************
+  1721 ;; Defined at:
+  1722 ;;		line 126 in file "src/Adc.c"
+  1723 ;; Parameters:    Size  Location     Type
+  1724 ;;  channel         1    wreg     enum E10
+  1725 ;; Auto vars:     Size  Location     Type
+  1726 ;;  channel         1    1[BANK0 ] enum E10
+  1727 ;; Return value:  Size  Location     Type
+  1728 ;;                  1    wreg      unsigned char 
+  1729 ;; Registers used:
+  1730 ;;		wreg, status,2, status,0
+  1731 ;; Tracked objects:
+  1732 ;;		On entry : 0/0
+  1733 ;;		On exit  : 0/0
+  1734 ;;		Unchanged: 0/0
+  1735 ;; Data sizes:     COMMON   BANK0
+  1736 ;;      Params:         0       0
+  1737 ;;      Locals:         0       1
+  1738 ;;      Temps:          0       1
+  1739 ;;      Totals:         0       2
+  1740 ;;Total ram usage:        2 bytes
+  1741 ;; Hardware stack levels used: 1
+  1742 ;; This function calls:
+  1743 ;;		Nothing
+  1744 ;; This function is called by:
+  1745 ;;		_main
+  1746 ;; This function uses a non-reentrant model
+  1747 ;;
+  1748                           
+  1749  0000'                    _Adc_StartConversion:	
+  1750                           ;psect for function _Adc_StartConversion
+  1751                           
+  1752                           
+  1753                           ;incstack = 0
+  1754                           ; Regs used in _Adc_StartConversion: [wreg+status,2+status,0]
+  1755                           ;Adc_StartConversion@channel stored from wreg
+  1756  0000' 1283               	bcf	3,5	;RP0=0, select bank0
+  1757  0001' 0081'              	movwf	Adc_StartConversion@channel
+  1758                           
+  1759                           ;Adc.c: 129: if (!(;Adc.c: 130: (channel == ADC_CHANNEL_AN0 && (ANSEL & (1 << 0))) ||;Ad
+      +                          c.c: 131: (channel == ADC_CHANNEL_AN1 && (ANSEL & (1 << 1))) ||;Adc.c: 132: (channel == 
+      +                          ADC_CHANNEL_AN2 && (ANSEL & (1 << 2))) ||;Adc.c: 133: (channel == ADC_CHANNEL_AN3 && (AN
+      +                          SEL & (1 << 3)));Adc.c: 134: ))
+  1760  0002' 0801'              	movf	Adc_StartConversion@channel,w
+  1761  0003' 1D03               	btfss	3,2
+  1762  0004' 2808'              	goto	l1643
+  1763  0005' 1683               	bsf	3,5	;RP0=1, select bank1
+  1764  0006' 181F               	btfsc	31,0	;volatile
+  1765  0007' 281F'              	goto	l1657
+  1766  0008'                    l1643:
+  1767  0008' 1283               	bcf	3,5	;RP0=0, select bank0
+  1768  0009' 0301'              	decf	Adc_StartConversion@channel,w
+  1769  000A' 1D03               	btfss	3,2
+  1770  000B' 280F'              	goto	l1647
+  1771  000C' 1683               	bsf	3,5	;RP0=1, select bank1
+  1772  000D' 189F               	btfsc	31,1	;volatile
+  1773  000E' 281F'              	goto	l1657
+  1774  000F'                    l1647:
+  1775  000F' 3002               	movlw	2
+  1776  0010' 1283               	bcf	3,5	;RP0=0, select bank0
+  1777  0011' 0601'              	xorwf	Adc_StartConversion@channel,w
+  1778  0012' 1D03               	btfss	3,2
+  1779  0013' 2817'              	goto	l1651
+  1780  0014' 1683               	bsf	3,5	;RP0=1, select bank1
+  1781  0015' 191F               	btfsc	31,2	;volatile
+  1782  0016' 281F'              	goto	l1657
+  1783  0017'                    l1651:
+  1784  0017' 3003               	movlw	3
+  1785  0018' 1283               	bcf	3,5	;RP0=0, select bank0
+  1786  0019' 0601'              	xorwf	Adc_StartConversion@channel,w
+  1787  001A' 1D03               	btfss	3,2
+  1788  001B' 0008               	return
+  1789  001C' 1683               	bsf	3,5	;RP0=1, select bank1
+  1790  001D' 1D9F               	btfss	31,3	;volatile
+  1791  001E' 0008               	return
+  1792  001F'                    l1657:
+  1793                           
+  1794                           ;Adc.c: 139: else{;Adc.c: 142: ADCON0 &= ~( 0b11 << 2);
+  1795  001F' 30F3               	movlw	243
+  1796  0020' 1283               	bcf	3,5	;RP0=0, select bank0
+  1797  0021' 059F               	andwf	31,f	;volatile
+  1798                           
+  1799                           ;Adc.c: 143: ADCON0 |= (channel << 2);
+  1800  0022' 0801'              	movf	Adc_StartConversion@channel,w
+  1801  0023' 0080'              	movwf	??_Adc_StartConversion
+  1802  0024' 3001               	movlw	1
+  1803  0025'                    u1845:
+  1804  0025' 1003               	clrc
+  1805  0026' 0D80'              	rlf	??_Adc_StartConversion,f
+  1806  0027' 3EFF               	addlw	-1
+  1807  0028' 1D03               	skipz
+  1808  0029' 2825'              	goto	u1845
+  1809  002A' 1003               	clrc
+  1810  002B' 0D00'              	rlf	??_Adc_StartConversion,w
+  1811  002C' 049F               	iorwf	31,f	;volatile
+  1812                           
+  1813                           ;Adc.c: 144: ADCON0 |= (1 << 1);
+  1814  002D' 149F               	bsf	31,1	;volatile
+  1815  002E' 0008               	return
+  1816  002F'                    __end_of_Adc_StartConversion:
+  1817                           
+  1818                           	psect	text6
+  1819  0000'                    __ptext6:	
+  1820 ;; *************** function _Adc_ReadResult *****************
+  1821 ;; Defined at:
+  1822 ;;		line 150 in file "src/Adc.c"
+  1823 ;; Parameters:    Size  Location     Type
+  1824 ;;		None
+  1825 ;; Auto vars:     Size  Location     Type
+  1826 ;;		None
+  1827 ;; Return value:  Size  Location     Type
+  1828 ;;                  2    0[BANK0 ] unsigned short 
+  1829 ;; Registers used:
+  1830 ;;		wreg, status,2, status,0
+  1831 ;; Tracked objects:
+  1832 ;;		On entry : 0/0
+  1833 ;;		On exit  : 0/0
+  1834 ;;		Unchanged: 0/0
+  1835 ;; Data sizes:     COMMON   BANK0
+  1836 ;;      Params:         0       2
+  1837 ;;      Locals:         0       0
+  1838 ;;      Temps:          0       7
+  1839 ;;      Totals:         0       9
+  1840 ;;Total ram usage:        9 bytes
+  1841 ;; Hardware stack levels used: 1
+  1842 ;; This function calls:
+  1843 ;;		Nothing
+  1844 ;; This function is called by:
+  1845 ;;		_main
+  1846 ;; This function uses a non-reentrant model
+  1847 ;;
+  1848                           
+  1849  0000'                    _Adc_ReadResult:	
+  1850                           ;psect for function _Adc_ReadResult
+  1851                           
+  1852  0000'                    l239:	
+  1853                           ;Adc.c: 151: while (ADCON0 & (1 << 1));
+  1854                           
+  1855                           ;incstack = 0
+  1856                           ; Regs used in _Adc_ReadResult: [wreg+status,2+status,0]
+  1857                           
+  1858  0000' 1283               	bcf	3,5	;RP0=0, select bank0
+  1859  0001' 189F               	btfsc	31,1	;volatile
+  1860  0002' 2800'              	goto	l239
+  1861                           
+  1862                           ;Adc.c: 154: if (ADCON0 & (1 << 7)) {
+  1863  0003' 1F9F               	btfss	31,7	;volatile
+  1864  0004' 280C'              	goto	l1671
+  1865                           
+  1866                           ;Adc.c: 156: return (uint16)((ADRESH << 8) | ADRESL);
+  1867  0005' 081E               	movf	30,w	;volatile
+  1868  0006' 0081'              	movwf	?_Adc_ReadResult+1
+  1869  0007' 1683               	bsf	3,5	;RP0=1, select bank1
+  1870  0008' 081E               	movf	30,w	;volatile
+  1871  0009' 1283               	bcf	3,5	;RP0=0, select bank0
+  1872  000A' 0080'              	movwf	?_Adc_ReadResult
+  1873  000B' 0008               	return
+  1874  000C'                    l1671:
+  1875                           
+  1876                           ;Adc.c: 159: return (uint16)((ADRESH << 2) | (ADRESL >> 6));
+  1877  000C' 1683               	bsf	3,5	;RP0=1, select bank1
+  1878  000D' 081E               	movf	30,w	;volatile
+  1879  000E' 1283               	bcf	3,5	;RP0=0, select bank0
+  1880  000F' 0082'              	movwf	??_Adc_ReadResult
+  1881  0010' 3006               	movlw	6
+  1882  0011'                    u1875:
+  1883  0011' 1003               	clrc
+  1884  0012' 0C82'              	rrf	??_Adc_ReadResult,f
+  1885  0013' 3EFF               	addlw	-1
+  1886  0014' 1D03               	skipz
+  1887  0015' 2811'              	goto	u1875
+  1888  0016' 0802'              	movf	??_Adc_ReadResult,w
+  1889  0017' 0083'              	movwf	??_Adc_ReadResult+1
+  1890  0018' 0184'              	clrf	??_Adc_ReadResult+2
+  1891  0019' 081E               	movf	30,w	;volatile
+  1892  001A' 0085'              	movwf	??_Adc_ReadResult+3
+  1893  001B' 0186'              	clrf	??_Adc_ReadResult+4
+  1894  001C' 1003               	clrc
+  1895  001D' 0D85'              	rlf	??_Adc_ReadResult+3,f
+  1896  001E' 0D86'              	rlf	??_Adc_ReadResult+4,f
+  1897  001F' 1003               	clrc
+  1898  0020' 0D85'              	rlf	??_Adc_ReadResult+3,f
+  1899  0021' 0D86'              	rlf	??_Adc_ReadResult+4,f
+  1900  0022' 0803'              	movf	??_Adc_ReadResult+1,w
+  1901  0023' 0405'              	iorwf	??_Adc_ReadResult+3,w
+  1902  0024' 0087'              	movwf	??_Adc_ReadResult+5
+  1903  0025' 0804'              	movf	??_Adc_ReadResult+2,w
+  1904  0026' 0406'              	iorwf	??_Adc_ReadResult+4,w
+  1905  0027' 0088'              	movwf	??_Adc_ReadResult+6
+  1906  0028' 0807'              	movf	??_Adc_ReadResult+5,w
+  1907  0029' 0080'              	movwf	?_Adc_ReadResult
+  1908  002A' 0808'              	movf	??_Adc_ReadResult+6,w
+  1909  002B' 0081'              	movwf	?_Adc_ReadResult+1
+  1910  002C' 0008               	return
+  1911  002D'                    __end_of_Adc_ReadResult:
+  1912                           
+  1913                           	psect	text7
+  1914  0000'                    __ptext7:	
+  1915 ;; *************** function _Adc_Init_pin *****************
+  1916 ;; Defined at:
+  1917 ;;		line 88 in file "src/Adc.c"
+  1918 ;; Parameters:    Size  Location     Type
+  1919 ;;  channel         1    wreg     enum E10
+  1920 ;;  format          1    0[BANK0 ] enum E16
+  1921 ;; Auto vars:     Size  Location     Type
+  1922 ;;  channel         1    1[BANK0 ] enum E10
+  1923 ;; Return value:  Size  Location     Type
+  1924 ;;                  1    wreg      void 
+  1925 ;; Registers used:
+  1926 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+  1927 ;; Tracked objects:
+  1928 ;;		On entry : 0/0
+  1929 ;;		On exit  : 0/0
+  1930 ;;		Unchanged: 0/0
+  1931 ;; Data sizes:     COMMON   BANK0
+  1932 ;;      Params:         0       1
+  1933 ;;      Locals:         0       1
+  1934 ;;      Temps:          0       0
+  1935 ;;      Totals:         0       2
+  1936 ;;Total ram usage:        2 bytes
+  1937 ;; Hardware stack levels used: 1
+  1938 ;; This function calls:
+  1939 ;;		Nothing
+  1940 ;; This function is called by:
+  1941 ;;		_main
+  1942 ;; This function uses a non-reentrant model
+  1943 ;;
+  1944                           
+  1945  0000'                    _Adc_Init_pin:	
+  1946                           ;psect for function _Adc_Init_pin
+  1947                           
+  1948                           
+  1949                           ;incstack = 0
+  1950                           ; Regs used in _Adc_Init_pin: [wreg-fsr0h+status,2+status,0]
+  1951                           ;Adc_Init_pin@channel stored from wreg
+  1952  0000' 1283               	bcf	3,5	;RP0=0, select bank0
+  1953  0001' 0081'              	movwf	Adc_Init_pin@channel
+  1954                           
+  1955                           ;Adc.c: 89: ADCON0 |= (1 << 0);
+  1956  0002' 141F               	bsf	31,0	;volatile
+  1957                           
+  1958                           ;Adc.c: 93: (ADCON0 &= ~(0b1 << 6)); (ADCON0 |=(0 << 6));
+  1959  0003' 30BF               	movlw	191
+  1960  0004' 059F               	andwf	31,f	;volatile
+  1961  0005' 081F               	movf	31,w	;volatile
+  1962                           
+  1963                           ;Adc.c: 96: (ANSEL &= ~(0b111 << 4) ); (ANSEL |= (( ((2000000 / ((4000000)/1000 )) >= 16
+      +                          00) ? 0b000 : ((4000000 / ((4000000)/1000 )) >= 1600) ? 0b100 : ((8000000 / ((4000000)/1
+      +                          000 )) >= 1600) ? 0b001 : ((16000000 / ((4000000)/1000 )) >= 1600) ? 0b101 : ((3200000
+  1964  0006' 308F               	movlw	143
+  1965  0007' 1683               	bsf	3,5	;RP0=1, select bank1
+  1966  0008' 059F               	andwf	31,f	;volatile
+  1967  0009' 161F               	bsf	31,4	;volatile
+  1968                           
+  1969                           ;Adc.c: 100: switch (channel) {
+  1970  000A' 2817'              	goto	l1631
+  1971  000B'                    l215:	
+  1972                           ;Adc.c: 101: case ADC_CHANNEL_AN0:
+  1973                           
+  1974                           
+  1975                           ;Adc.c: 102: ANSEL |= (1 << 0);
+  1976  000B' 1683               	bsf	3,5	;RP0=1, select bank1
+  1977  000C' 141F               	bsf	31,0	;volatile
+  1978                           
+  1979                           ;Adc.c: 103: break;
+  1980  000D' 2826'              	goto	l1633
+  1981  000E'                    l217:	
+  1982                           ;Adc.c: 104: case ADC_CHANNEL_AN1:
+  1983                           
+  1984                           
+  1985                           ;Adc.c: 105: ANSEL |= (1 << 1);
+  1986  000E' 1683               	bsf	3,5	;RP0=1, select bank1
+  1987  000F' 149F               	bsf	31,1	;volatile
+  1988                           
+  1989                           ;Adc.c: 106: break;
+  1990  0010' 2826'              	goto	l1633
+  1991  0011'                    l218:	
+  1992                           ;Adc.c: 107: case ADC_CHANNEL_AN2:
+  1993                           
+  1994                           
+  1995                           ;Adc.c: 108: ANSEL |= (1 << 2);
+  1996  0011' 1683               	bsf	3,5	;RP0=1, select bank1
+  1997  0012' 151F               	bsf	31,2	;volatile
+  1998                           
+  1999                           ;Adc.c: 109: break;
+  2000  0013' 2826'              	goto	l1633
+  2001  0014'                    l219:	
+  2002                           ;Adc.c: 110: case ADC_CHANNEL_AN3:
+  2003                           
+  2004                           
+  2005                           ;Adc.c: 111: ANSEL |= (1 << 3);
+  2006  0014' 1683               	bsf	3,5	;RP0=1, select bank1
+  2007  0015' 159F               	bsf	31,3	;volatile
+  2008                           
+  2009                           ;Adc.c: 112: break;
+  2010  0016' 2826'              	goto	l1633
+  2011  0017'                    l1631:
+  2012  0017' 1283               	bcf	3,5	;RP0=0, select bank0
+  2013  0018' 0801'              	movf	Adc_Init_pin@channel,w
+  2014                           
+  2015                           ; Switch size 1, requested type "simple"
+  2016                           ; Number of cases is 4, Range of values is 0 to 3
+  2017                           ; switch strategies available:
+  2018                           ; Name         Instructions Cycles
+  2019                           ; direct_byte           10     6 (fixed)
+  2020                           ; simple_byte           13     7 (average)
+  2021                           ; jumptable            260     6 (fixed)
+  2022                           ;	Chosen strategy is simple_byte
+  2023  0019' 3A00               	xorlw	0	; case 0
+  2024  001A' 1903               	skipnz
+  2025  001B' 280B'              	goto	l215
+  2026  001C' 3A01               	xorlw	1	; case 1
+  2027  001D' 1903               	skipnz
+  2028  001E' 280E'              	goto	l217
+  2029  001F' 3A03               	xorlw	3	; case 2
+  2030  0020' 1903               	skipnz
+  2031  0021' 2811'              	goto	l218
+  2032  0022' 3A01               	xorlw	1	; case 3
+  2033  0023' 1903               	skipnz
+  2034  0024' 2814'              	goto	l219
+  2035  0025' 282E'              	goto	l221
+  2036  0026'                    l1633:
+  2037                           
+  2038                           ;Adc.c: 118: if (format == ADC_RESULT_RIGHT) {
+  2039  0026' 1283               	bcf	3,5	;RP0=0, select bank0
+  2040  0027' 0300'              	decf	Adc_Init_pin@format,w
+  2041  0028' 1D03               	btfss	3,2
+  2042  0029' 282C'              	goto	l1637
+  2043                           
+  2044                           ;Adc.c: 119: ADCON0 |= (1 << 7);
+  2045  002A' 179F               	bsf	31,7	;volatile
+  2046                           
+  2047                           ;Adc.c: 120: } else {
+  2048  002B' 0008               	return
+  2049  002C'                    l1637:
+  2050                           
+  2051                           ;Adc.c: 121: ADCON0 &= ~(1 << 7);
+  2052  002C' 307F               	movlw	127
+  2053  002D' 059F               	andwf	31,f	;volatile
+  2054  002E'                    l221:
+  2055  002E' 0008               	return
+  2056  002F'                    __end_of_Adc_Init_pin:
+  2057  0000                     ___latbits      equ	0
+  2058  005E                     btemp           set	94	;btemp
+  2059  005E                     wtemp0          set	94
+  2060                           
+  2061                           	psect	config
+  2062                           
+  2063                           ;Config register CONFIG @ 0x2007
+  2064                           ;	Oscillator Selection bits
+  2065                           ;	FOSC = INTRCIO, INTOSC oscillator: I/O function on GP4/OSC2/CLKOUT pin, I/O function o
+      +                          n GP5/OSC1/CLKIN
+  2066                           ;	Watchdog Timer Enable bit
+  2067                           ;	WDTE = OFF, WDT disabled
+  2068                           ;	Power-Up Timer Enable bit
+  2069                           ;	PWRTE = OFF, PWRT disabled
+  2070                           ;	GP3/MCLR pin function select
+  2071                           ;	MCLRE = OFF, GP3/MCLR pin function is digital I/O, MCLR internally tied to VDD
+  2072                           ;	Brown-out Detect Enable bit
+  2073                           ;	BOREN = OFF, BOD disabled
+  2074                           ;	Code Protection bit
+  2075                           ;	CP = OFF, Program Memory code protection is disabled
+  2076                           ;	Data Code Protection bit
+  2077                           ;	CPD = OFF, Data memory code protection is disabled
+  2078  2007                     	org	8199
+  2079  2007  3194               	dw	12692
+
+Data Sizes:
+    Strings     0
+    Constant    44
+    Data        0
+    BSS         4
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON            0      0       0
+    BANK0            62     25      29
+
+Pointer List with Targets:
+
+    Dio_Init@ConfigPtr	PTR const struct . size(2) Largest target is 24
+		 -> Dio_Configurations(CODE[24]), 
+
+    Gpio_Init@ConfigPtr	PTR const struct . size(2) Largest target is 12
+		 -> Gpio_Configurations(CODE[12]), 
+
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    _main->_Dio_Init
+    _Dio_Init->_Gpio_Pin_Dio
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0    2017
+                       _Adc_Init_pin
+                     _Adc_ReadResult
+                _Adc_StartConversion
+                           _Dio_Init
+                       _Dio_WritePin
+                          _Gpio_Init
+ ---------------------------------------------------------------------------------
+ (2) _Gpio_Init                                           10     8      2     687
+                                              0 BANK0     10     8      2
+ ---------------------------------------------------------------------------------
+ (1) _Dio_WritePin                                         3     2      1     111
+                                              0 BANK0      3     2      1
+ ---------------------------------------------------------------------------------
+ (1) _Dio_Init                                            20    18      2     878
+                                              5 BANK0     20    18      2
+                       _Gpio_Pin_Dio
+ ---------------------------------------------------------------------------------
+ (2) _Gpio_Pin_Dio                                         5     2      3     389
+                                              0 BANK0      5     2      3
+ ---------------------------------------------------------------------------------
+ (1) _Adc_StartConversion                                  2     2      0     145
+                                              0 BANK0      2     2      0
+ ---------------------------------------------------------------------------------
+ (1) _Adc_ReadResult                                       9     7      2       0
+                                              0 BANK0      9     7      2
+ ---------------------------------------------------------------------------------
+ (1) _Adc_Init_pin                                        14    13      1     196
+                                              0 BANK0      2     1      1
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _Adc_Init_pin
+   _Adc_ReadResult
+   _Adc_StartConversion
+   _Dio_Init
+     _Gpio_Pin_Dio
+   _Dio_WritePin
+   _Gpio_Init
+
+Address spaces:
+Name               Size   Autos  Total    Usage
+BITCOMMON            0      0       0      0.0%
+BITBANK0            62      0       0      0.0%
+COMMON               0      0       0      0.0%
+BANK0               62     25      29     46.8%
+STACK                0      0       0      0.0%
+DATA                 0      0      29      0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.50 build 20240725155939 
+Symbol Table                                                                                   Wed Sep 18 23:12:21 2024
+
+                          pc 0002                           l28 00EC                           fsr 0004  
+              ?_Gpio_Pin_Dio 0000                          l221 002E                          l215 000B  
+                        l217 000E                          l218 0011                          l219 0014  
+                        l239 0000                          _WPU 0095                   Gpio_Init@i 0008  
+                        fsr0 0004                          indf 0000         __end_of_Dio_WritePin 0024  
+                       l1405 0064                         l1413 0073                         l1511 0082  
+                       l1503 0078                         l1433 0030                         l1515 0088  
+                       l1507 007A                         l1443 0037                         l1427 0006  
+                       l1373 0008                         l1533 0098                         l1525 0092  
+                       l1453 0043                         l1541 00E4                         l1429 0029  
+                       l1631 0017                         l1391 0041                         l1519 008A  
+                       l1463 004F                         l1439 0035                         l1633 0026  
+                       l1385 0028                         l1377 0018                         l1369 0006  
+                       l1529 0098                         l1473 0056                         l1449 003C  
+                       l1651 0017                         l1643 0008                         l1571 006F  
+                       l1563 003F                         l1483 0064                         l1467 0051  
+                       l1459 0049                         l1539 009D                         l1723 0016  
+                       l1637 002C                         l1557 0008                         l1493 0072  
+                       l1477 005E                         l1671 000C                         l1647 000F  
+                       l1399 0051                         l1575 0087                         l1567 0057  
+                       l1591 0015                         l1657 001F                         l1577 00F6  
+                       l1593 0021                         l1489 006C                         l1729 0012  
+                       l1499 0078                         u1124 0011                         u1125 000F  
+                       u1224 005E                         u1144 0021                         u1225 005C  
+                       u1145 001F                         u1244 006D                         u1245 006B  
+                       u1174 003A                         u1175 0038                         u1194 004A  
+                       u1195 0048                         u1515 000F                         u1535 002B  
+                       u1625 0073                         _GPIO 0005                         u1565 0043  
+                       u1734 000F                         u1655 008F                         u1735 000D  
+                       u1744 001B                         u1665 00AD                         u1745 0019  
+                       u1675 00CB                         u1595 005B                         u1845 0025  
+                       u1685 00E5                         u1875 0011           _Adc_Configurations 0012  
+                       _main 0000                         btemp 005E                         start 0000* 
+             ??_Gpio_Pin_Dio 0003            Dio_Init@ConfigPtr 0005                        ?_main 0000  
+                      _CMCON 0019                        _ANSEL 009F                        _T1CON 0010  
+                      _VRCON 0099           Gpio_Init@ConfigPtr 0000                        pclath 000A  
+                      status 0003                        wtemp0 005E                   _Gpio_State 0003  
+        _Gpio_State@Dio$F200 0002             __end_of_Dio_Init 0100            Gpio_Init@function 0007  
+            __initialization 0000                 __end_of_main 0027                       ??_main 0000  
+        _Gpio_Configurations 0032                       _ADCON0 001F             ??_Adc_ReadResult 0002  
+                     _ADRESH 001E                       _ADRESL 009E   __end_of_Dio_Configurations 0032  
+         Adc_Init_pin@format 0000                       _TRISIO 0085                       _analog 0000  
+       __end_of_Gpio_Pin_Dio 0075      __end_of__initialization 0005           Gpio_Init@pinNumber 0009  
+             __pcstackCOMMON 0000                 _Dio_WritePin 0000            __end_of_Gpio_Init 00ED  
+                  ?_Dio_Init 0005           _Spi_Configurations 0000*                  __pbssBANK0 0000  
+      Gpio_Pin_Dio@direction 0000                   __pmaintext 0000            Gpio_Pin_Dio@state 0001  
+        Adc_Init_pin@channel 0001                   ??_Dio_Init 0007        Gpio_Pin_Dio@pinNumber 0004  
+                 __stringtab 0000               Dio_Init@result 0017                      __ptext1 0000  
+                    __ptext2 0000                      __ptext3 0000                      __ptext4 0000  
+                    __ptext5 0000                      __ptext6 0000                      __ptext7 0000  
+      Dio_WritePin@pinNumber 0002         end_of_initialization 0005                    Dio_Init@i 0018  
+         _Dio_Configurations 001A                 __pstringtext 0000                ?_Adc_Init_pin 0000  
+               _Gpio_Pin_Dio 0000          _Adc_StartConversion 0000         ?_Adc_StartConversion 0000  
+             ??_Adc_Init_pin 0000                    _Gpio_Init 0000          start_initialization 0000  
+__end_of_Gpio_Configurations 003E            Dio_WritePin@state 0000        ??_Adc_StartConversion 0000  
+                 ?_Gpio_Init 0000                    ___latbits 0000                __pcstackBANK0 0000  
+       Gpio_Pin_Dio@pullType 0002         __end_of_Adc_Init_pin 002F                  __stringbase 0012  
+ __end_of_Adc_Configurations 001A                  ??_Gpio_Init 0002                     _Dio_Init 0000  
+             _Adc_ReadResult 0000                ?_Dio_WritePin 0000           __end_of__stringtab 0012  
+     __end_of_Adc_ReadResult 002D               ??_Dio_WritePin 0001  __end_of_Adc_StartConversion 002F  
+            ?_Adc_ReadResult 0000                    stringcode 000A   Adc_StartConversion@channel 0001  
+               _Adc_Init_pin 0000                   _OPTION_REG 0081                     stringtab 0000  

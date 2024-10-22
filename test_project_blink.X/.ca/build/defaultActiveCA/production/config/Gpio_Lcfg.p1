@@ -1,0 +1,109 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"19 config/Gpio_Lcfg.c
+[c E26 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 .. ]
+[n E26 . GPIO_PIN0_GPIO GPIO_PIN0_AN0 GPIO_PIN0_CIN_PLUS GPIO_PIN0_ICSPDAT GPIO_PIN1_GPIO GPIO_PIN1_AN1 GPIO_PIN1_CIN_MINUS GPIO_PIN1_VREF GPIO_PIN1_ICSPCLK GPIO_PIN2_GPIO GPIO_PIN2_AN2 GPIO_PIN2_T0CKI GPIO_PIN2_INT GPIO_PIN2_COUT GPIO_PIN3_GPIO GPIO_PIN3_MCLR GPIO_PIN4_GPIO GPIO_PIN4_AN3 GPIO_PIN4_T1G GPIO_PIN4_OSC2 GPIO_PIN5_GPIO GPIO_PIN5_T1CKI GPIO_PIN5_OSC1  ]
+"26 config/Gpio_Cfg.h
+[s S1 `E26 1 `uc 1 ]
+[n S1 . pinFunction pinNumber ]
+"20 config/Gpio_Lcfg.c
+[c E18 0 1 2 3 4 5 .. ]
+[n E18 . GPIO_PIN_0 GPIO_PIN_1 GPIO_PIN_2 GPIO_PIN_3 GPIO_PIN_4 GPIO_PIN_5  ]
+[; ;Std_Types.h: 15: typedef unsigned char uint8;
+[; ;Std_Types.h: 16: typedef signed char sint8;
+[; ;Std_Types.h: 17: typedef unsigned short uint16;
+[; ;Std_Types.h: 18: typedef signed short sint16;
+[; ;Std_Types.h: 19: typedef unsigned long uint32;
+[; ;Std_Types.h: 20: typedef signed long sint32;
+[; ;Std_Types.h: 21: typedef float float32;
+[; ;Std_Types.h: 22: typedef double float64;
+[; ;Std_Types.h: 25: typedef uint8 Std_ReturnType;
+[; ;Gpio_Types.h: 17: typedef enum {
+[; ;Gpio_Types.h: 18: GPIO_PIN_LOW = 0,
+[; ;Gpio_Types.h: 19: GPIO_PIN_HIGH
+[; ;Gpio_Types.h: 20: } Gpio_PinStateType;
+[; ;Gpio_Types.h: 22: typedef enum {
+[; ;Gpio_Types.h: 23: GPIO_DIR_INPUT = 0,
+[; ;Gpio_Types.h: 24: GPIO_DIR_OUTPUT
+[; ;Gpio_Types.h: 25: } Gpio_PinDirectionType;
+[; ;Gpio_Types.h: 27: typedef enum {
+[; ;Gpio_Types.h: 28: GPIO_PIN_0 = 0,
+[; ;Gpio_Types.h: 29: GPIO_PIN_1 = 1,
+[; ;Gpio_Types.h: 30: GPIO_PIN_2 = 2,
+[; ;Gpio_Types.h: 31: GPIO_PIN_3 = 3,
+[; ;Gpio_Types.h: 32: GPIO_PIN_4 = 4,
+[; ;Gpio_Types.h: 33: GPIO_PIN_5 = 5,
+[; ;Gpio_Types.h: 34: } Gpio_PinNumber;
+[; ;Gpio_Types.h: 35: typedef enum {
+[; ;Gpio_Types.h: 37: GPIO_PIN0_GPIO = 0,
+[; ;Gpio_Types.h: 38: GPIO_PIN0_AN0,
+[; ;Gpio_Types.h: 39: GPIO_PIN0_CIN_PLUS,
+[; ;Gpio_Types.h: 40: GPIO_PIN0_ICSPDAT,
+[; ;Gpio_Types.h: 43: GPIO_PIN1_GPIO,
+[; ;Gpio_Types.h: 44: GPIO_PIN1_AN1,
+[; ;Gpio_Types.h: 45: GPIO_PIN1_CIN_MINUS,
+[; ;Gpio_Types.h: 46: GPIO_PIN1_VREF,
+[; ;Gpio_Types.h: 47: GPIO_PIN1_ICSPCLK,
+[; ;Gpio_Types.h: 50: GPIO_PIN2_GPIO,
+[; ;Gpio_Types.h: 51: GPIO_PIN2_AN2,
+[; ;Gpio_Types.h: 52: GPIO_PIN2_T0CKI,
+[; ;Gpio_Types.h: 53: GPIO_PIN2_INT,
+[; ;Gpio_Types.h: 54: GPIO_PIN2_COUT,
+[; ;Gpio_Types.h: 57: GPIO_PIN3_GPIO,
+[; ;Gpio_Types.h: 58: GPIO_PIN3_MCLR,
+[; ;Gpio_Types.h: 61: GPIO_PIN4_GPIO,
+[; ;Gpio_Types.h: 62: GPIO_PIN4_AN3,
+[; ;Gpio_Types.h: 63: GPIO_PIN4_T1G,
+[; ;Gpio_Types.h: 64: GPIO_PIN4_OSC2,
+[; ;Gpio_Types.h: 67: GPIO_PIN5_GPIO,
+[; ;Gpio_Types.h: 68: GPIO_PIN5_T1CKI,
+[; ;Gpio_Types.h: 69: GPIO_PIN5_OSC1,
+[; ;Gpio_Types.h: 70: } Gpio_PinFunctionEnum;
+[; ;Gpio_Cfg.h: 26: typedef struct {
+[; ;Gpio_Cfg.h: 27: Gpio_PinFunctionEnum pinFunction;
+[; ;Gpio_Cfg.h: 28: uint8 pinNumber ;
+[; ;Gpio_Cfg.h: 29: } Gpio_ConfigType;
+[; ;Gpio_Cfg.h: 31: extern const Gpio_ConfigType Gpio_Configurations[6];
+"19 config/Gpio_Lcfg.c
+[v _Gpio_Configurations `CS1 ~T0 @X0 -> 6 `i e ]
+[i _Gpio_Configurations
+:U ..
+:U ..
+"20
+. `E26 0
+-> . `E18 0 `uc
+..
+:U ..
+"21
+. `E26 4
+-> . `E18 1 `uc
+..
+:U ..
+"22
+. `E26 10
+-> . `E18 2 `uc
+..
+:U ..
+"23
+. `E26 14
+-> . `E18 3 `uc
+..
+:U ..
+"24
+. `E26 16
+-> . `E18 4 `uc
+..
+:U ..
+"25
+. `E26 20
+-> . `E18 5 `uc
+..
+..
+]
+[; ;Gpio_Lcfg.c: 19: const Gpio_ConfigType Gpio_Configurations[6] = {
+[; ;Gpio_Lcfg.c: 20: {GPIO_PIN0_GPIO,GPIO_PIN_0},
+[; ;Gpio_Lcfg.c: 21: {GPIO_PIN1_GPIO,GPIO_PIN_1},
+[; ;Gpio_Lcfg.c: 22: {GPIO_PIN2_AN2 ,GPIO_PIN_2},
+[; ;Gpio_Lcfg.c: 23: {GPIO_PIN3_GPIO,GPIO_PIN_3},
+[; ;Gpio_Lcfg.c: 24: {GPIO_PIN4_GPIO,GPIO_PIN_4},
+[; ;Gpio_Lcfg.c: 25: {GPIO_PIN5_GPIO,GPIO_PIN_5}
+[; ;Gpio_Lcfg.c: 26: };

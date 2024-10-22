@@ -1,0 +1,390 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"52 src/Adc.c
+[; ;src/Adc.c: 52: uint8 Adc_Init(const Adc_ConfigType* ConfigPtr) {
+[c E11 0 1 2 3 .. ]
+[n E11 . ADC_CHANNEL_AN0 ADC_CHANNEL_AN1 ADC_CHANNEL_AN2 ADC_CHANNEL_AN3  ]
+[c E17 0 1 .. ]
+[n E17 . ADC_RESULT_LEFT ADC_RESULT_RIGHT  ]
+"90 src/../config/Adc_Cfg.h
+[s S1 `E11 1 `E17 1 ]
+[n S1 . channel resultFormat ]
+"643 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 643: extern volatile unsigned char ADCON0 __attribute__((address(0x01F)));
+[v _ADCON0 `Vuc ~T0 @X0 0 e@31 ]
+"1404
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1404: extern volatile unsigned char ANSEL __attribute__((address(0x09F)));
+[v _ANSEL `Vuc ~T0 @X0 0 e@159 ]
+"623
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 623: extern volatile unsigned char ADRESH __attribute__((address(0x01E)));
+[v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
+"1384
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1384: extern volatile unsigned char ADRESL __attribute__((address(0x09E)));
+[v _ADRESL `Vuc ~T0 @X0 0 e@158 ]
+"25 src/../efuse.h
+[p x FOSC  =  INTRCIO    ]
+"26
+[p x WDTE  =  OFF        ]
+"27
+[p x PWRTE  =  OFF       ]
+"28
+[p x MCLRE  =  OFF       ]
+"29
+[p x BOREN  =  OFF       ]
+"30
+[p x CP  =  OFF          ]
+"31
+[p x CPD  =  OFF  ]
+"54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 54: __asm("INDF equ 00h");
+[; <" INDF equ 00h ;# ">
+"74
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 74: __asm("TMR0 equ 01h");
+[; <" TMR0 equ 01h ;# ">
+"94
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 94: __asm("PCL equ 02h");
+[; <" PCL equ 02h ;# ">
+"114
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 114: __asm("STATUS equ 03h");
+[; <" STATUS equ 03h ;# ">
+"200
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 200: __asm("FSR equ 04h");
+[; <" FSR equ 04h ;# ">
+"220
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 220: __asm("GPIO equ 05h");
+[; <" GPIO equ 05h ;# ">
+"308
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 308: __asm("PCLATH equ 0Ah");
+[; <" PCLATH equ 0Ah ;# ">
+"328
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 328: __asm("INTCON equ 0Bh");
+[; <" INTCON equ 0Bh ;# ">
+"406
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 406: __asm("PIR1 equ 0Ch");
+[; <" PIR1 equ 0Ch ;# ">
+"454
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 454: __asm("TMR1 equ 0Eh");
+[; <" TMR1 equ 0Eh ;# ">
+"461
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 461: __asm("TMR1L equ 0Eh");
+[; <" TMR1L equ 0Eh ;# ">
+"481
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 481: __asm("TMR1H equ 0Fh");
+[; <" TMR1H equ 0Fh ;# ">
+"501
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 501: __asm("T1CON equ 010h");
+[; <" T1CON equ 010h ;# ">
+"566
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 566: __asm("CMCON equ 019h");
+[; <" CMCON equ 019h ;# ">
+"625
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 625: __asm("ADRESH equ 01Eh");
+[; <" ADRESH equ 01Eh ;# ">
+"645
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 645: __asm("ADCON0 equ 01Fh");
+[; <" ADCON0 equ 01Fh ;# ">
+"729
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 729: __asm("OPTION_REG equ 081h");
+[; <" OPTION_REG equ 081h ;# ">
+"799
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 799: __asm("TRISIO equ 085h");
+[; <" TRISIO equ 085h ;# ">
+"849
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 849: __asm("PIE1 equ 08Ch");
+[; <" PIE1 equ 08Ch ;# ">
+"897
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 897: __asm("PCON equ 08Eh");
+[; <" PCON equ 08Eh ;# ">
+"931
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 931: __asm("OSCCAL equ 090h");
+[; <" OSCCAL equ 090h ;# ">
+"991
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 991: __asm("WPU equ 095h");
+[; <" WPU equ 095h ;# ">
+"1036
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1036: __asm("IOC equ 096h");
+[; <" IOC equ 096h ;# ">
+"1041
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1041: __asm("IOCB equ 096h");
+[; <" IOCB equ 096h ;# ">
+"1210
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1210: __asm("VRCON equ 099h");
+[; <" VRCON equ 099h ;# ">
+"1270
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1270: __asm("EEDATA equ 09Ah");
+[; <" EEDATA equ 09Ah ;# ">
+"1275
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1275: __asm("EEDAT equ 09Ah");
+[; <" EEDAT equ 09Ah ;# ">
+"1308
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1308: __asm("EEADR equ 09Bh");
+[; <" EEADR equ 09Bh ;# ">
+"1328
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1328: __asm("EECON1 equ 09Ch");
+[; <" EECON1 equ 09Ch ;# ">
+"1366
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1366: __asm("EECON2 equ 09Dh");
+[; <" EECON2 equ 09Dh ;# ">
+"1386
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1386: __asm("ADRESL equ 09Eh");
+[; <" ADRESL equ 09Eh ;# ">
+"1406
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h: 1406: __asm("ANSEL equ 09Fh");
+[; <" ANSEL equ 09Fh ;# ">
+"52 src/Adc.c
+[; ;src/Adc.c: 52: uint8 Adc_Init(const Adc_ConfigType* ConfigPtr) {
+[v _Adc_Init `(uc ~T0 @X0 1 ef1`*CS1 ]
+{
+[e :U _Adc_Init ]
+[v _ConfigPtr `*CS1 ~T0 @X0 1 r1 ]
+[f ]
+"58
+[; ;src/Adc.c: 58:     (ADCON0 &= ~(0b1 << 6)); (ADCON0 |=(0 << 6));
+[e =& _ADCON0 -> ~ << -> 1 `i -> 6 `i `Vuc ]
+[e =| _ADCON0 -> << -> 0 `i -> 6 `i `Vuc ]
+"61
+[; ;src/Adc.c: 61: (ANSEL &= ~(0b111 << 4) ); (ANSEL |= (( ((2000000 / ((4000000)/1000 )) >= 1600) ? 0b000 : ((4000000 / ((4000000)/1000 )) >= 1600) ? 0b100 : ((8000000 / ((4000000)/1000 )) >= 1600) ? 0b001 : ((16000000 / ((4000000)/1000 )) >= 1600) ? 0b101 : ((32000000 / ((4000000)/1000 )) >= 1600) ? 0b010 : ((64000000 / ((4000000)/1000 )) >= 1600) ? 0b110 : 0b110) << 4) );
+[e =& _ANSEL -> ~ << -> 7 `i -> 4 `i `Vuc ]
+[e =| _ANSEL -> << ? >= / -> 2000000 `l / -> 4000000 `l -> -> 1000 `i `l -> -> 1600 `i `l : -> 0 `i ? >= / -> 4000000 `l / -> 4000000 `l -> -> 1000 `i `l -> -> 1600 `i `l : -> 4 `i ? >= / -> 8000000 `l / -> 4000000 `l -> -> 1000 `i `l -> -> 1600 `i `l : -> 1 `i ? >= / -> 16000000 `l / -> 4000000 `l -> -> 1000 `i `l -> -> 1600 `i `l : -> 5 `i ? >= / -> 32000000 `l / -> 4000000 `l -> -> 1000 `i `l -> -> 1600 `i `l : -> 2 `i ? >= / -> 64000000 `l / -> 4000000 `l -> -> 1000 `i `l -> -> 1600 `i `l : -> 6 `i -> 6 `i -> 4 `i `Vuc ]
+"64
+[; ;src/Adc.c: 64:     if (ConfigPtr == ((void*)0)) {
+[e $ ! == _ConfigPtr -> -> -> 0 `i `*v `*CS1 87  ]
+{
+"65
+[; ;src/Adc.c: 65:         return (Std_ReturnType)1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+"66
+[; ;src/Adc.c: 66:     }
+}
+[e :U 87 ]
+"68
+[; ;src/Adc.c: 68:     if (!(
+[e $ ! ! || || || && == -> . *U _ConfigPtr 0 `ui -> . `E11 0 `ui != & -> _ANSEL `i << -> 1 `i -> 0 `i -> 0 `i && == -> . *U _ConfigPtr 0 `ui -> . `E11 1 `ui != & -> _ANSEL `i << -> 1 `i -> 1 `i -> 0 `i && == -> . *U _ConfigPtr 0 `ui -> . `E11 2 `ui != & -> _ANSEL `i << -> 1 `i -> 2 `i -> 0 `i && == -> . *U _ConfigPtr 0 `ui -> . `E11 3 `ui != & -> _ANSEL `i << -> 1 `i -> 3 `i -> 0 `i 88  ]
+"74
+[; ;src/Adc.c: 74:     {
+{
+"75
+[; ;src/Adc.c: 75:         return (Std_ReturnType)1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 86  ]
+"77
+[; ;src/Adc.c: 77:     } else{}
+}
+[e $U 89  ]
+[e :U 88 ]
+{
+}
+[e :U 89 ]
+"81
+[; ;src/Adc.c: 81:     if (ConfigPtr->resultFormat == ADC_RESULT_RIGHT) {
+[e $ ! == -> . *U _ConfigPtr 1 `ui -> . `E17 1 `ui 90  ]
+{
+"82
+[; ;src/Adc.c: 82:         ADCON0 |= (1 << 7);
+[e =| _ADCON0 -> << -> 1 `i -> 7 `i `Vuc ]
+"83
+[; ;src/Adc.c: 83:     } else {
+}
+[e $U 91  ]
+[e :U 90 ]
+{
+"84
+[; ;src/Adc.c: 84:         ADCON0 &= ~(1 << 7);
+[e =& _ADCON0 -> ~ << -> 1 `i -> 7 `i `Vuc ]
+"85
+[; ;src/Adc.c: 85:     }
+}
+[e :U 91 ]
+"86
+[; ;src/Adc.c: 86:         return (Std_ReturnType)0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 86  ]
+"87
+[; ;src/Adc.c: 87: }
+[e :UE 86 ]
+}
+"88
+[; ;src/Adc.c: 88: void Adc_Init_pin(Adc_ChannelType channel , Adc_ResultFormatType format){
+[v _Adc_Init_pin `(v ~T0 @X0 1 ef2`E11`E17 ]
+{
+[e :U _Adc_Init_pin ]
+[v _channel `E11 ~T0 @X0 1 r1 ]
+[v _format `E17 ~T0 @X0 1 r2 ]
+[f ]
+"89
+[; ;src/Adc.c: 89:         ADCON0 |= (1 << 0);
+[e =| _ADCON0 -> << -> 1 `i -> 0 `i `Vuc ]
+"93
+[; ;src/Adc.c: 93:     (ADCON0 &= ~(0b1 << 6)); (ADCON0 |=(0 << 6));
+[e =& _ADCON0 -> ~ << -> 1 `i -> 6 `i `Vuc ]
+[e =| _ADCON0 -> << -> 0 `i -> 6 `i `Vuc ]
+"96
+[; ;src/Adc.c: 96: (ANSEL &= ~(0b111 << 4) ); (ANSEL |= (( ((2000000 / ((4000000)/1000 )) >= 1600) ? 0b000 : ((4000000 / ((4000000)/1000 )) >= 1600) ? 0b100 : ((8000000 / ((4000000)/1000 )) >= 1600) ? 0b001 : ((16000000 / ((4000000)/1000 )) >= 1600) ? 0b101 : ((32000000 / ((4000000)/1000 )) >= 1600) ? 0b010 : ((64000000 / ((4000000)/1000 )) >= 1600) ? 0b110 : 0b110) << 4) );
+[e =& _ANSEL -> ~ << -> 7 `i -> 4 `i `Vuc ]
+[e =| _ANSEL -> << ? >= / -> 2000000 `l / -> 4000000 `l -> -> 1000 `i `l -> -> 1600 `i `l : -> 0 `i ? >= / -> 4000000 `l / -> 4000000 `l -> -> 1000 `i `l -> -> 1600 `i `l : -> 4 `i ? >= / -> 8000000 `l / -> 4000000 `l -> -> 1000 `i `l -> -> 1600 `i `l : -> 1 `i ? >= / -> 16000000 `l / -> 4000000 `l -> -> 1000 `i `l -> -> 1600 `i `l : -> 5 `i ? >= / -> 32000000 `l / -> 4000000 `l -> -> 1000 `i `l -> -> 1600 `i `l : -> 2 `i ? >= / -> 64000000 `l / -> 4000000 `l -> -> 1000 `i `l -> -> 1600 `i `l : -> 6 `i -> 6 `i -> 4 `i `Vuc ]
+"100
+[; ;src/Adc.c: 100:     switch (channel) {
+[e $U 94  ]
+{
+"101
+[; ;src/Adc.c: 101:         case ADC_CHANNEL_AN0:
+[e :U 95 ]
+"102
+[; ;src/Adc.c: 102:             ANSEL |= (1 << 0);
+[e =| _ANSEL -> << -> 1 `i -> 0 `i `Vuc ]
+"103
+[; ;src/Adc.c: 103:             break;
+[e $U 93  ]
+"104
+[; ;src/Adc.c: 104:         case ADC_CHANNEL_AN1:
+[e :U 96 ]
+"105
+[; ;src/Adc.c: 105:             ANSEL |= (1 << 1);
+[e =| _ANSEL -> << -> 1 `i -> 1 `i `Vuc ]
+"106
+[; ;src/Adc.c: 106:             break;
+[e $U 93  ]
+"107
+[; ;src/Adc.c: 107:         case ADC_CHANNEL_AN2:
+[e :U 97 ]
+"108
+[; ;src/Adc.c: 108:             ANSEL |= (1 << 2);
+[e =| _ANSEL -> << -> 1 `i -> 2 `i `Vuc ]
+"109
+[; ;src/Adc.c: 109:             break;
+[e $U 93  ]
+"110
+[; ;src/Adc.c: 110:         case ADC_CHANNEL_AN3:
+[e :U 98 ]
+"111
+[; ;src/Adc.c: 111:             ANSEL |= (1 << 3);
+[e =| _ANSEL -> << -> 1 `i -> 3 `i `Vuc ]
+"112
+[; ;src/Adc.c: 112:             break;
+[e $U 93  ]
+"113
+[; ;src/Adc.c: 113:         default:
+[e :U 99 ]
+"114
+[; ;src/Adc.c: 114:             return;
+[e $UE 92  ]
+"115
+[; ;src/Adc.c: 115:     }
+}
+[e $U 93  ]
+[e :U 94 ]
+[e [\ -> _channel `ui , $ -> . `E11 0 `ui 95
+ , $ -> . `E11 1 `ui 96
+ , $ -> . `E11 2 `ui 97
+ , $ -> . `E11 3 `ui 98
+ 99 ]
+[e :U 93 ]
+"118
+[; ;src/Adc.c: 118:     if (format == ADC_RESULT_RIGHT) {
+[e $ ! == -> _format `ui -> . `E17 1 `ui 100  ]
+{
+"119
+[; ;src/Adc.c: 119:         ADCON0 |= (1 << 7);
+[e =| _ADCON0 -> << -> 1 `i -> 7 `i `Vuc ]
+"120
+[; ;src/Adc.c: 120:     } else {
+}
+[e $U 101  ]
+[e :U 100 ]
+{
+"121
+[; ;src/Adc.c: 121:         ADCON0 &= ~(1 << 7);
+[e =& _ADCON0 -> ~ << -> 1 `i -> 7 `i `Vuc ]
+"122
+[; ;src/Adc.c: 122:     }
+}
+[e :U 101 ]
+"124
+[; ;src/Adc.c: 124: }
+[e :UE 92 ]
+}
+"126
+[; ;src/Adc.c: 126: uint8 Adc_StartConversion(Adc_ChannelType channel) {
+[v _Adc_StartConversion `(uc ~T0 @X0 1 ef1`E11 ]
+{
+[e :U _Adc_StartConversion ]
+[v _channel `E11 ~T0 @X0 1 r1 ]
+[f ]
+"129
+[; ;src/Adc.c: 129:         if (!(
+[e $ ! ! || || || && == -> _channel `ui -> . `E11 0 `ui != & -> _ANSEL `i << -> 1 `i -> 0 `i -> 0 `i && == -> _channel `ui -> . `E11 1 `ui != & -> _ANSEL `i << -> 1 `i -> 1 `i -> 0 `i && == -> _channel `ui -> . `E11 2 `ui != & -> _ANSEL `i << -> 1 `i -> 2 `i -> 0 `i && == -> _channel `ui -> . `E11 3 `ui != & -> _ANSEL `i << -> 1 `i -> 3 `i -> 0 `i 103  ]
+"135
+[; ;src/Adc.c: 135:     {
+{
+"136
+[; ;src/Adc.c: 136:         return (Std_ReturnType)1;
+[e ) -> -> 1 `i `uc ]
+[e $UE 102  ]
+"138
+[; ;src/Adc.c: 138:     }
+}
+[e $U 104  ]
+"139
+[; ;src/Adc.c: 139:         else{
+[e :U 103 ]
+{
+"142
+[; ;src/Adc.c: 142:     ADCON0 &= ~( 0b11 << 2);
+[e =& _ADCON0 -> ~ << -> 3 `i -> 2 `i `Vuc ]
+"143
+[; ;src/Adc.c: 143:     ADCON0 |= (channel << 2);
+[e =| _ADCON0 -> << -> _channel `ui -> 2 `i `Vuc ]
+"144
+[; ;src/Adc.c: 144:     ADCON0 |= (1 << 1);
+[e =| _ADCON0 -> << -> 1 `i -> 1 `i `Vuc ]
+"145
+[; ;src/Adc.c: 145:     return (Std_ReturnType)0;
+[e ) -> -> 0 `i `uc ]
+[e $UE 102  ]
+"146
+[; ;src/Adc.c: 146:         }
+}
+[e :U 104 ]
+"147
+[; ;src/Adc.c: 147: }
+[e :UE 102 ]
+}
+"150
+[; ;src/Adc.c: 150: uint16 Adc_ReadResult(void) {
+[v _Adc_ReadResult `(us ~T0 @X0 1 ef ]
+{
+[e :U _Adc_ReadResult ]
+[f ]
+"151
+[; ;src/Adc.c: 151:     while (ADCON0 & (1 << 1));
+[e $U 106  ]
+[e :U 107 ]
+[e :U 106 ]
+[e $ != & -> _ADCON0 `i << -> 1 `i -> 1 `i -> 0 `i 107  ]
+[e :U 108 ]
+"154
+[; ;src/Adc.c: 154:     if (ADCON0 & (1 << 7)) {
+[e $ ! != & -> _ADCON0 `i << -> 1 `i -> 7 `i -> 0 `i 109  ]
+{
+"156
+[; ;src/Adc.c: 156:         return (uint16)((ADRESH << 8) | ADRESL);
+[e ) -> | << -> _ADRESH `i -> 8 `i -> _ADRESL `i `us ]
+[e $UE 105  ]
+"157
+[; ;src/Adc.c: 157:     } else {
+}
+[e $U 110  ]
+[e :U 109 ]
+{
+"159
+[; ;src/Adc.c: 159:         return (uint16)((ADRESH << 2) | (ADRESL >> 6));
+[e ) -> | << -> _ADRESH `i -> 2 `i >> -> _ADRESL `i -> 6 `i `us ]
+[e $UE 105  ]
+"160
+[; ;src/Adc.c: 160:     }
+}
+[e :U 110 ]
+"161
+[; ;src/Adc.c: 161: }
+[e :UE 105 ]
+}
