@@ -1,0 +1,61 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12F675 ]
+[d frameptr 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.50\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"32 C:\Users\Family\MPLABXProjects\TEST.X\main.c
+[v _send_to_max7219 send_to_max7219 `(v  1 e 1 0 ]
+"51
+[v _max7219_init max7219_init `(v  1 e 1 0 ]
+"67
+[v _main main `(v  1 e 1 0 ]
+"218 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC10-12Fxxx_DFP/1.7.178/xc8\pic\include\proc\pic12f675.h
+[v _GPIO GPIO `VEuc  1 e 1 @5 ]
+"564
+[v _CMCON CMCON `VEuc  1 e 1 @25 ]
+"797
+[v _TRISIO TRISIO `VEuc  1 e 1 @133 ]
+"1404
+[v _ANSEL ANSEL `VEuc  1 e 1 @159 ]
+"1592
+[v _GP1 GP1 `VEb  1 e 0 @41 ]
+"1595
+[v _GP2 GP2 `VEb  1 e 0 @42 ]
+"1604
+[v _GP5 GP5 `VEb  1 e 0 @45 ]
+"67 C:\Users\Family\MPLABXProjects\TEST.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"99
+} 0
+"51
+[v _max7219_init max7219_init `(v  1 e 1 0 ]
+{
+"57
+} 0
+"32
+[v _send_to_max7219 send_to_max7219 `(v  1 e 1 0 ]
+{
+[v send_to_max7219@address address `uc  1 p 1 wreg ]
+"40
+[v send_to_max7219@i_39 i `uc  1 a 1 4 ]
+"34
+[v send_to_max7219@i i `uc  1 a 1 3 ]
+"32
+[v send_to_max7219@address address `uc  1 p 1 wreg ]
+[v send_to_max7219@data data `uc  1 p 1 0 ]
+[v send_to_max7219@address address `uc  1 p 1 2 ]
+"48
+} 0
