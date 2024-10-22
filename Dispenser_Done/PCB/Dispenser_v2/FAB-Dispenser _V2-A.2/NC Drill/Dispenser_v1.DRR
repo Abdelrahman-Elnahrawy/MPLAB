@@ -1,0 +1,19 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: Dispenser_v1.CMPcbDoc   10/15/2024  4:12:29 AM
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : Dispenser_v1.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      28mil (0.711mm)                                           Round             24        PTH        7.16inch (181.85mm)
+T2      30mil (0.762mm)                                           Round             13        PTH        3.83inch (97.41mm)
+T3      32mil (0.8mm)                                             Round             5         PTH        2.00inch (50.88mm)
+T4      32mil (0.813mm)                                           Round             8         PTH        0.89inch (22.70mm)
+T5      35mil (0.9mm)                                             Round             8         PTH        0.90inch (22.86mm)
+T6      43mil (1.1mm)                                             Round             3         PTH        0.20inch (5.08mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              61
+
+Total Processing Time (hh:mm:ss) : 00:00:01

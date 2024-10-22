@@ -1,0 +1,327 @@
+*************************************************************
+FileName = Dispenser_v1.GBR
+AutoAperture = True
+*************************************************************
+Generating : Courtyard Top
+      File : Dispenser_v1.GM15
+
+    Adding Layer      : Courtyard Top
+
+
+Used DCodes :
+    D11
+    D14
+    D65
+    D66
+*************************************************************
+
+*************************************************************
+Generating : Assembly Top
+      File : Dispenser_v1.GM8
+
+    Adding Layer      : Assembly Top
+
+
+Used DCodes :
+    D11
+*************************************************************
+
+*************************************************************
+Generating : 3D Top
+      File : Dispenser_v1.GM13
+
+    Adding Layer      : 3D Top
+
+
+Used DCodes :
+    D14
+    D64
+*************************************************************
+
+*************************************************************
+Generating : Assembly Text Bottom
+      File : Dispenser_v1.GM7
+
+    Adding Layer      : Assembly Text Bottom
+
+
+Used DCodes :
+    D11
+*************************************************************
+
+*************************************************************
+Generating : Assembly Text Top
+      File : Dispenser_v1.GM6
+
+    Adding Layer      : Assembly Text Top
+
+
+Used DCodes :
+    D11
+*************************************************************
+
+*************************************************************
+Generating : Outline
+      File : Dispenser_v1.GM1
+
+    Adding Layer      : Outline
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Bottom Paste
+      File : Dispenser_v1.GBP
+
+    Adding Layer      : Bottom Paste
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D56
+    D57
+    D58
+    D59
+*************************************************************
+
+*************************************************************
+Generating : Top Solder
+      File : Dispenser_v1.GTS
+
+    Adding Layer      : Top Solder
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D24
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+    D33
+    D34
+    D35
+    D36
+    D37
+    D38
+    D39
+    D40
+    D41
+    D42
+*************************************************************
+
+*************************************************************
+Generating : Top Paste
+      File : Dispenser_v1.GTP
+
+    Adding Layer      : Top Paste
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D15
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+*************************************************************
+
+*************************************************************
+Generating : Top Overlay
+      File : Dispenser_v1.GTO
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D10
+    D11
+    D12
+    D13
+    D14
+*************************************************************
+
+*************************************************************
+Generating : Top Pad Master
+      File : Dispenser_v1.GPT
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D15
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D46
+    D47
+    D48
+    D49
+    D50
+    D51
+    D52
+    D53
+    D54
+*************************************************************
+
+*************************************************************
+Generating : Bottom Pad Master
+      File : Dispenser_v1.GPB
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D46
+    D47
+    D48
+    D49
+    D50
+    D51
+    D52
+    D53
+    D54
+    D56
+    D57
+    D58
+    D59
+*************************************************************
+
+*************************************************************
+Generating : Bottom Solder
+      File : Dispenser_v1.GBS
+
+    Adding Layer      : Bottom Solder
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D33
+    D34
+    D35
+    D36
+    D37
+    D38
+    D39
+    D40
+    D41
+    D42
+    D60
+    D61
+    D62
+    D63
+*************************************************************
+
+*************************************************************
+Generating : Bottom Layer
+      File : Dispenser_v1.GBL
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D43
+    D46
+    D47
+    D48
+    D49
+    D50
+    D51
+    D52
+    D53
+    D54
+    D55
+    D56
+    D57
+    D58
+    D59
+*************************************************************
+
+*************************************************************
+Generating : Top Layer
+      File : Dispenser_v1.GTL
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D15
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D43
+    D44
+    D45
+    D46
+    D47
+    D48
+    D49
+    D50
+    D51
+    D52
+    D53
+    D54
+    D55
+*************************************************************
+
+*************************************************************
+Generating : Keep-Out Layer
+      File : Dispenser_v1.GKO
+
+    Adding Layer      : Keep-Out Layer
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Bottom Overlay
+      File : Dispenser_v1.GBO
+
+    Adding Layer      : Bottom Overlay
+
+
+Used DCodes :
+    D11
+    D12
+*************************************************************
+
