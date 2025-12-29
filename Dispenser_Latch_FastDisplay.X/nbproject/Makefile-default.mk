@@ -39,7 +39,7 @@ FINAL_IMAGE=${DISTDIR}/Dispenser_Latch_FastDisplay.X.${IMAGE_TYPE}.${OUTPUT_SUFF
 endif
 
 ifeq ($(COMPARE_BUILD), true)
-COMPARISON_BUILD=-mafrlcsj
+COMPARISON_BUILD=
 else
 COMPARISON_BUILD=
 endif

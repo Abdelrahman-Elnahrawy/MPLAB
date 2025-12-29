@@ -39,7 +39,7 @@ FINAL_IMAGE=${DISTDIR}/Dispenser_301_PulseOnPulseOn.X.${IMAGE_TYPE}.${OUTPUT_SUF
 endif
 
 ifeq ($(COMPARE_BUILD), true)
-COMPARISON_BUILD=-mafrlcsj
+COMPARISON_BUILD=
 else
 COMPARISON_BUILD=
 endif

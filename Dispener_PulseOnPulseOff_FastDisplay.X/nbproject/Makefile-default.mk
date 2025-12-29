@@ -39,7 +39,7 @@ FINAL_IMAGE=${DISTDIR}/Dispener_PulseOnPulseOff_FastDisplay.X.${IMAGE_TYPE}.${OU
 endif
 
 ifeq ($(COMPARE_BUILD), true)
-COMPARISON_BUILD=-mafrlcsj
+COMPARISON_BUILD=
 else
 COMPARISON_BUILD=
 endif
