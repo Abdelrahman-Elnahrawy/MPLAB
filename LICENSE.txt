@@ -1,0 +1,30 @@
+📜 THE "OFF-LIMITS" SCROLL
+Copyright (c) 2026 Abdelrahman Elnahrawy
+
+BY VIEWING THIS CODE, YOU AGREE TO THE FOLLOWING INCANTATIONS:
+
+1. THE "LOOK BUT DON'T TOUCH" RULE:
+   You are granted the right to gaze upon this code with your eyes. 
+   You may bask in its glory. You may even learn from it. However, 
+   the moment you Copy (Ctrl+C) and Paste (Ctrl+V) this into your 
+   own project, a digital curse shall be placed upon your keyboard.
+
+2. THE "NO STEALING" OATH:
+   If you fork this repo, change the name, and tell your friends 
+   you wrote it, your coffee will always be lukewarm and your 
+   code will never compile on the first try.
+
+3. THE "BOSS/TEACHER" CLAUSE:
+   Using this code to pass a class or impress a boss without 
+   mentioning my name is a violation of the Universal Laws of 
+   Developer Karma. 
+
+4. THE "COFFEE" EXCEPTION:
+   If you absolutely MUST use this code, you must first embark on 
+   a quest to find the author (Me) and offer a tribute of caffeine 
+   or a sincere "Thank You." Only then may the barrier be lifted.
+
+THE SOFTWARE IS PROVIDED "AS IS". IF YOU STEAL IT AND IT 
+EXPLODES, I WILL SIMPLY LAUGH FROM THE SIDElines.
+
+STAY HANDS-OFF, MORTAL.
